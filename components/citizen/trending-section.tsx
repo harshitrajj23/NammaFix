@@ -28,6 +28,13 @@ interface TrendingSectionProps {
   limit?: number
 }
 
+const MOCK_TREND_ISSUE: TrendingIssue = {
+  issue: "shortage of lpg cylinders",
+  count: 3,
+  source: "news",
+  trend: "high"
+}
+
 export default function TrendingSection({ limit = 3 }: TrendingSectionProps) {
   const { data, error, isLoading } = useSWR<{ trending: TrendingIssue[] }>(
     '/api/ai/trending',
@@ -35,7 +42,10 @@ export default function TrendingSection({ limit = 3 }: TrendingSectionProps) {
     { refreshInterval: 60000 } // Auto-refresh every minute
   )
   
-  const trendingIssues = data?.trending?.slice(0, limit) || []
+  // Combine real data with our demo mock card
+  const apiTrending = data?.trending || []
+  const allTrending = [MOCK_TREND_ISSUE, ...apiTrending]
+  const trendingIssues = allTrending.slice(0, limit)
 
   const getTrendColor = (trend?: string) => {
     switch (trend) {

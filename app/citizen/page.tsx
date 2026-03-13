@@ -10,6 +10,7 @@ import { useComplaints, submitComplaint } from '@/hooks/use-complaints'
 import { Complaint } from '@/lib/types'
 import { useRouter } from 'next/navigation'
 import { useToast } from '@/hooks/use-toast'
+import HeatMap from '@/components/citizen/heat-map'
 
 type Tab = 'home' | 'complaints' | 'trending' | 'report'
 
@@ -61,7 +62,13 @@ export default function Home() {
     switch (activeTab) {
       case 'home':
         return (
-          <div className="space-y-8">
+          <div className="space-y-10">
+            <section className="space-y-4">
+              <h2 className="text-2xl font-bold text-foreground">Problem Heat Map</h2>
+              <p className="text-sm text-muted-foreground">Monitor real-time civic issue hotspots across Bangalore.</p>
+              <HeatMap complaints={complaints} />
+            </section>
+
             <ProblemsSection 
               onIssueConfirm={async (issueId) => {
                 console.log('Issue confirmed:', issueId)

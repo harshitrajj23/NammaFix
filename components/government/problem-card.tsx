@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { MapPin, AlertCircle, RefreshCw, MessageSquare } from 'lucide-react'
+import { MapPin, AlertCircle, RefreshCw, MessageSquare, Users } from 'lucide-react'
 import GovernmentResponsePanel from './response-panel'
 
 interface GovProblemCardProps {
@@ -18,6 +18,7 @@ interface GovProblemCardProps {
   imageUrl?: string
   audioUrl?: string
   userId?: string
+  votes?: number
   type?: 'new' | 'recurring'
   onResponseSubmit?: (data: {
     complaintId: string
@@ -47,11 +48,13 @@ export default function GovProblemCard({
   imageUrl,
   audioUrl,
   userId,
+  votes,
   type = 'new',
   onResponseSubmit,
 }: GovProblemCardProps) {
   const [showResponse, setShowResponse] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [audioError, setAudioError] = useState(false)
 
   const handleResponseSubmit = async (data: {
     responseText: string
@@ -103,9 +106,27 @@ export default function GovProblemCard({
 
         {/* Audio Attachment */}
         {audioUrl && (
-          <div className="pt-1">
-            <p className="text-[10px] text-muted-foreground mb-1 uppercase font-bold tracking-wider">Voice Note</p>
-            <audio controls src={audioUrl} className="w-full h-6" />
+          <div className="pt-2 border-t border-border/50">
+            <p className="text-[10px] text-muted-foreground mb-1.5 uppercase font-bold tracking-wider">Voice Note Attachment</p>
+            {audioError ? (
+              <div className="text-[10px] text-red-500 bg-red-500/10 p-2 rounded border border-red-500/20 flex items-center gap-2 mt-1">
+                <AlertCircle className="w-3.5 h-3.5" />
+                <span>Voice note unavailable</span>
+              </div>
+            ) : (
+              <div className="bg-secondary/40 p-1.5 rounded-md border border-border/30">
+                <audio 
+                  controls 
+                  preload="metadata"
+                  src={audioUrl} 
+                  className="w-full h-7" 
+                  onError={() => {
+                    console.warn("Audio load failed for URL:", audioUrl);
+                    setAudioError(true);
+                  }}
+                />
+              </div>
+            )}
           </div>
         )}
 
@@ -113,6 +134,12 @@ export default function GovProblemCard({
         <div className="space-y-1 text-[10px] text-muted-foreground/60 pt-1">
           {complaintId && (
             <div>ID: {complaintId}</div>
+          )}
+          {votes !== undefined && votes > 0 && (
+            <div className={`flex items-center gap-1.5 px-2 py-1 rounded border ${votes >= 16 ? 'bg-red-500/10 border-red-500/30 text-red-500' : 'bg-blue-500/10 border-blue-500/30 text-blue-400'}`}>
+              <Users className="w-3.5 h-3.5" />
+              <span className="font-bold uppercase tracking-tighter">{votes} Supporting Citizens</span>
+            </div>
           )}
           {occurrences && (
             <div className="flex items-center gap-1 text-accent font-medium">

@@ -7,6 +7,7 @@ import { Card } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
 import { Input } from '@/components/ui/input'
 import { Complaint } from '@/lib/types'
+import DuplicateAlertModal from './duplicate-alert-modal'
 
 interface ComplaintFormProps {
   onSubmit?: (data: FormData) => Promise<void>
@@ -24,16 +25,20 @@ export default function ComplaintForm({
     description: '',
     location: '',
     category: categories[0],
+    latitude: null as number | null,
+    longitude: null as number | null,
   })
   const [error, setError] = useState<string | null>(null)
   const [imageFile, setImageFile] = useState<File | null>(null)
   
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
   const [isAnalyzing, setIsAnalyzing] = useState(false)
+  const [isGettingLocation, setIsGettingLocation] = useState(false)
   
   // Audio recording state
   const [isRecording, setIsRecording] = useState(false)
   const [audioBlob, setAudioBlob] = useState<Blob | null>(null)
+  const [audioExtension, setAudioExtension] = useState('webm')
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const audioChunksRef = useRef<Blob[]>([])
 
@@ -42,6 +47,59 @@ export default function ComplaintForm({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleGetLocation = () => {
+    if (!navigator.geolocation) {
+      setError('Geolocation is not supported by your browser')
+      return
+    }
+
+    setIsGettingLocation(true)
+    setError(null)
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords
+        
+        try {
+          // Reverse geocode using Nominatim
+          const response = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`
+          )
+          const data = await response.json()
+          const address = data.display_name || `Lat: ${latitude.toFixed(4)}, Lon: ${longitude.toFixed(4)}`
+
+          setFormData(prev => ({
+            ...prev,
+            location: address,
+            latitude,
+            longitude
+          }))
+        } catch (err) {
+          console.error('Reverse geocoding failed:', err)
+          // Fallback to coordinates if address lookup fails
+          setFormData(prev => ({
+            ...prev,
+            location: `Lat: ${latitude.toFixed(4)}, Lon: ${longitude.toFixed(4)}`,
+            latitude,
+            longitude
+          }))
+        } finally {
+          setIsGettingLocation(false)
+        }
+      },
+      (err) => {
+        console.error('Geolocation error:', err)
+        if (err.code === 1) {
+          setError('Location access denied. Please enter location manually.')
+        } else {
+          setError('Failed to retrieve location. Please enter location manually.')
+        }
+        setIsGettingLocation(false)
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    )
   }
 
   const handleImageCapture = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,9 +146,25 @@ export default function ComplaintForm({
     setImageFile(null)
     setPreviewUrl(null)
     setAudioBlob(null)
+    setAudioExtension('webm')
     setIsRecording(false)
     setIsAnalyzing(false)
     if (previewUrl) URL.revokeObjectURL(previewUrl)
+  }
+
+  const getSupportedMimeType = () => {
+    const types = [
+      { mime: 'audio/webm;codecs=opus', ext: 'webm' },
+      { mime: 'audio/webm', ext: 'webm' },
+      { mime: 'audio/mp4', ext: 'm4a' },
+      { mime: 'audio/wav', ext: 'wav' },
+    ]
+    for (const type of types) {
+      if (MediaRecorder.isTypeSupported(type.mime)) {
+        return type
+      }
+    }
+    return { mime: '', ext: 'webm' }
   }
 
   const toggleRecording = async () => {
@@ -100,7 +174,10 @@ export default function ComplaintForm({
     } else {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-        const mediaRecorder = new MediaRecorder(stream)
+        const supported = getSupportedMimeType()
+        const options = supported.mime ? { mimeType: supported.mime } : {}
+        
+        const mediaRecorder = new MediaRecorder(stream, options)
         mediaRecorderRef.current = mediaRecorder
         audioChunksRef.current = []
 
@@ -111,8 +188,9 @@ export default function ComplaintForm({
         }
 
         mediaRecorder.onstop = () => {
-          const blob = new Blob(audioChunksRef.current, { type: 'audio/webm' })
+          const blob = new Blob(audioChunksRef.current, { type: supported.mime || 'audio/webm' })
           setAudioBlob(blob)
+          setAudioExtension(supported.ext)
           stream.getTracks().forEach(track => track.stop())
         }
 
@@ -125,8 +203,13 @@ export default function ComplaintForm({
     }
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  const [showDuplicateAlert, setShowDuplicateAlert] = useState(false)
+  const [similarComplaint, setSimilarComplaint] = useState<any>(null)
+  const [isCheckingDuplicate, setIsCheckingDuplicate] = useState(false)
+  const [isVoting, setIsVoting] = useState(false)
+
+  const handleSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault()
     setError(null)
 
     if (!formData.title.trim() || !formData.description.trim() || !formData.location.trim()) {
@@ -134,6 +217,43 @@ export default function ComplaintForm({
       return
     }
 
+    // Step 1: Check for duplicates if we have coordinates
+    if (formData.latitude && formData.longitude && !showDuplicateAlert) {
+      setIsCheckingDuplicate(true)
+      try {
+        const checkRes = await fetch('/api/complaints/duplicate-check', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: formData.title,
+            description: formData.description,
+            category: formData.category,
+            latitude: formData.latitude,
+            longitude: formData.longitude
+          }),
+        })
+
+        if (checkRes.ok) {
+          const checkData = await checkRes.json()
+          if (checkData.duplicate && checkData.similarComplaint) {
+            setSimilarComplaint(checkData.similarComplaint)
+            setShowDuplicateAlert(true)
+            setIsCheckingDuplicate(false)
+            return // Stop submission to show alert
+          }
+        }
+      } catch (err) {
+        console.error('Duplicate check failed:', err)
+        // Continue to normal submission if check fails
+      } finally {
+        setIsCheckingDuplicate(false)
+      }
+    }
+
+    await handleContinueSubmit()
+  }
+
+  const handleContinueSubmit = async () => {
     try {
       const submitData = new FormData()
       submitData.append('title', formData.title)
@@ -141,8 +261,11 @@ export default function ComplaintForm({
       submitData.append('location', formData.location)
       submitData.append('category', formData.category)
       
+      if (formData.latitude) submitData.append('latitude', formData.latitude.toString())
+      if (formData.longitude) submitData.append('longitude', formData.longitude.toString())
+      
       if (imageFile) submitData.append('image', imageFile)
-      if (audioBlob) submitData.append('audio', audioBlob, 'audio.webm')
+      if (audioBlob) submitData.append('audio', audioBlob, `audio.${audioExtension}`)
       
       // Stop recording if currently active
       if (isRecording) {
@@ -158,10 +281,49 @@ export default function ComplaintForm({
         description: '',
         location: '',
         category: categories[0],
+        latitude: null,
+        longitude: null,
       })
       clearMedia()
+      setShowDuplicateAlert(false)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to submit complaint')
+    }
+  }
+
+  const handleVote = async (complaintId: string) => {
+    setIsVoting(true)
+    try {
+      const res = await fetch('/api/complaints/vote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ complaint_id: complaintId }),
+      })
+
+      if (!res.ok) {
+        const data = await res.json()
+        throw new Error(data.error || 'Failed to vote')
+      }
+
+      // Briefly wait to show success state in modal before closing
+      setTimeout(() => {
+        setShowDuplicateAlert(false)
+        // Reset form as they "voted" instead of submitting
+        setFormData({
+          title: '',
+          description: '',
+          location: '',
+          category: categories[0],
+          latitude: null,
+          longitude: null,
+        })
+        clearMedia()
+      }, 2000)
+
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Voting failed')
+    } finally {
+      setIsVoting(false)
     }
   }
 
@@ -219,9 +381,21 @@ export default function ComplaintForm({
         </div>
 
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-foreground">
-            Location *
-          </label>
+          <div className="flex justify-between items-center">
+            <label className="block text-sm font-medium text-foreground">
+              Location *
+            </label>
+            <Button
+              type="button"
+              variant="link"
+              size="sm"
+              className="h-auto p-0 text-accent hover:text-accent/80 text-xs font-bold gap-1"
+              onClick={handleGetLocation}
+              disabled={isGettingLocation}
+            >
+              {isGettingLocation ? '📍 DETECTING...' : 'USE MY LOCATION 📍'}
+            </Button>
+          </div>
           <Input
             name="location"
             value={formData.location}
@@ -229,6 +403,12 @@ export default function ComplaintForm({
             placeholder="Enter location or address"
             className="bg-secondary border-border text-foreground placeholder:text-muted-foreground"
           />
+          {formData.latitude && !isGettingLocation && (
+            <p className="text-[10px] text-accent font-bold uppercase tracking-wider flex items-center gap-1">
+              <span className="size-1.5 bg-accent rounded-full animate-pulse" />
+              Location detected
+            </p>
+          )}
         </div>
 
         <div className="flex flex-col gap-2 pt-2">
@@ -304,12 +484,21 @@ export default function ComplaintForm({
 
         <Button
           type="submit"
-          disabled={isLoading}
+          disabled={isLoading || isCheckingDuplicate}
           className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-medium"
         >
-          {isLoading ? 'Submitting...' : 'Submit Complaint'}
+          {isCheckingDuplicate ? 'Scanning for similar issues...' : isLoading ? 'Submitting...' : 'Submit Complaint'}
         </Button>
       </form>
+
+      <DuplicateAlertModal
+        isOpen={showDuplicateAlert}
+        onClose={() => setShowDuplicateAlert(false)}
+        isVoting={isVoting}
+        similarComplaint={similarComplaint}
+        onVote={handleVote}
+        onContinue={handleContinueSubmit}
+      />
     </Card>
   )
 }

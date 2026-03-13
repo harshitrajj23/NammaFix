@@ -101,6 +101,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../app/government/heatmap/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/government/heatmap">> = Specific
+  const handler = {} as typeof import("../../../app/government/heatmap/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../app/government/login/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/government/login">> = Specific
@@ -227,6 +236,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../app/api/complaints/duplicate-check/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/complaints/duplicate-check">> = Specific
+  const handler = {} as typeof import("../../../app/api/complaints/duplicate-check/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../app/api/complaints/resolve/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/complaints/resolve">> = Specific
@@ -240,6 +258,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/complaints">> = Specific
   const handler = {} as typeof import("../../../app/api/complaints/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/api/complaints/vote/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/complaints/vote">> = Specific
+  const handler = {} as typeof import("../../../app/api/complaints/vote/route.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

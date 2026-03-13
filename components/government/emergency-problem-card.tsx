@@ -2,7 +2,7 @@
 
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { MapPin, AlertTriangle, User } from 'lucide-react'
+import { MapPin, AlertTriangle, User, AlertCircle } from 'lucide-react'
 import { EmergencyProblem } from '@/lib/types'
 import { useState } from 'react'
 import ResponsePanel from './response-panel'
@@ -38,6 +38,7 @@ export default function EmergencyProblemCard({
 }: EmergencyProblemCardProps) {
   const [showResponse, setShowResponse] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [audioError, setAudioError] = useState(false)
 
   const handleResponseSubmit = async (data: {
     responseText: string
@@ -101,7 +102,23 @@ export default function EmergencyProblemCard({
         {(problem.audioUrl || problem.audio_url) && (
           <div className="bg-secondary/20 p-2 rounded border border-border/50">
             <p className="text-[10px] text-muted-foreground mb-1 uppercase font-bold tracking-wider">Voice Evidence</p>
-            <audio controls src={problem.audioUrl || problem.audio_url} className="w-full h-8" />
+            {audioError ? (
+              <div className="text-[10px] text-red-500 bg-red-500/10 p-2 rounded border border-red-500/20 flex items-center gap-2 mt-1">
+                <AlertCircle className="w-3.5 h-3.5" />
+                <span>Voice note unavailable</span>
+              </div>
+            ) : (
+              <audio 
+                controls 
+                preload="metadata"
+                src={problem.audioUrl || problem.audio_url} 
+                className="w-full h-8" 
+                onError={() => {
+                  console.warn("Audio load failed for URL:", problem.audioUrl || problem.audio_url);
+                  setAudioError(true);
+                }}
+              />
+            )}
           </div>
         )}
 

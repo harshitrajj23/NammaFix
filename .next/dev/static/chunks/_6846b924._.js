@@ -712,6 +712,8 @@ function useComplaints(userId) {
                             location: c.location,
                             imageUrl: c.image_url,
                             audioUrl: c.audio_url,
+                            latitude: c.latitude,
+                            longitude: c.longitude,
                             status: c.status,
                             severity: c.severity,
                             createdAt: c.created_at,
@@ -773,6 +775,8 @@ function useComplaint(complaintId) {
                     location: data.location,
                     imageUrl: data.image_url,
                     audioUrl: data.audio_url,
+                    latitude: data.latitude,
+                    longitude: data.longitude,
                     status: data.status,
                     createdAt: data.created_at,
                     updatedAt: data.created_at,
@@ -1042,6 +1046,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/textarea.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$star$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Star$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/star.js [app-client] (ecmascript) <export default as Star>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2d$big$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/circle-check-big.js [app-client] (ecmascript) <export default as CheckCircle>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/circle-alert.js [app-client] (ecmascript) <export default as AlertCircle>");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
@@ -1060,6 +1065,7 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
     const [isResolving, setIsResolving] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [isSubmitted, setIsSubmitted] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [resolved, setResolved] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [audioError, setAudioError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const handleResolve = async ()=>{
         setIsResolving(true);
         try {
@@ -1121,7 +1127,7 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                     children: "Resolved"
                 }, void 0, false, {
                     fileName: "[project]/components/citizen/problem-card.tsx",
-                    lineNumber: 82,
+                    lineNumber: 84,
                     columnNumber: 16
                 }, this);
             case 'in_progress':
@@ -1130,7 +1136,7 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                     children: "In Progress"
                 }, void 0, false, {
                     fileName: "[project]/components/citizen/problem-card.tsx",
-                    lineNumber: 84,
+                    lineNumber: 86,
                     columnNumber: 16
                 }, this);
             case 'resolved':
@@ -1139,7 +1145,7 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                     children: "Feedback Provided"
                 }, void 0, false, {
                     fileName: "[project]/components/citizen/problem-card.tsx",
-                    lineNumber: 86,
+                    lineNumber: 88,
                     columnNumber: 16
                 }, this);
             case 'rejected':
@@ -1148,7 +1154,7 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                     children: "Rejected"
                 }, void 0, false, {
                     fileName: "[project]/components/citizen/problem-card.tsx",
-                    lineNumber: 88,
+                    lineNumber: 90,
                     columnNumber: 16
                 }, this);
             default:
@@ -1158,7 +1164,7 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                     children: status
                 }, void 0, false, {
                     fileName: "[project]/components/citizen/problem-card.tsx",
-                    lineNumber: 90,
+                    lineNumber: 92,
                     columnNumber: 16
                 }, this);
         }
@@ -1174,12 +1180,12 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                     className: "w-full h-full object-cover"
                 }, void 0, false, {
                     fileName: "[project]/components/citizen/problem-card.tsx",
-                    lineNumber: 99,
+                    lineNumber: 101,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/citizen/problem-card.tsx",
-                lineNumber: 97,
+                lineNumber: 99,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1193,14 +1199,14 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                                 children: complaint.title
                             }, void 0, false, {
                                 fileName: "[project]/components/citizen/problem-card.tsx",
-                                lineNumber: 108,
+                                lineNumber: 110,
                                 columnNumber: 11
                             }, this),
                             getStatusBadge(complaint.status)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/citizen/problem-card.tsx",
-                        lineNumber: 107,
+                        lineNumber: 109,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1211,7 +1217,7 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                                 children: complaint.severity || 'medium'
                             }, void 0, false, {
                                 fileName: "[project]/components/citizen/problem-card.tsx",
-                                lineNumber: 113,
+                                lineNumber: 115,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1219,7 +1225,7 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                                 children: complaint.category
                             }, void 0, false, {
                                 fileName: "[project]/components/citizen/problem-card.tsx",
-                                lineNumber: 121,
+                                lineNumber: 123,
                                 columnNumber: 11
                             }, this),
                             (complaint.status === 'completed' || complaint.status === 'resolved') && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1230,20 +1236,20 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                                         className: "w-3 h-3"
                                     }, void 0, false, {
                                         fileName: "[project]/components/citizen/problem-card.tsx",
-                                        lineNumber: 126,
+                                        lineNumber: 128,
                                         columnNumber: 15
                                     }, this),
                                     "Citizen Verified"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/citizen/problem-card.tsx",
-                                lineNumber: 125,
+                                lineNumber: 127,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/citizen/problem-card.tsx",
-                        lineNumber: 112,
+                        lineNumber: 114,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1252,12 +1258,12 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                             children: new Date(complaint.createdAt).toLocaleDateString()
                         }, void 0, false, {
                             fileName: "[project]/components/citizen/problem-card.tsx",
-                            lineNumber: 133,
+                            lineNumber: 135,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/citizen/problem-card.tsx",
-                        lineNumber: 132,
+                        lineNumber: 134,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1265,7 +1271,7 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                         children: complaint.description
                     }, void 0, false, {
                         fileName: "[project]/components/citizen/problem-card.tsx",
-                        lineNumber: 136,
+                        lineNumber: 138,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1276,7 +1282,7 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/citizen/problem-card.tsx",
-                        lineNumber: 139,
+                        lineNumber: 141,
                         columnNumber: 9
                     }, this),
                     complaint.responses?.[0]?.government_response && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1287,7 +1293,7 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                                 children: "Government Response"
                             }, void 0, false, {
                                 fileName: "[project]/components/citizen/problem-card.tsx",
-                                lineNumber: 145,
+                                lineNumber: 147,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1299,13 +1305,13 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/citizen/problem-card.tsx",
-                                lineNumber: 146,
+                                lineNumber: 148,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/citizen/problem-card.tsx",
-                        lineNumber: 144,
+                        lineNumber: 146,
                         columnNumber: 11
                     }, this),
                     complaint.responses?.[0]?.government_response && complaint.status !== 'completed' && complaint.status !== 'resolved' && !resolved && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1320,14 +1326,14 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                                         className: "w-4 h-4"
                                     }, void 0, false, {
                                         fileName: "[project]/components/citizen/problem-card.tsx",
-                                        lineNumber: 162,
+                                        lineNumber: 164,
                                         columnNumber: 17
                                     }, this),
                                     isResolving ? 'MARKING AS RESOLVED...' : 'WORK COMPLETED? MARK AS RESOLVED'
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/citizen/problem-card.tsx",
-                                lineNumber: 157,
+                                lineNumber: 159,
                                 columnNumber: 15
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "space-y-4 animate-in fade-in slide-in-from-top-2 duration-300",
@@ -1340,7 +1346,7 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                                                 children: "Rate Resolution"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/citizen/problem-card.tsx",
-                                                lineNumber: 168,
+                                                lineNumber: 170,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1358,23 +1364,23 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                                                             className: `w-6 h-6 ${rating >= s ? 'fill-current' : ''}`
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/citizen/problem-card.tsx",
-                                                            lineNumber: 176,
+                                                            lineNumber: 178,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, s, false, {
                                                         fileName: "[project]/components/citizen/problem-card.tsx",
-                                                        lineNumber: 171,
+                                                        lineNumber: 173,
                                                         columnNumber: 23
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/components/citizen/problem-card.tsx",
-                                                lineNumber: 169,
+                                                lineNumber: 171,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/citizen/problem-card.tsx",
-                                        lineNumber: 167,
+                                        lineNumber: 169,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1385,7 +1391,7 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                                                 children: "Feedback Details"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/citizen/problem-card.tsx",
-                                                lineNumber: 182,
+                                                lineNumber: 184,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Textarea"], {
@@ -1395,13 +1401,13 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                                                 className: "min-h-[80px] bg-secondary/50 border-border text-sm"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/citizen/problem-card.tsx",
-                                                lineNumber: 183,
+                                                lineNumber: 185,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/citizen/problem-card.tsx",
-                                        lineNumber: 181,
+                                        lineNumber: 183,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1415,7 +1421,7 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                                                 children: "Cancel"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/citizen/problem-card.tsx",
-                                                lineNumber: 191,
+                                                lineNumber: 193,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1426,19 +1432,19 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                                                 children: isSubmitting ? 'Submitting...' : 'Submit Feedback'
                                             }, void 0, false, {
                                                 fileName: "[project]/components/citizen/problem-card.tsx",
-                                                lineNumber: 199,
+                                                lineNumber: 201,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/citizen/problem-card.tsx",
-                                        lineNumber: 190,
+                                        lineNumber: 192,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/citizen/problem-card.tsx",
-                                lineNumber: 166,
+                                lineNumber: 168,
                                 columnNumber: 15
                             }, this),
                             !showFeedbackForm && !isSubmitted && complaint.status !== 'completed' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1449,13 +1455,13 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                                 children: "Add Detail Feedback"
                             }, void 0, false, {
                                 fileName: "[project]/components/citizen/problem-card.tsx",
-                                lineNumber: 212,
+                                lineNumber: 214,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/citizen/problem-card.tsx",
-                        lineNumber: 155,
+                        lineNumber: 157,
                         columnNumber: 11
                     }, this),
                     (complaint.status === 'completed' || resolved || isSubmitted) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1465,7 +1471,7 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                                 className: "w-5 h-5 text-green-500"
                             }, void 0, false, {
                                 fileName: "[project]/components/citizen/problem-card.tsx",
-                                lineNumber: 226,
+                                lineNumber: 228,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1473,62 +1479,97 @@ function ProblemCard({ complaint, onFeedbackSubmitted }) {
                                 children: "Problem Resolved"
                             }, void 0, false, {
                                 fileName: "[project]/components/citizen/problem-card.tsx",
-                                lineNumber: 227,
+                                lineNumber: 229,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/citizen/problem-card.tsx",
-                        lineNumber: 225,
+                        lineNumber: 227,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "mt-auto",
-                        children: complaint.audioUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "pt-4 border-t border-border mt-4",
+                        className: "mt-auto pt-4 border-t border-border mt-4",
+                        children: complaint.audioUrl ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "space-y-2",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-xs text-muted-foreground mb-2",
-                                    children: "Voice Note"
+                                    className: "text-[10px] text-muted-foreground uppercase font-bold tracking-wider",
+                                    children: "Voice Note Attachment"
                                 }, void 0, false, {
                                     fileName: "[project]/components/citizen/problem-card.tsx",
-                                    lineNumber: 234,
+                                    lineNumber: 236,
                                     columnNumber: 15
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("audio", {
-                                    controls: true,
-                                    src: complaint.audioUrl,
-                                    className: "w-full h-8"
+                                audioError ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "text-xs text-destructive bg-destructive/10 p-3 rounded-lg border border-destructive/20 flex items-center gap-2",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
+                                            className: "w-4 h-4"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/citizen/problem-card.tsx",
+                                            lineNumber: 239,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            children: "Voice note unavailable"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/citizen/problem-card.tsx",
+                                            lineNumber: 240,
+                                            columnNumber: 19
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/components/citizen/problem-card.tsx",
+                                    lineNumber: 238,
+                                    columnNumber: 17
+                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "bg-secondary/30 p-2 rounded-lg border border-border/50",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("audio", {
+                                        controls: true,
+                                        preload: "metadata",
+                                        src: complaint.audioUrl,
+                                        className: "w-full h-8",
+                                        onError: (e)=>{
+                                            console.warn("Audio load failed for URL:", complaint.audioUrl);
+                                            setAudioError(true);
+                                        },
+                                        children: "Your browser does not support the audio element."
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/citizen/problem-card.tsx",
+                                        lineNumber: 244,
+                                        columnNumber: 19
+                                    }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/citizen/problem-card.tsx",
-                                    lineNumber: 235,
-                                    columnNumber: 15
+                                    lineNumber: 243,
+                                    columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/citizen/problem-card.tsx",
-                            lineNumber: 233,
+                            lineNumber: 235,
                             columnNumber: 13
-                        }, this)
+                        }, this) : null
                     }, void 0, false, {
                         fileName: "[project]/components/citizen/problem-card.tsx",
-                        lineNumber: 231,
+                        lineNumber: 233,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/citizen/problem-card.tsx",
-                lineNumber: 106,
+                lineNumber: 108,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/citizen/problem-card.tsx",
-        lineNumber: 95,
+        lineNumber: 97,
         columnNumber: 5
     }, this);
 }
-_s(ProblemCard, "kgioUZry0dgQvLDqtQMP7J5U/+Y=");
+_s(ProblemCard, "rDXOKo2N5m6ZT76I+ZrgQ7ohJVU=");
 _c = ProblemCard;
 var _c;
 __turbopack_context__.k.register(_c, "ProblemCard");

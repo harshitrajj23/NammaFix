@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
-import { Star, CheckCircle } from 'lucide-react'
+import { Star, CheckCircle, AlertCircle } from 'lucide-react'
 
 interface ProblemCardProps {
   complaint: any
@@ -20,6 +20,8 @@ export default function ProblemCard({ complaint, onFeedbackSubmitted }: ProblemC
   const [isResolving, setIsResolving] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [resolved, setResolved] = useState(false)
+
+  const [audioError, setAudioError] = useState(false)
 
   const handleResolve = async () => {
     setIsResolving(true)
@@ -121,6 +123,11 @@ export default function ProblemCard({ complaint, onFeedbackSubmitted }: ProblemC
           <span className="text-xs text-muted-foreground flex items-center bg-secondary px-2 py-0.5 rounded uppercase font-medium">
             {complaint.category}
           </span>
+          {complaint.votes > 0 && (
+            <span className="text-xs text-blue-400 font-bold flex items-center bg-blue-400/10 px-2 py-0.5 rounded border border-blue-400/20">
+              👥 {complaint.votes} citizens affected
+            </span>
+          )}
           {(complaint.status === 'completed' || complaint.status === 'resolved') && (
             <Badge variant="outline" className="text-[10px] border-green-500 text-green-500 uppercase font-bold gap-1">
               <CheckCircle className="w-3 h-3" />
@@ -228,13 +235,33 @@ export default function ProblemCard({ complaint, onFeedbackSubmitted }: ProblemC
           </div>
         )}
         
-        <div className="mt-auto">
-          {complaint.audioUrl && (
-            <div className="pt-4 border-t border-border mt-4">
-              <p className="text-xs text-muted-foreground mb-2">Voice Note</p>
-              <audio controls src={complaint.audioUrl} className="w-full h-8" />
+        <div className="mt-auto pt-4 border-t border-border mt-4">
+          {complaint.audioUrl ? (
+            <div className="space-y-2">
+              <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-wider">Voice Note Attachment</p>
+              {audioError ? (
+                <div className="text-xs text-destructive bg-destructive/10 p-3 rounded-lg border border-destructive/20 flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  <span>Voice note unavailable</span>
+                </div>
+              ) : (
+                <div className="bg-secondary/30 p-2 rounded-lg border border-border/50">
+                  <audio 
+                    controls 
+                    preload="metadata"
+                    src={complaint.audioUrl} 
+                    className="w-full h-8" 
+                    onError={(e) => {
+                      console.warn("Audio load failed for URL:", complaint.audioUrl);
+                      setAudioError(true);
+                    }}
+                  >
+                    Your browser does not support the audio element.
+                  </audio>
+                </div>
+              )}
             </div>
-          )}
+          ) : null}
         </div>
       </div>
     </Card>

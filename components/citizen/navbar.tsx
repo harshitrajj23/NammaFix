@@ -5,7 +5,7 @@ import { Bell, LogOut } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import NotificationPanel from '@/components/shared/notification-panel'
 import { useNotifications } from '@/hooks/use-notifications'
-import LogoutButton from '@/components/shared/logout-button'
+import ProfileCard from './profile-card'
 
 interface NavbarProps {
   onNotificationClick?: () => void
@@ -31,23 +31,21 @@ export default function Navbar({ onNotificationClick }: NavbarProps) {
             <span className="text-xl font-bold text-foreground">NammaFix</span>
           </div>
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-4">
             <Button
               variant="ghost"
               size="icon"
               onClick={handleNotificationClick}
-              className="relative hover:bg-secondary"
+              className="relative hover:bg-secondary rounded-full"
               aria-label={`Notifications (${unreadCount} unread)`}
             >
               <Bell className="h-5 w-5 text-foreground" />
               {unreadCount > 0 && (
-                <span className="absolute top-1 right-1 h-2 w-2 bg-accent rounded-full"></span>
+                <span className="absolute top-1 right-1 h-2 w-2 bg-accent rounded-full border-2 border-card"></span>
               )}
             </Button>
             
-            <LogoutButton 
-              className="text-muted-foreground hover:text-foreground hover:bg-secondary ml-2" 
-            />
+            <ProfileCard />
           </div>
         </div>
       </nav>

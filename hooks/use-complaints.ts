@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { Complaint } from '@/lib/types'
 import { createClient } from '@/lib/supabase/client'
 
-export function useComplaints(userId?: string) {
+export function useComplaints(userId?: string, all: boolean = false) {
   const [complaints, setComplaints] = useState<Complaint[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<any>(null)
@@ -12,26 +12,30 @@ export function useComplaints(userId?: string) {
     try {
       setIsLoading(true)
       
-      let currentUserId = userId
-      if (!currentUserId) {
-        const { data: { user } } = await supabase.auth.getUser()
-        currentUserId = user?.id
-      }
-
-      if (!currentUserId) {
-        setComplaints([])
-        return
-      }
-
-      const { data, error } = await supabase
+      let query = supabase
         .from("complaints")
         .select(`
           *,
           responses(*),
           feedback(*)
         `)
-        .eq("user_id", currentUserId)
-        .order("created_at", { ascending: false });
+
+      if (!all) {
+        let currentUserId = userId
+        if (!currentUserId) {
+          const { data: { user } } = await supabase.auth.getUser()
+          currentUserId = user?.id
+        }
+
+        if (!currentUserId) {
+          setComplaints([])
+          setIsLoading(false)
+          return
+        }
+        query = query.eq("user_id", currentUserId)
+      }
+
+      const { data, error } = await query.order("created_at", { ascending: false });
 
       if (error) {
         console.error("Supabase fetch error:", error.message);
@@ -47,6 +51,8 @@ export function useComplaints(userId?: string) {
         location: c.location,
         imageUrl: c.image_url,
         audioUrl: c.audio_url,
+        latitude: c.latitude,
+        longitude: c.longitude,
         status: c.status,
         severity: c.severity,
         createdAt: c.created_at,
@@ -111,6 +117,8 @@ export function useComplaint(complaintId: string) {
         location: data.location,
         imageUrl: data.image_url,
         audioUrl: data.audio_url,
+        latitude: data.latitude,
+        longitude: data.longitude,
         status: data.status,
         createdAt: data.created_at,
         updatedAt: data.created_at,

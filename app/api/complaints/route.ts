@@ -122,6 +122,7 @@ export async function GET(request: NextRequest) {
       imageUrl: c.image_url,
       audioUrl: c.audio_url,
       severity: c.severity,
+      votes: c.votes || 0,
       status: c.status,
       createdAt: c.created_at,
       updatedAt: c.created_at 
@@ -162,6 +163,8 @@ export async function POST(request: NextRequest) {
     
     const imageFile = formData.get('image') as File | null
     const audioFile = formData.get('audio') as File | null
+    const latitude = formData.get('latitude') ? parseFloat(formData.get('latitude') as string) : null
+    const longitude = formData.get('longitude') ? parseFloat(formData.get('longitude') as string) : null
 
     // Validate required fields
     if (!title || !description || !location) {
@@ -198,13 +201,13 @@ export async function POST(request: NextRequest) {
 
     // Upload Audio if present
     if (audioFile && audioFile.size > 0) {
-      const fileExt = 'webm' // Default WebM from MediaRecorder
+      const fileExt = audioFile.name.split('.').pop() || 'webm'
       const fileName = `${user.id}-${Date.now()}.${fileExt}`
       
       const { data: uploadData, error: uploadError } = await supabase.storage
         .from("complaint-audio")
         .upload(fileName, audioFile, {
-          contentType: 'audio/webm'
+          contentType: audioFile.type || 'audio/webm'
         })
 
       if (uploadError) {
@@ -293,6 +296,8 @@ other → medium`
           severity,
           image_url: imageUrl,
           audio_url: audioUrl,
+          latitude,
+          longitude,
           status: 'submitted'
         }
       ])
@@ -315,6 +320,8 @@ other → medium`
       severity: insertedData.severity,
       imageUrl: insertedData.image_url,
       audioUrl: insertedData.audio_url,
+      latitude: insertedData.latitude,
+      longitude: insertedData.longitude,
       status: insertedData.status,
       createdAt: insertedData.created_at,
       updatedAt: insertedData.created_at

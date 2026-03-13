@@ -1708,13 +1708,25 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 const fetcher = (url)=>fetch(url).then((res)=>res.json());
+const MOCK_TREND_ISSUE = {
+    issue: "shortage of lpg cylinders",
+    count: 3,
+    source: "news",
+    trend: "high"
+};
 function TrendingSection({ limit = 3 }) {
     _s();
     const { data, error, isLoading } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$swr$2f$dist$2f$index$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"])('/api/ai/trending', fetcher, {
         refreshInterval: 60000
     } // Auto-refresh every minute
     );
-    const trendingIssues = data?.trending?.slice(0, limit) || [];
+    // Combine real data with our demo mock card
+    const apiTrending = data?.trending || [];
+    const allTrending = [
+        MOCK_TREND_ISSUE,
+        ...apiTrending
+    ];
+    const trendingIssues = allTrending.slice(0, limit);
     const getTrendColor = (trend)=>{
         switch(trend){
             case 'high':
@@ -1738,7 +1750,7 @@ function TrendingSection({ limit = 3 }) {
                                 children: "Trending Problems"
                             }, void 0, false, {
                                 fileName: "[project]/components/citizen/trending-section.tsx",
-                                lineNumber: 52,
+                                lineNumber: 62,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1746,13 +1758,13 @@ function TrendingSection({ limit = 3 }) {
                                 children: "AI-detected from live news & citizen reports"
                             }, void 0, false, {
                                 fileName: "[project]/components/citizen/trending-section.tsx",
-                                lineNumber: 53,
+                                lineNumber: 63,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/citizen/trending-section.tsx",
-                        lineNumber: 51,
+                        lineNumber: 61,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1764,18 +1776,18 @@ function TrendingSection({ limit = 3 }) {
                             children: "View All"
                         }, void 0, false, {
                             fileName: "[project]/components/citizen/trending-section.tsx",
-                            lineNumber: 56,
+                            lineNumber: 66,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/citizen/trending-section.tsx",
-                        lineNumber: 55,
+                        lineNumber: 65,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/citizen/trending-section.tsx",
-                lineNumber: 50,
+                lineNumber: 60,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1786,7 +1798,7 @@ function TrendingSection({ limit = 3 }) {
                         className: "h-40 rounded-xl bg-secondary"
                     }, i, false, {
                         fileName: "[project]/components/citizen/trending-section.tsx",
-                        lineNumber: 65,
+                        lineNumber: 75,
                         columnNumber: 13
                     }, this)) : error ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Empty"], {
                     className: "col-span-full py-12",
@@ -1795,48 +1807,6 @@ function TrendingSection({ limit = 3 }) {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyMedia"], {
                                 variant: "icon",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
-                                    className: "size-6"
-                                }, void 0, false, {
-                                    fileName: "[project]/components/citizen/trending-section.tsx",
-                                    lineNumber: 71,
-                                    columnNumber: 17
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/components/citizen/trending-section.tsx",
-                                lineNumber: 70,
-                                columnNumber: 15
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyTitle"], {
-                                children: "Analysis delayed"
-                            }, void 0, false, {
-                                fileName: "[project]/components/citizen/trending-section.tsx",
-                                lineNumber: 73,
-                                columnNumber: 15
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyDescription"], {
-                                children: "Our AI engine is processing current reports. Check back soon."
-                            }, void 0, false, {
-                                fileName: "[project]/components/citizen/trending-section.tsx",
-                                lineNumber: 74,
-                                columnNumber: 15
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/components/citizen/trending-section.tsx",
-                        lineNumber: 69,
-                        columnNumber: 13
-                    }, this)
-                }, void 0, false, {
-                    fileName: "[project]/components/citizen/trending-section.tsx",
-                    lineNumber: 68,
-                    columnNumber: 11
-                }, this) : trendingIssues.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Empty"], {
-                    className: "col-span-full py-12",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyHeader"], {
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyMedia"], {
-                                variant: "icon",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trending$2d$up$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TrendingUp$3e$__["TrendingUp"], {
                                     className: "size-6"
                                 }, void 0, false, {
                                     fileName: "[project]/components/citizen/trending-section.tsx",
@@ -1849,14 +1819,14 @@ function TrendingSection({ limit = 3 }) {
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyTitle"], {
-                                children: "Clean Streets"
+                                children: "Analysis delayed"
                             }, void 0, false, {
                                 fileName: "[project]/components/citizen/trending-section.tsx",
                                 lineNumber: 83,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyDescription"], {
-                                children: "No major repeating issues detected in your area currently."
+                                children: "Our AI engine is processing current reports. Check back soon."
                             }, void 0, false, {
                                 fileName: "[project]/components/citizen/trending-section.tsx",
                                 lineNumber: 84,
@@ -1872,6 +1842,48 @@ function TrendingSection({ limit = 3 }) {
                     fileName: "[project]/components/citizen/trending-section.tsx",
                     lineNumber: 78,
                     columnNumber: 11
+                }, this) : trendingIssues.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Empty"], {
+                    className: "col-span-full py-12",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyHeader"], {
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyMedia"], {
+                                variant: "icon",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trending$2d$up$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TrendingUp$3e$__["TrendingUp"], {
+                                    className: "size-6"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/citizen/trending-section.tsx",
+                                    lineNumber: 91,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/components/citizen/trending-section.tsx",
+                                lineNumber: 90,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyTitle"], {
+                                children: "Clean Streets"
+                            }, void 0, false, {
+                                fileName: "[project]/components/citizen/trending-section.tsx",
+                                lineNumber: 93,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyDescription"], {
+                                children: "No major repeating issues detected in your area currently."
+                            }, void 0, false, {
+                                fileName: "[project]/components/citizen/trending-section.tsx",
+                                lineNumber: 94,
+                                columnNumber: 15
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/components/citizen/trending-section.tsx",
+                        lineNumber: 89,
+                        columnNumber: 13
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/components/citizen/trending-section.tsx",
+                    lineNumber: 88,
+                    columnNumber: 11
                 }, this) : trendingIssues.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
                         className: "p-5 bg-card border-border hover:border-accent/40 transition-all group flex flex-col justify-between",
                         children: [
@@ -1886,7 +1898,7 @@ function TrendingSection({ limit = 3 }) {
                                                 children: item.source || 'AI Analyzed'
                                             }, void 0, false, {
                                                 fileName: "[project]/components/citizen/trending-section.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 102,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trending$2d$up$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TrendingUp$3e$__["TrendingUp"], {
@@ -1894,13 +1906,13 @@ function TrendingSection({ limit = 3 }) {
                                                 className: getTrendColor(item.trend)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/citizen/trending-section.tsx",
-                                                lineNumber: 95,
+                                                lineNumber: 105,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/citizen/trending-section.tsx",
-                                        lineNumber: 91,
+                                        lineNumber: 101,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1908,13 +1920,13 @@ function TrendingSection({ limit = 3 }) {
                                         children: item.issue
                                     }, void 0, false, {
                                         fileName: "[project]/components/citizen/trending-section.tsx",
-                                        lineNumber: 97,
+                                        lineNumber: 107,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/citizen/trending-section.tsx",
-                                lineNumber: 90,
+                                lineNumber: 100,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1928,14 +1940,14 @@ function TrendingSection({ limit = 3 }) {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/citizen/trending-section.tsx",
-                                        lineNumber: 103,
+                                        lineNumber: 113,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "•"
                                     }, void 0, false, {
                                         fileName: "[project]/components/citizen/trending-section.tsx",
-                                        lineNumber: 104,
+                                        lineNumber: 114,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1947,36 +1959,36 @@ function TrendingSection({ limit = 3 }) {
                                                 size: 14
                                             }, void 0, false, {
                                                 fileName: "[project]/components/citizen/trending-section.tsx",
-                                                lineNumber: 107,
+                                                lineNumber: 117,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/citizen/trending-section.tsx",
-                                        lineNumber: 105,
+                                        lineNumber: 115,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/citizen/trending-section.tsx",
-                                lineNumber: 102,
+                                lineNumber: 112,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, index, true, {
                         fileName: "[project]/components/citizen/trending-section.tsx",
-                        lineNumber: 89,
+                        lineNumber: 99,
                         columnNumber: 13
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/components/citizen/trending-section.tsx",
-                lineNumber: 62,
+                lineNumber: 72,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/citizen/trending-section.tsx",
-        lineNumber: 49,
+        lineNumber: 59,
         columnNumber: 5
     }, this);
 }
@@ -2091,15 +2103,19 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
         title: '',
         description: '',
         location: '',
-        category: categories[0]
+        category: categories[0],
+        latitude: null,
+        longitude: null
     });
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [imageFile, setImageFile] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [previewUrl, setPreviewUrl] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [isAnalyzing, setIsAnalyzing] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [isGettingLocation, setIsGettingLocation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     // Audio recording state
     const [isRecording, setIsRecording] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [audioBlob, setAudioBlob] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [audioExtension, setAudioExtension] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('webm');
     const mediaRecorderRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const audioChunksRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])([]);
     const fileInputRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
@@ -2109,6 +2125,51 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                 ...prev,
                 [name]: value
             }));
+    };
+    const handleGetLocation = ()=>{
+        if (!navigator.geolocation) {
+            setError('Geolocation is not supported by your browser');
+            return;
+        }
+        setIsGettingLocation(true);
+        setError(null);
+        navigator.geolocation.getCurrentPosition(async (position)=>{
+            const { latitude, longitude } = position.coords;
+            try {
+                // Reverse geocode using Nominatim
+                const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`);
+                const data = await response.json();
+                const address = data.display_name || `Lat: ${latitude.toFixed(4)}, Lon: ${longitude.toFixed(4)}`;
+                setFormData((prev)=>({
+                        ...prev,
+                        location: address,
+                        latitude,
+                        longitude
+                    }));
+            } catch (err) {
+                console.error('Reverse geocoding failed:', err);
+                // Fallback to coordinates if address lookup fails
+                setFormData((prev)=>({
+                        ...prev,
+                        location: `Lat: ${latitude.toFixed(4)}, Lon: ${longitude.toFixed(4)}`,
+                        latitude,
+                        longitude
+                    }));
+            } finally{
+                setIsGettingLocation(false);
+            }
+        }, (err)=>{
+            console.error('Geolocation error:', err);
+            if (err.code === 1) {
+                setError('Location access denied. Please enter location manually.');
+            } else {
+                setError('Failed to retrieve location. Please enter location manually.');
+            }
+            setIsGettingLocation(false);
+        }, {
+            enableHighAccuracy: true,
+            timeout: 10000
+        });
     };
     const handleImageCapture = async (e)=>{
         if (e.target.files && e.target.files.length > 0) {
@@ -2153,9 +2214,39 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
         setImageFile(null);
         setPreviewUrl(null);
         setAudioBlob(null);
+        setAudioExtension('webm');
         setIsRecording(false);
         setIsAnalyzing(false);
         if (previewUrl) URL.revokeObjectURL(previewUrl);
+    };
+    const getSupportedMimeType = ()=>{
+        const types = [
+            {
+                mime: 'audio/webm;codecs=opus',
+                ext: 'webm'
+            },
+            {
+                mime: 'audio/webm',
+                ext: 'webm'
+            },
+            {
+                mime: 'audio/mp4',
+                ext: 'm4a'
+            },
+            {
+                mime: 'audio/wav',
+                ext: 'wav'
+            }
+        ];
+        for (const type of types){
+            if (MediaRecorder.isTypeSupported(type.mime)) {
+                return type;
+            }
+        }
+        return {
+            mime: '',
+            ext: 'webm'
+        };
     };
     const toggleRecording = async ()=>{
         if (isRecording) {
@@ -2166,7 +2257,11 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                 const stream = await navigator.mediaDevices.getUserMedia({
                     audio: true
                 });
-                const mediaRecorder = new MediaRecorder(stream);
+                const supported = getSupportedMimeType();
+                const options = supported.mime ? {
+                    mimeType: supported.mime
+                } : {};
+                const mediaRecorder = new MediaRecorder(stream, options);
                 mediaRecorderRef.current = mediaRecorder;
                 audioChunksRef.current = [];
                 mediaRecorder.ondataavailable = (e)=>{
@@ -2176,9 +2271,10 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                 };
                 mediaRecorder.onstop = ()=>{
                     const blob = new Blob(audioChunksRef.current, {
-                        type: 'audio/webm'
+                        type: supported.mime || 'audio/webm'
                     });
                     setAudioBlob(blob);
+                    setAudioExtension(supported.ext);
                     stream.getTracks().forEach((track)=>track.stop());
                 };
                 mediaRecorder.start();
@@ -2202,8 +2298,10 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
             submitData.append('description', formData.description);
             submitData.append('location', formData.location);
             submitData.append('category', formData.category);
+            if (formData.latitude) submitData.append('latitude', formData.latitude.toString());
+            if (formData.longitude) submitData.append('longitude', formData.longitude.toString());
             if (imageFile) submitData.append('image', imageFile);
-            if (audioBlob) submitData.append('audio', audioBlob, 'audio.webm');
+            if (audioBlob) submitData.append('audio', audioBlob, `audio.${audioExtension}`);
             // Stop recording if currently active
             if (isRecording) {
                 mediaRecorderRef.current?.stop();
@@ -2215,7 +2313,9 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                 title: '',
                 description: '',
                 location: '',
-                category: categories[0]
+                category: categories[0],
+                latitude: null,
+                longitude: null
             });
             clearMedia();
         } catch (err) {
@@ -2233,7 +2333,7 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                     children: error
                 }, void 0, false, {
                     fileName: "[project]/components/citizen/complaint-form.tsx",
-                    lineNumber: 172,
+                    lineNumber: 254,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2244,7 +2344,7 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                             children: "Title *"
                         }, void 0, false, {
                             fileName: "[project]/components/citizen/complaint-form.tsx",
-                            lineNumber: 178,
+                            lineNumber: 260,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -2256,13 +2356,13 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                             maxLength: 100
                         }, void 0, false, {
                             fileName: "[project]/components/citizen/complaint-form.tsx",
-                            lineNumber: 181,
+                            lineNumber: 263,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/citizen/complaint-form.tsx",
-                    lineNumber: 177,
+                    lineNumber: 259,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2277,13 +2377,13 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                                     children: "(AI analyzing image...)"
                                 }, void 0, false, {
                                     fileName: "[project]/components/citizen/complaint-form.tsx",
-                                    lineNumber: 193,
+                                    lineNumber: 275,
                                     columnNumber: 38
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/citizen/complaint-form.tsx",
-                            lineNumber: 192,
+                            lineNumber: 274,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -2296,18 +2396,18 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                                     children: cat
                                 }, cat, false, {
                                     fileName: "[project]/components/citizen/complaint-form.tsx",
-                                    lineNumber: 202,
+                                    lineNumber: 284,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/components/citizen/complaint-form.tsx",
-                            lineNumber: 195,
+                            lineNumber: 277,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/citizen/complaint-form.tsx",
-                    lineNumber: 191,
+                    lineNumber: 273,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2318,7 +2418,7 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                             children: "Description *"
                         }, void 0, false, {
                             fileName: "[project]/components/citizen/complaint-form.tsx",
-                            lineNumber: 208,
+                            lineNumber: 290,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Textarea"], {
@@ -2330,24 +2430,46 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                             maxLength: 1000
                         }, void 0, false, {
                             fileName: "[project]/components/citizen/complaint-form.tsx",
-                            lineNumber: 211,
+                            lineNumber: 293,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/citizen/complaint-form.tsx",
-                    lineNumber: 207,
+                    lineNumber: 289,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "space-y-2",
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                            className: "block text-sm font-medium text-foreground",
-                            children: "Location *"
-                        }, void 0, false, {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "flex justify-between items-center",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                    className: "block text-sm font-medium text-foreground",
+                                    children: "Location *"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/citizen/complaint-form.tsx",
+                                    lineNumber: 305,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                    type: "button",
+                                    variant: "link",
+                                    size: "sm",
+                                    className: "h-auto p-0 text-accent hover:text-accent/80 text-xs font-bold gap-1",
+                                    onClick: handleGetLocation,
+                                    disabled: isGettingLocation,
+                                    children: isGettingLocation ? '📍 DETECTING...' : 'USE MY LOCATION 📍'
+                                }, void 0, false, {
+                                    fileName: "[project]/components/citizen/complaint-form.tsx",
+                                    lineNumber: 308,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
                             fileName: "[project]/components/citizen/complaint-form.tsx",
-                            lineNumber: 222,
+                            lineNumber: 304,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -2358,13 +2480,30 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                             className: "bg-secondary border-border text-foreground placeholder:text-muted-foreground"
                         }, void 0, false, {
                             fileName: "[project]/components/citizen/complaint-form.tsx",
-                            lineNumber: 225,
+                            lineNumber: 319,
                             columnNumber: 11
+                        }, this),
+                        formData.latitude && !isGettingLocation && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "text-[10px] text-accent font-bold uppercase tracking-wider flex items-center gap-1",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "size-1.5 bg-accent rounded-full animate-pulse"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/citizen/complaint-form.tsx",
+                                    lineNumber: 328,
+                                    columnNumber: 15
+                                }, this),
+                                "Location detected"
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/components/citizen/complaint-form.tsx",
+                            lineNumber: 327,
+                            columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/citizen/complaint-form.tsx",
-                    lineNumber: 221,
+                    lineNumber: 303,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2378,7 +2517,7 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                             onChange: handleImageCapture
                         }, void 0, false, {
                             fileName: "[project]/components/citizen/complaint-form.tsx",
-                            lineNumber: 235,
+                            lineNumber: 335,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2396,14 +2535,14 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/components/citizen/complaint-form.tsx",
-                                            lineNumber: 251,
+                                            lineNumber: 351,
                                             columnNumber: 15
                                         }, this),
                                         isAnalyzing ? 'Analyzing...' : imageFile ? 'Photo Attached' : 'Camera'
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/citizen/complaint-form.tsx",
-                                    lineNumber: 243,
+                                    lineNumber: 343,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2418,26 +2557,26 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/components/citizen/complaint-form.tsx",
-                                            lineNumber: 263,
+                                            lineNumber: 363,
                                             columnNumber: 30
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$mic$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Mic$3e$__["Mic"], {
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/components/citizen/complaint-form.tsx",
-                                            lineNumber: 263,
+                                            lineNumber: 363,
                                             columnNumber: 63
                                         }, this),
                                         isRecording ? 'Stop Recording' : audioBlob ? 'Audio Attached' : 'Audio'
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/citizen/complaint-form.tsx",
-                                    lineNumber: 255,
+                                    lineNumber: 355,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/citizen/complaint-form.tsx",
-                            lineNumber: 242,
+                            lineNumber: 342,
                             columnNumber: 11
                         }, this),
                         previewUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2449,7 +2588,7 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                                     className: "w-full max-h-48 object-cover rounded-lg border border-border mt-2"
                                 }, void 0, false, {
                                     fileName: "[project]/components/citizen/complaint-form.tsx",
-                                    lineNumber: 271,
+                                    lineNumber: 371,
                                     columnNumber: 15
                                 }, this),
                                 !isAnalyzing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2465,12 +2604,12 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                                         className: "size-3 fill-current rotate-45"
                                     }, void 0, false, {
                                         fileName: "[project]/components/citizen/complaint-form.tsx",
-                                        lineNumber: 284,
+                                        lineNumber: 384,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/citizen/complaint-form.tsx",
-                                    lineNumber: 277,
+                                    lineNumber: 377,
                                     columnNumber: 17
                                 }, this),
                                 isAnalyzing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2479,18 +2618,18 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                                         className: "w-6 h-6 border-2 border-accent border-t-transparent rounded-full animate-spin"
                                     }, void 0, false, {
                                         fileName: "[project]/components/citizen/complaint-form.tsx",
-                                        lineNumber: 289,
+                                        lineNumber: 389,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/citizen/complaint-form.tsx",
-                                    lineNumber: 288,
+                                    lineNumber: 388,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/citizen/complaint-form.tsx",
-                            lineNumber: 270,
+                            lineNumber: 370,
                             columnNumber: 13
                         }, this),
                         (imageFile || audioBlob) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2503,7 +2642,7 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/citizen/complaint-form.tsx",
-                                    lineNumber: 297,
+                                    lineNumber: 397,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2516,19 +2655,19 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                                     children: "Clear Media"
                                 }, void 0, false, {
                                     fileName: "[project]/components/citizen/complaint-form.tsx",
-                                    lineNumber: 298,
+                                    lineNumber: 398,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/citizen/complaint-form.tsx",
-                            lineNumber: 296,
+                            lineNumber: 396,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/citizen/complaint-form.tsx",
-                    lineNumber: 234,
+                    lineNumber: 334,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2538,22 +2677,22 @@ function ComplaintForm({ onSubmit, isLoading = false, categories = [
                     children: isLoading ? 'Submitting...' : 'Submit Complaint'
                 }, void 0, false, {
                     fileName: "[project]/components/citizen/complaint-form.tsx",
-                    lineNumber: 305,
+                    lineNumber: 405,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/citizen/complaint-form.tsx",
-            lineNumber: 170,
+            lineNumber: 252,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/citizen/complaint-form.tsx",
-        lineNumber: 169,
+        lineNumber: 251,
         columnNumber: 5
     }, this);
 }
-_s(ComplaintForm, "qSTGYp3boRKJZu0aw21VzfVSW60=");
+_s(ComplaintForm, "ggIzErVZAnq77/k0jZvxQ8Tb3Ig=");
 _c = ComplaintForm;
 var _c;
 __turbopack_context__.k.register(_c, "ComplaintForm");

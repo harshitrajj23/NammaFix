@@ -156,6 +156,7 @@ async function GET(request) {
                 imageUrl: c.image_url,
                 audioUrl: c.audio_url,
                 severity: c.severity,
+                votes: c.votes || 0,
                 status: c.status,
                 createdAt: c.created_at,
                 updatedAt: c.created_at
@@ -189,6 +190,8 @@ async function POST(request) {
         const category = formData.get('category') || 'Other';
         const imageFile = formData.get('image');
         const audioFile = formData.get('audio');
+        const latitude = formData.get('latitude') ? parseFloat(formData.get('latitude')) : null;
+        const longitude = formData.get('longitude') ? parseFloat(formData.get('longitude')) : null;
         // Validate required fields
         if (!title || !description || !location) {
             return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
@@ -217,11 +220,10 @@ async function POST(request) {
         }
         // Upload Audio if present
         if (audioFile && audioFile.size > 0) {
-            const fileExt = 'webm' // Default WebM from MediaRecorder
-            ;
+            const fileExt = audioFile.name.split('.').pop() || 'webm';
             const fileName = `${user.id}-${Date.now()}.${fileExt}`;
             const { data: uploadData, error: uploadError } = await supabase.storage.from("complaint-audio").upload(fileName, audioFile, {
-                contentType: 'audio/webm'
+                contentType: audioFile.type || 'audio/webm'
             });
             if (uploadError) {
                 console.error("Audio upload error:", uploadError.message);
@@ -308,6 +310,8 @@ other → medium`
                 severity,
                 image_url: imageUrl,
                 audio_url: audioUrl,
+                latitude,
+                longitude,
                 status: 'submitted'
             }
         ]).select().single();
@@ -329,6 +333,8 @@ other → medium`
             severity: insertedData.severity,
             imageUrl: insertedData.image_url,
             audioUrl: insertedData.audio_url,
+            latitude: insertedData.latitude,
+            longitude: insertedData.longitude,
             status: insertedData.status,
             createdAt: insertedData.created_at,
             updatedAt: insertedData.created_at
