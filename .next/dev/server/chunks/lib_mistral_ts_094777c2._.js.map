@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/harshitrajsingh/Desktop/NammaFix/lib/mistral.ts"],"sourcesContent":["import { Mistral } from '@mistralai/mistralai';\n\nconst apiKey = process.env.MISTRAL_API_KEY;\n\nif (!apiKey) {\n  console.warn('MISTRAL_API_KEY is not defined in environment variables');\n}\n\nexport const mistral = new Mistral({\n  apiKey: apiKey || '',\n});\n"],"names":[],"mappings":";;;;AAAA;;AAEA,MAAM,SAAS,QAAQ,GAAG,CAAC,eAAe;AAE1C,IAAI,CAAC,QAAQ;IACX,QAAQ,IAAI,CAAC;AACf;AAEO,MAAM,UAAU,IAAI,8JAAO,CAAC;IACjC,QAAQ,UAAU;AACpB"}}]
+}

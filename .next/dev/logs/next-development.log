@@ -1,0 +1,3183 @@
+[00:00:00.559] Server  WARN    ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:00.623] Server  LOG     ✓ Ready in 396ms
+[00:00:07.780] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:07.780] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:07.780] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773422859022} /_vercel/insights/view
+[00:00:11.353] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/citizen color: rgb(120, 120, 120) color: inherit {"dp":"/citizen","o":"http://localhost:3000/citizen","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773422862591} /_vercel/insights/view
+[00:00:13.336] Server  LOG     News API response: {}
+[00:00:16.597] Server  LOG     Mistral Analysis Result (Combined): {}
+[00:00:23.284] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/citizen/complaints color: rgb(120, 120, 120) color: inherit {"dp":"/citizen/complaints","o":"http://localhost:3000/citizen/complaints","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773422874526} /_vercel/insights/view
+[00:00:28.868] Server  LOG     Resolving complaint e4cba3ff-383f-4795-9284-b0852eae7890 for user ead1c0c4-5d23-4390-a1e5-6dc41a77547f
+[00:00:29.338] Server  LOG     Successfully resolved complaint e4cba3ff-383f-4795-9284-b0852eae7890
+[00:00:36.906] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/citizen color: rgb(120, 120, 120) color: inherit {"dp":"/citizen","o":"http://localhost:3000/citizen","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773422888147} /_vercel/insights/view
+[00:00:39.041] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773422890282} /_vercel/insights/view
+[00:00:47.949] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/gov-dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/gov-dashboard","o":"http://localhost:3000/gov-dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773422899190} /_vercel/insights/view
+[00:00:50.290] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/government/feedback color: rgb(120, 120, 120) color: inherit {"dp":"/government/feedback","o":"http://localhost:3000/government/feedback","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773422901531} /_vercel/insights/view
+[00:00:57.996] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/gov-dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/gov-dashboard","o":"http://localhost:3000/gov-dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773422909231} /_vercel/insights/view
+[00:01:10.670] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/government/feedback color: rgb(120, 120, 120) color: inherit {"dp":"/government/feedback","o":"http://localhost:3000/government/feedback","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773422921912} /_vercel/insights/view
+[00:01:13.442] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/gov-dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/gov-dashboard","o":"http://localhost:3000/gov-dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773422924683} /_vercel/insights/view
+[00:02:37.007] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423008250} /_vercel/insights/view
+[00:02:38.996] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/signup/citizen color: rgb(120, 120, 120) color: inherit {"dp":"/signup/citizen","o":"http://localhost:3000/signup/citizen","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423010238} /_vercel/insights/view
+[00:03:16.094] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/citizen color: rgb(120, 120, 120) color: inherit {"dp":"/citizen","o":"http://localhost:3000/citizen","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423047335} /_vercel/insights/view
+[00:04:06.939] Server  ERROR   AI Image Analysis Error: SDKValidationError: Input validation failed: [
+  {
+    "code": "invalid_union",
+    "unionErrors": [
+      {
+        "issues": [
+          {
+            "received": "user",
+            "code": "invalid_literal",
+            "expected": "assistant",
+            "path": [
+              "messages",
+              0,
+              "role"
+            ],
+            "message": "Invalid literal value, expected \"assistant\""
+          },
+          {
+            "code": "invalid_union",
+            "unionErrors": [
+              {
+                "issues": [
+                  {
+                    "code": "invalid_type",
+                    "expected": "string",
+                    "received": "array",
+                    "path": [
+                      "messages",
+                      0,
+                      "content"
+                    ],
+                    "message": "Expected string, received array"
+                  }
+                ],
+                "name": "ZodError"
+              },
+              {
+                "issues": [
+                  {
+                    "code": "invalid_union",
+                    "unionErrors": [
+                      {
+                        "issues": [
+                          {
+                            "code": "invalid_union",
+                            "unionErrors": [
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "object",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "imageUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              },
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "string",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "imageUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              }
+                            ],
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "imageUrl"
+                            ],
+                            "message": "Invalid input"
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "document_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"document_url\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "documentUrl"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "document_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"document_url\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "text",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"text\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "text"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "text",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"text\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "reference",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"reference\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "array",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "referenceIds"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "reference",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"reference\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "file",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"file\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "fileId"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "file",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"file\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "thinking",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"thinking\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "array",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "thinking"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "thinking",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"thinking\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "input_audio",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"input_audio\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "inputAudio"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "input_audio",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"input_audio\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "audio_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"audio_url\""
+                          },
+                          {
+                            "code": "invalid_union",
+                            "unionErrors": [
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "object",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "audioUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              },
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "string",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "audioUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              }
+                            ],
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "audioUrl"
+                            ],
+                            "message": "Invalid input"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "audio_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"audio_url\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      }
+                    ],
+                    "path": [
+                      "messages",
+                      0,
+                      "content",
+                      1
+                    ],
+                    "message": "Invalid input"
+                  }
+                ],
+                "name": "ZodError"
+              }
+            ],
+            "path": [
+              "messages",
+              0,
+              "content"
+            ],
+            "message": "Invalid input"
+          },
+          {
+            "received": "user",
+            "code": "invalid_literal",
+            "expected": "assistant",
+            "path": [
+              "messages",
+              0,
+              "role"
+            ],
+            "message": "Invalid literal value, expected \"assistant\""
+          }
+        ],
+        "name": "ZodError"
+      },
+      {
+        "issues": [
+          {
+            "received": "user",
+            "code": "invalid_literal",
+            "expected": "system",
+            "path": [
+              "messages",
+              0,
+              "role"
+            ],
+            "message": "Invalid literal value, expected \"system\""
+          },
+          {
+            "code": "invalid_union",
+            "unionErrors": [
+              {
+                "issues": [
+                  {
+                    "code": "invalid_type",
+                    "expected": "string",
+                    "received": "array",
+                    "path": [
+                      "messages",
+                      0,
+                      "content"
+                    ],
+                    "message": "Expected string, received array"
+                  }
+                ],
+                "name": "ZodError"
+              },
+              {
+                "issues": [
+                  {
+                    "code": "invalid_union",
+                    "unionErrors": [
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "text",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"text\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "text"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "text",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"text\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "thinking",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"thinking\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "array",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "thinking"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "thinking",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"thinking\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      }
+                    ],
+                    "path": [
+                      "messages",
+                      0,
+                      "content",
+                      1
+                    ],
+                    "message": "Invalid input"
+                  }
+                ],
+                "name": "ZodError"
+              }
+            ],
+            "path": [
+              "messages",
+              0,
+              "content"
+            ],
+            "message": "Invalid input"
+          },
+          {
+            "received": "user",
+            "code": "invalid_literal",
+            "expected": "system",
+            "path": [
+              "messages",
+              0,
+              "role"
+            ],
+            "message": "Invalid literal value, expected \"system\""
+          }
+        ],
+        "name": "ZodError"
+      },
+      {
+        "issues": [
+          {
+            "received": "user",
+            "code": "invalid_literal",
+            "expected": "tool",
+            "path": [
+              "messages",
+              0,
+              "role"
+            ],
+            "message": "Invalid literal value, expected \"tool\""
+          },
+          {
+            "code": "invalid_union",
+            "unionErrors": [
+              {
+                "issues": [
+                  {
+                    "code": "invalid_type",
+                    "expected": "string",
+                    "received": "array",
+                    "path": [
+                      "messages",
+                      0,
+                      "content"
+                    ],
+                    "message": "Expected string, received array"
+                  }
+                ],
+                "name": "ZodError"
+              },
+              {
+                "issues": [
+                  {
+                    "code": "invalid_union",
+                    "unionErrors": [
+                      {
+                        "issues": [
+                          {
+                            "code": "invalid_union",
+                            "unionErrors": [
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "object",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "imageUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              },
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "string",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "imageUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              }
+                            ],
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "imageUrl"
+                            ],
+                            "message": "Invalid input"
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "document_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"document_url\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "documentUrl"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "document_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"document_url\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "text",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"text\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "text"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "text",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"text\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "reference",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"reference\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "array",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "referenceIds"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "reference",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"reference\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "file",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"file\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "fileId"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "file",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"file\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "thinking",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"thinking\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "array",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "thinking"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "thinking",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"thinking\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "input_audio",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"input_audio\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "inputAudio"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "input_audio",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"input_audio\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "audio_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"audio_url\""
+                          },
+                          {
+                            "code": "invalid_union",
+                            "unionErrors": [
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "object",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "audioUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              },
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "string",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "audioUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              }
+                            ],
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "audioUrl"
+                            ],
+                            "message": "Invalid input"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "audio_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"audio_url\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      }
+                    ],
+                    "path": [
+                      "messages",
+                      0,
+                      "content",
+                      1
+                    ],
+                    "message": "Invalid input"
+                  }
+                ],
+                "name": "ZodError"
+              }
+            ],
+            "path": [
+              "messages",
+              0,
+              "content"
+            ],
+            "message": "Invalid input"
+          },
+          {
+            "received": "user",
+            "code": "invalid_literal",
+            "expected": "tool",
+            "path": [
+              "messages",
+              0,
+              "role"
+            ],
+            "message": "Invalid literal value, expected \"tool\""
+          }
+        ],
+        "name": "ZodError"
+      },
+      {
+        "issues": [
+          {
+            "code": "invalid_union",
+            "unionErrors": [
+              {
+                "issues": [
+                  {
+                    "code": "invalid_type",
+                    "expected": "string",
+                    "received": "array",
+                    "path": [
+                      "messages",
+                      0,
+                      "content"
+                    ],
+                    "message": "Expected string, received array"
+                  }
+                ],
+                "name": "ZodError"
+              },
+              {
+                "issues": [
+                  {
+                    "code": "invalid_union",
+                    "unionErrors": [
+                      {
+                        "issues": [
+                          {
+                            "code": "invalid_union",
+                            "unionErrors": [
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "object",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "imageUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              },
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "string",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "imageUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              }
+                            ],
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "imageUrl"
+                            ],
+                            "message": "Invalid input"
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "document_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"document_url\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "documentUrl"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "document_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"document_url\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "text",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"text\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "text"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "text",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"text\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "reference",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"reference\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "array",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "referenceIds"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "reference",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"reference\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "file",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"file\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "fileId"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "file",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"file\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "thinking",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"thinking\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "array",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "thinking"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "thinking",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"thinking\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "input_audio",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"input_audio\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "inputAudio"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "input_audio",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"input_audio\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "audio_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"audio_url\""
+                          },
+                          {
+                            "code": "invalid_union",
+                            "unionErrors": [
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "object",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "audioUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              },
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "string",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "audioUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              }
+                            ],
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "audioUrl"
+                            ],
+                            "message": "Invalid input"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "audio_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"audio_url\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      }
+                    ],
+                    "path": [
+                      "messages",
+                      0,
+                      "content",
+                      1
+                    ],
+                    "message": "Invalid input"
+                  }
+                ],
+                "name": "ZodError"
+              }
+            ],
+            "path": [
+              "messages",
+              0,
+              "content"
+            ],
+            "message": "Invalid input"
+          }
+        ],
+        "name": "ZodError"
+      }
+    ],
+    "path": [
+      "messages",
+      0
+    ],
+    "message": "Invalid input"
+  }
+]
+[00:04:08.471] Server  ERROR   Error: fetch failed
+    at context.fetch (/Users/harshitrajsingh/Desktop/NammaFix/node_modules/next/dist/server/web/sandbox/context.js:321:60)
+    at /Users/harshitrajsingh/Desktop/NammaFix/.next/dev/server/edge/chunks/node_modules_@supabase_auth-js_dist_module_33c852e9._.js:577:23
+    at _handleRequest (/Users/harshitrajsingh/Desktop/NammaFix/.next/dev/server/edge/chunks/node_modules_@supabase_auth-js_dist_module_33c852e9._.js:931:24)
+    at _request (/Users/harshitrajsingh/Desktop/NammaFix/.next/dev/server/edge/chunks/node_modules_@supabase_auth-js_dist_module_33c852e9._.js:918:24)
+    at /Users/harshitrajsingh/Desktop/NammaFix/.next/dev/server/edge/chunks/node_modules_@supabase_auth-js_dist_module_33c852e9._.js:4603:225
+    at SupabaseAuthClient._useSession (/Users/harshitrajsingh/Desktop/NammaFix/.next/dev/server/edge/chunks/node_modules_@supabase_auth-js_dist_module_33c852e9._.js:4472:26)
+    at async SupabaseAuthClient._getUser (/Users/harshitrajsingh/Desktop/NammaFix/.next/dev/server/edge/chunks/node_modules_@supabase_auth-js_dist_module_33c852e9._.js:4588:20)
+    at async /Users/harshitrajsingh/Desktop/NammaFix/.next/dev/server/edge/chunks/node_modules_@supabase_auth-js_dist_module_33c852e9._.js:4572:20
+    at async /Users/harshitrajsingh/Desktop/NammaFix/.next/dev/server/edge/chunks/node_modules_@supabase_auth-js_dist_module_33c852e9._.js:4420:28 {
+  
+}
+[00:04:08.976] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423100218} /_vercel/insights/view
+[00:04:14.183] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/signup/citizen color: rgb(120, 120, 120) color: inherit {"dp":"/signup/citizen","o":"http://localhost:3000/signup/citizen","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423105425} /_vercel/insights/view
+[00:04:16.255] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423107496} /_vercel/insights/view
+[00:04:44.660] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/citizen color: rgb(120, 120, 120) color: inherit {"dp":"/citizen","o":"http://localhost:3000/citizen","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423135902} /_vercel/insights/view
+[00:04:48.919] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/citizen/complaints color: rgb(120, 120, 120) color: inherit {"dp":"/citizen/complaints","o":"http://localhost:3000/citizen/complaints","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423140160} /_vercel/insights/view
+[00:04:53.286] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/citizen color: rgb(120, 120, 120) color: inherit {"dp":"/citizen","o":"http://localhost:3000/citizen","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423144528} /_vercel/insights/view
+[00:05:07.380] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423158621} /_vercel/insights/view
+[00:05:18.929] Browser ERROR   uncaughtError: TypeError: data?.filter is not a function. (In 'data?.filter((n)=>!n.read)', 'data?.filter' is undefined)
+[00:05:36.342] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:05:36.342] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/citizen","route":"/citizen"}
+[00:05:36.342] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/citizen color: rgb(120, 120, 120) color: inherit {"dp":"/citizen","o":"http://localhost:3000/citizen","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423187591} /_vercel/insights/view
+[00:05:56.948] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/citizen/complaints color: rgb(120, 120, 120) color: inherit {"dp":"/citizen/complaints","o":"http://localhost:3000/citizen/complaints","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423208202} /_vercel/insights/view
+[00:06:26.826] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/citizen color: rgb(120, 120, 120) color: inherit {"dp":"/citizen","o":"http://localhost:3000/citizen","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423238083} /_vercel/insights/view
+[00:06:34.304] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423245560} /_vercel/insights/view
+[00:06:42.491] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/citizen color: rgb(120, 120, 120) color: inherit {"dp":"/citizen","o":"http://localhost:3000/citizen","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423253748} /_vercel/insights/view
+[00:06:45.263] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/citizen/complaints color: rgb(120, 120, 120) color: inherit {"dp":"/citizen/complaints","o":"http://localhost:3000/citizen/complaints","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423256519} /_vercel/insights/view
+[00:06:49.078] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/citizen color: rgb(120, 120, 120) color: inherit {"dp":"/citizen","o":"http://localhost:3000/citizen","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423260334} /_vercel/insights/view
+[00:07:37.003] Server  ERROR   AI Image Analysis Error: SDKValidationError: Input validation failed: [
+  {
+    "code": "invalid_union",
+    "unionErrors": [
+      {
+        "issues": [
+          {
+            "received": "user",
+            "code": "invalid_literal",
+            "expected": "assistant",
+            "path": [
+              "messages",
+              0,
+              "role"
+            ],
+            "message": "Invalid literal value, expected \"assistant\""
+          },
+          {
+            "code": "invalid_union",
+            "unionErrors": [
+              {
+                "issues": [
+                  {
+                    "code": "invalid_type",
+                    "expected": "string",
+                    "received": "array",
+                    "path": [
+                      "messages",
+                      0,
+                      "content"
+                    ],
+                    "message": "Expected string, received array"
+                  }
+                ],
+                "name": "ZodError"
+              },
+              {
+                "issues": [
+                  {
+                    "code": "invalid_union",
+                    "unionErrors": [
+                      {
+                        "issues": [
+                          {
+                            "code": "invalid_union",
+                            "unionErrors": [
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "object",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "imageUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              },
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "string",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "imageUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              }
+                            ],
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "imageUrl"
+                            ],
+                            "message": "Invalid input"
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "document_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"document_url\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "documentUrl"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "document_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"document_url\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "text",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"text\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "text"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "text",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"text\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "reference",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"reference\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "array",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "referenceIds"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "reference",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"reference\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "file",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"file\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "fileId"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "file",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"file\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "thinking",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"thinking\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "array",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "thinking"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "thinking",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"thinking\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "input_audio",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"input_audio\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "inputAudio"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "input_audio",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"input_audio\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "audio_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"audio_url\""
+                          },
+                          {
+                            "code": "invalid_union",
+                            "unionErrors": [
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "object",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "audioUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              },
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "string",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "audioUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              }
+                            ],
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "audioUrl"
+                            ],
+                            "message": "Invalid input"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "audio_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"audio_url\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      }
+                    ],
+                    "path": [
+                      "messages",
+                      0,
+                      "content",
+                      1
+                    ],
+                    "message": "Invalid input"
+                  }
+                ],
+                "name": "ZodError"
+              }
+            ],
+            "path": [
+              "messages",
+              0,
+              "content"
+            ],
+            "message": "Invalid input"
+          },
+          {
+            "received": "user",
+            "code": "invalid_literal",
+            "expected": "assistant",
+            "path": [
+              "messages",
+              0,
+              "role"
+            ],
+            "message": "Invalid literal value, expected \"assistant\""
+          }
+        ],
+        "name": "ZodError"
+      },
+      {
+        "issues": [
+          {
+            "received": "user",
+            "code": "invalid_literal",
+            "expected": "system",
+            "path": [
+              "messages",
+              0,
+              "role"
+            ],
+            "message": "Invalid literal value, expected \"system\""
+          },
+          {
+            "code": "invalid_union",
+            "unionErrors": [
+              {
+                "issues": [
+                  {
+                    "code": "invalid_type",
+                    "expected": "string",
+                    "received": "array",
+                    "path": [
+                      "messages",
+                      0,
+                      "content"
+                    ],
+                    "message": "Expected string, received array"
+                  }
+                ],
+                "name": "ZodError"
+              },
+              {
+                "issues": [
+                  {
+                    "code": "invalid_union",
+                    "unionErrors": [
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "text",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"text\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "text"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "text",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"text\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "thinking",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"thinking\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "array",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "thinking"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "thinking",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"thinking\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      }
+                    ],
+                    "path": [
+                      "messages",
+                      0,
+                      "content",
+                      1
+                    ],
+                    "message": "Invalid input"
+                  }
+                ],
+                "name": "ZodError"
+              }
+            ],
+            "path": [
+              "messages",
+              0,
+              "content"
+            ],
+            "message": "Invalid input"
+          },
+          {
+            "received": "user",
+            "code": "invalid_literal",
+            "expected": "system",
+            "path": [
+              "messages",
+              0,
+              "role"
+            ],
+            "message": "Invalid literal value, expected \"system\""
+          }
+        ],
+        "name": "ZodError"
+      },
+      {
+        "issues": [
+          {
+            "received": "user",
+            "code": "invalid_literal",
+            "expected": "tool",
+            "path": [
+              "messages",
+              0,
+              "role"
+            ],
+            "message": "Invalid literal value, expected \"tool\""
+          },
+          {
+            "code": "invalid_union",
+            "unionErrors": [
+              {
+                "issues": [
+                  {
+                    "code": "invalid_type",
+                    "expected": "string",
+                    "received": "array",
+                    "path": [
+                      "messages",
+                      0,
+                      "content"
+                    ],
+                    "message": "Expected string, received array"
+                  }
+                ],
+                "name": "ZodError"
+              },
+              {
+                "issues": [
+                  {
+                    "code": "invalid_union",
+                    "unionErrors": [
+                      {
+                        "issues": [
+                          {
+                            "code": "invalid_union",
+                            "unionErrors": [
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "object",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "imageUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              },
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "string",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "imageUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              }
+                            ],
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "imageUrl"
+                            ],
+                            "message": "Invalid input"
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "document_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"document_url\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "documentUrl"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "document_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"document_url\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "text",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"text\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "text"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "text",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"text\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "reference",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"reference\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "array",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "referenceIds"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "reference",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"reference\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "file",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"file\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "fileId"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "file",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"file\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "thinking",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"thinking\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "array",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "thinking"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "thinking",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"thinking\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "input_audio",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"input_audio\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "inputAudio"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "input_audio",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"input_audio\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "audio_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"audio_url\""
+                          },
+                          {
+                            "code": "invalid_union",
+                            "unionErrors": [
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "object",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "audioUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              },
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "string",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "audioUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              }
+                            ],
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "audioUrl"
+                            ],
+                            "message": "Invalid input"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "audio_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"audio_url\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      }
+                    ],
+                    "path": [
+                      "messages",
+                      0,
+                      "content",
+                      1
+                    ],
+                    "message": "Invalid input"
+                  }
+                ],
+                "name": "ZodError"
+              }
+            ],
+            "path": [
+              "messages",
+              0,
+              "content"
+            ],
+            "message": "Invalid input"
+          },
+          {
+            "received": "user",
+            "code": "invalid_literal",
+            "expected": "tool",
+            "path": [
+              "messages",
+              0,
+              "role"
+            ],
+            "message": "Invalid literal value, expected \"tool\""
+          }
+        ],
+        "name": "ZodError"
+      },
+      {
+        "issues": [
+          {
+            "code": "invalid_union",
+            "unionErrors": [
+              {
+                "issues": [
+                  {
+                    "code": "invalid_type",
+                    "expected": "string",
+                    "received": "array",
+                    "path": [
+                      "messages",
+                      0,
+                      "content"
+                    ],
+                    "message": "Expected string, received array"
+                  }
+                ],
+                "name": "ZodError"
+              },
+              {
+                "issues": [
+                  {
+                    "code": "invalid_union",
+                    "unionErrors": [
+                      {
+                        "issues": [
+                          {
+                            "code": "invalid_union",
+                            "unionErrors": [
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "object",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "imageUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              },
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "string",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "imageUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              }
+                            ],
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "imageUrl"
+                            ],
+                            "message": "Invalid input"
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "document_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"document_url\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "documentUrl"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "document_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"document_url\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "text",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"text\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "text"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "text",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"text\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "reference",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"reference\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "array",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "referenceIds"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "reference",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"reference\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "file",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"file\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "fileId"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "file",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"file\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "thinking",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"thinking\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "array",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "thinking"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "thinking",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"thinking\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "input_audio",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"input_audio\""
+                          },
+                          {
+                            "code": "invalid_type",
+                            "expected": "string",
+                            "received": "undefined",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "inputAudio"
+                            ],
+                            "message": "Required"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "input_audio",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"input_audio\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      {
+                        "issues": [
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "audio_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"audio_url\""
+                          },
+                          {
+                            "code": "invalid_union",
+                            "unionErrors": [
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "object",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "audioUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              },
+                              {
+                                "issues": [
+                                  {
+                                    "code": "invalid_type",
+                                    "expected": "string",
+                                    "received": "undefined",
+                                    "path": [
+                                      "messages",
+                                      0,
+                                      "content",
+                                      1,
+                                      "audioUrl"
+                                    ],
+                                    "message": "Required"
+                                  }
+                                ],
+                                "name": "ZodError"
+                              }
+                            ],
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "audioUrl"
+                            ],
+                            "message": "Invalid input"
+                          },
+                          {
+                            "received": "image_url",
+                            "code": "invalid_literal",
+                            "expected": "audio_url",
+                            "path": [
+                              "messages",
+                              0,
+                              "content",
+                              1,
+                              "type"
+                            ],
+                            "message": "Invalid literal value, expected \"audio_url\""
+                          }
+                        ],
+                        "name": "ZodError"
+                      }
+                    ],
+                    "path": [
+                      "messages",
+                      0,
+                      "content",
+                      1
+                    ],
+                    "message": "Invalid input"
+                  }
+                ],
+                "name": "ZodError"
+              }
+            ],
+            "path": [
+              "messages",
+              0,
+              "content"
+            ],
+            "message": "Invalid input"
+          }
+        ],
+        "name": "ZodError"
+      }
+    ],
+    "path": [
+      "messages",
+      0
+    ],
+    "message": "Invalid input"
+  }
+]
+[00:08:04.161] Browser LOG     complaint inserted {"audioUrl":null,"category":"Other","createdAt":"2026-03-13T17:35:35.30542+00:00","description":"my cat fell in potholes","id":"b8b46e61-f654-4aae-aab6-573560c60477","imageUrl":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/71e284aa-3e8d-4f62-8136-a78ffb91dc9b-1773423328040.webp","location":"bmsit","severity":"medium","status":"submitted","title":"potholes","updatedAt":"2026-03-13T17:35:35.30542+00:00","userId":"71e284aa-3e8d-4f62-8136-a78ffb91dc9b"}
+[00:08:04.703] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/citizen/complaints color: rgb(120, 120, 120) color: inherit {"dp":"/citizen/complaints","o":"http://localhost:3000/citizen/complaints","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423335960} /_vercel/insights/view
+[00:08:09.272] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/citizen color: rgb(120, 120, 120) color: inherit {"dp":"/citizen","o":"http://localhost:3000/citizen","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423340528} /_vercel/insights/view
+[00:08:12.199] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423343457} /_vercel/insights/view
+[00:08:34.529] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/gov-dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/gov-dashboard","o":"http://localhost:3000/gov-dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423365786} /_vercel/insights/view
+[00:08:42.035] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/government/new-problems color: rgb(120, 120, 120) color: inherit {"dp":"/government/new-problems","o":"http://localhost:3000/government/new-problems","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423373292} /_vercel/insights/view
+[00:08:42.195] Browser LOG     Government dashboard complaints: [{"audio_url":null,"category":"Other","created_at":"2026-03-13T17:35:35.30542+00:00","description":"my cat fell in potholes","id":"b8b46e61-f654-4aae-aab6-573560c60477","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/71e284aa-3e8d-4f62-8136-a78ffb91dc9b-1773423328040.webp","location":"bmsit","severity":"medium","status":"submitted","title":"potholes","user_id":"71e284aa-3e8d-4f62-8136-a78ffb91dc9b"},{"audio_url":null,"category":"Other","created_at":"2026-03-13T14:45:17.969566+00:00","description":"garbage not collected\r\n","id":"e4cba3ff-383f-4795-9284-b0852eae7890","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773413116758.jpg","location":"indranagar","severity":"medium","status":"completed","title":"garbage ","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"},{"audio_url":null,"category":"Water Leakage","created_at":"2026-03-13T14:01:21.176118+00:00","description":"I drowned in water","id":"dc9de0d5-5dd7-4644-b002-0907295781cb","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773410480632.jpeg","location":"Yelehanka","severity":"medium","status":"submitted","title":"water leakage in my area","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"},{"audio_url":null,"category":"Pothole","created_at":"2026-03-13T13:42:21.121765+00:00","description":"I fell in pothole","id":"e2fefd40-7901-4987-b7d3-ebee3b0508b0","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773409338449.webp","location":"bmsit","severity":"medium","status":"submitted","title":"pothole ","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"}]
+[00:08:42.195] Browser LOG     Government dashboard complaints: [{"audio_url":null,"category":"Other","created_at":"2026-03-13T17:35:35.30542+00:00","description":"my cat fell in potholes","id":"b8b46e61-f654-4aae-aab6-573560c60477","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/71e284aa-3e8d-4f62-8136-a78ffb91dc9b-1773423328040.webp","location":"bmsit","severity":"medium","status":"submitted","title":"potholes","user_id":"71e284aa-3e8d-4f62-8136-a78ffb91dc9b"},{"audio_url":null,"category":"Other","created_at":"2026-03-13T14:45:17.969566+00:00","description":"garbage not collected\r\n","id":"e4cba3ff-383f-4795-9284-b0852eae7890","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773413116758.jpg","location":"indranagar","severity":"medium","status":"completed","title":"garbage ","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"},{"audio_url":null,"category":"Water Leakage","created_at":"2026-03-13T14:01:21.176118+00:00","description":"I drowned in water","id":"dc9de0d5-5dd7-4644-b002-0907295781cb","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773410480632.jpeg","location":"Yelehanka","severity":"medium","status":"submitted","title":"water leakage in my area","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"},{"audio_url":null,"category":"Pothole","created_at":"2026-03-13T13:42:21.121765+00:00","description":"I fell in pothole","id":"e2fefd40-7901-4987-b7d3-ebee3b0508b0","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773409338449.webp","location":"bmsit","severity":"medium","status":"submitted","title":"pothole ","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"}]
+[00:08:47.227] Browser LOG     Government dashboard complaints: [{"audio_url":null,"category":"Other","created_at":"2026-03-13T17:35:35.30542+00:00","description":"my cat fell in potholes","id":"b8b46e61-f654-4aae-aab6-573560c60477","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/71e284aa-3e8d-4f62-8136-a78ffb91dc9b-1773423328040.webp","location":"bmsit","severity":"medium","status":"submitted","title":"potholes","user_id":"71e284aa-3e8d-4f62-8136-a78ffb91dc9b"},{"audio_url":null,"category":"Other","created_at":"2026-03-13T14:45:17.969566+00:00","description":"garbage not collected\r\n","id":"e4cba3ff-383f-4795-9284-b0852eae7890","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773413116758.jpg","location":"indranagar","severity":"medium","status":"completed","title":"garbage ","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"},{"audio_url":null,"category":"Water Leakage","created_at":"2026-03-13T14:01:21.176118+00:00","description":"I drowned in water","id":"dc9de0d5-5dd7-4644-b002-0907295781cb","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773410480632.jpeg","location":"Yelehanka","severity":"medium","status":"submitted","title":"water leakage in my area","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"},{"audio_url":null,"category":"Pothole","created_at":"2026-03-13T13:42:21.121765+00:00","description":"I fell in pothole","id":"e2fefd40-7901-4987-b7d3-ebee3b0508b0","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773409338449.webp","location":"bmsit","severity":"medium","status":"submitted","title":"pothole ","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"}]
+[00:08:52.119] Browser LOG     Government dashboard complaints: [{"audio_url":null,"category":"Other","created_at":"2026-03-13T17:35:35.30542+00:00","description":"my cat fell in potholes","id":"b8b46e61-f654-4aae-aab6-573560c60477","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/71e284aa-3e8d-4f62-8136-a78ffb91dc9b-1773423328040.webp","location":"bmsit","severity":"medium","status":"submitted","title":"potholes","user_id":"71e284aa-3e8d-4f62-8136-a78ffb91dc9b"},{"audio_url":null,"category":"Other","created_at":"2026-03-13T14:45:17.969566+00:00","description":"garbage not collected\r\n","id":"e4cba3ff-383f-4795-9284-b0852eae7890","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773413116758.jpg","location":"indranagar","severity":"medium","status":"completed","title":"garbage ","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"},{"audio_url":null,"category":"Water Leakage","created_at":"2026-03-13T14:01:21.176118+00:00","description":"I drowned in water","id":"dc9de0d5-5dd7-4644-b002-0907295781cb","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773410480632.jpeg","location":"Yelehanka","severity":"medium","status":"submitted","title":"water leakage in my area","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"},{"audio_url":null,"category":"Pothole","created_at":"2026-03-13T13:42:21.121765+00:00","description":"I fell in pothole","id":"e2fefd40-7901-4987-b7d3-ebee3b0508b0","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773409338449.webp","location":"bmsit","severity":"medium","status":"submitted","title":"pothole ","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"}]
+[00:09:03.758] Browser LOG     Government dashboard complaints: [{"audio_url":null,"category":"Other","created_at":"2026-03-13T17:35:35.30542+00:00","description":"my cat fell in potholes","id":"b8b46e61-f654-4aae-aab6-573560c60477","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/71e284aa-3e8d-4f62-8136-a78ffb91dc9b-1773423328040.webp","location":"bmsit","severity":"medium","status":"submitted","title":"potholes","user_id":"71e284aa-3e8d-4f62-8136-a78ffb91dc9b"},{"audio_url":null,"category":"Other","created_at":"2026-03-13T14:45:17.969566+00:00","description":"garbage not collected\r\n","id":"e4cba3ff-383f-4795-9284-b0852eae7890","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773413116758.jpg","location":"indranagar","severity":"medium","status":"completed","title":"garbage ","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"},{"audio_url":null,"category":"Water Leakage","created_at":"2026-03-13T14:01:21.176118+00:00","description":"I drowned in water","id":"dc9de0d5-5dd7-4644-b002-0907295781cb","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773410480632.jpeg","location":"Yelehanka","severity":"medium","status":"submitted","title":"water leakage in my area","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"},{"audio_url":null,"category":"Pothole","created_at":"2026-03-13T13:42:21.121765+00:00","description":"I fell in pothole","id":"e2fefd40-7901-4987-b7d3-ebee3b0508b0","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773409338449.webp","location":"bmsit","severity":"medium","status":"submitted","title":"pothole ","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"}]
+[00:09:04.948] Browser LOG     Government dashboard complaints: [{"audio_url":null,"category":"Other","created_at":"2026-03-13T17:35:35.30542+00:00","description":"my cat fell in potholes","id":"b8b46e61-f654-4aae-aab6-573560c60477","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/71e284aa-3e8d-4f62-8136-a78ffb91dc9b-1773423328040.webp","location":"bmsit","severity":"medium","status":"submitted","title":"potholes","user_id":"71e284aa-3e8d-4f62-8136-a78ffb91dc9b"},{"audio_url":null,"category":"Other","created_at":"2026-03-13T14:45:17.969566+00:00","description":"garbage not collected\r\n","id":"e4cba3ff-383f-4795-9284-b0852eae7890","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773413116758.jpg","location":"indranagar","severity":"medium","status":"completed","title":"garbage ","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"},{"audio_url":null,"category":"Water Leakage","created_at":"2026-03-13T14:01:21.176118+00:00","description":"I drowned in water","id":"dc9de0d5-5dd7-4644-b002-0907295781cb","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773410480632.jpeg","location":"Yelehanka","severity":"medium","status":"submitted","title":"water leakage in my area","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"},{"audio_url":null,"category":"Pothole","created_at":"2026-03-13T13:42:21.121765+00:00","description":"I fell in pothole","id":"e2fefd40-7901-4987-b7d3-ebee3b0508b0","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773409338449.webp","location":"bmsit","severity":"medium","status":"submitted","title":"pothole ","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"}]
+[00:09:07.236] Browser LOG     Government dashboard complaints: [{"audio_url":null,"category":"Other","created_at":"2026-03-13T17:35:35.30542+00:00","description":"my cat fell in potholes","id":"b8b46e61-f654-4aae-aab6-573560c60477","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/71e284aa-3e8d-4f62-8136-a78ffb91dc9b-1773423328040.webp","location":"bmsit","severity":"medium","status":"submitted","title":"potholes","user_id":"71e284aa-3e8d-4f62-8136-a78ffb91dc9b"},{"audio_url":null,"category":"Other","created_at":"2026-03-13T14:45:17.969566+00:00","description":"garbage not collected\r\n","id":"e4cba3ff-383f-4795-9284-b0852eae7890","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773413116758.jpg","location":"indranagar","severity":"medium","status":"completed","title":"garbage ","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"},{"audio_url":null,"category":"Water Leakage","created_at":"2026-03-13T14:01:21.176118+00:00","description":"I drowned in water","id":"dc9de0d5-5dd7-4644-b002-0907295781cb","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773410480632.jpeg","location":"Yelehanka","severity":"medium","status":"submitted","title":"water leakage in my area","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"},{"audio_url":null,"category":"Pothole","created_at":"2026-03-13T13:42:21.121765+00:00","description":"I fell in pothole","id":"e2fefd40-7901-4987-b7d3-ebee3b0508b0","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773409338449.webp","location":"bmsit","severity":"medium","status":"submitted","title":"pothole ","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"}]
+[00:09:12.541] Browser LOG     Government dashboard complaints: [{"audio_url":null,"category":"Other","created_at":"2026-03-13T17:35:35.30542+00:00","description":"my cat fell in potholes","id":"b8b46e61-f654-4aae-aab6-573560c60477","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/71e284aa-3e8d-4f62-8136-a78ffb91dc9b-1773423328040.webp","location":"bmsit","severity":"medium","status":"submitted","title":"potholes","user_id":"71e284aa-3e8d-4f62-8136-a78ffb91dc9b"},{"audio_url":null,"category":"Other","created_at":"2026-03-13T14:45:17.969566+00:00","description":"garbage not collected\r\n","id":"e4cba3ff-383f-4795-9284-b0852eae7890","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773413116758.jpg","location":"indranagar","severity":"medium","status":"completed","title":"garbage ","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"},{"audio_url":null,"category":"Water Leakage","created_at":"2026-03-13T14:01:21.176118+00:00","description":"I drowned in water","id":"dc9de0d5-5dd7-4644-b002-0907295781cb","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773410480632.jpeg","location":"Yelehanka","severity":"medium","status":"submitted","title":"water leakage in my area","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"},{"audio_url":null,"category":"Pothole","created_at":"2026-03-13T13:42:21.121765+00:00","description":"I fell in pothole","id":"e2fefd40-7901-4987-b7d3-ebee3b0508b0","image_url":"https://nldflvkajsdbkbmldoyq.supabase.co/storage/v1/object/public/complaint-images/ead1c0c4-5d23-4390-a1e5-6dc41a77547f-1773409338449.webp","location":"bmsit","severity":"medium","status":"submitted","title":"pothole ","user_id":"ead1c0c4-5d23-4390-a1e5-6dc41a77547f"}]
+[00:09:14.339] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/gov-dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/gov-dashboard","o":"http://localhost:3000/gov-dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423405590} /_vercel/insights/view
+[00:10:11.638] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/government/emergency color: rgb(120, 120, 120) color: inherit {"dp":"/government/emergency","o":"http://localhost:3000/government/emergency","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423462895} /_vercel/insights/view
+[00:10:15.397] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/gov-dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/gov-dashboard","o":"http://localhost:3000/gov-dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423466655} /_vercel/insights/view
+[00:10:19.678] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423470936} /_vercel/insights/view
+[00:10:27.235] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/citizen color: rgb(120, 120, 120) color: inherit {"dp":"/citizen","o":"http://localhost:3000/citizen","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773423478492} /_vercel/insights/view
+[00:10:29.605] Server  LOG     News API response: {}
+[00:10:31.349] Server  LOG     Mistral Analysis Result (Combined): {}

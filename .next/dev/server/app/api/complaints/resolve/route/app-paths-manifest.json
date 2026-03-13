@@ -1,0 +1,3 @@
+{
+  "/api/complaints/resolve/route": "app/api/complaints/resolve/route.js"
+}

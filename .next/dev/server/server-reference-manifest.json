@@ -1,0 +1,36 @@
+{
+  "node": {
+    "40cc84838a404e9510e2c7bcca160127dcca54ea57": {
+      "workers": {
+        "app/login/page": {
+          "moduleId": "[project]/.next-internal/server/app/login/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/auth/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "login",
+          "filename": "app/auth/actions.ts"
+        }
+      },
+      "layer": {
+        "app/login/page": "action-browser"
+      },
+      "filename": "app/auth/actions.ts",
+      "exportedName": "login"
+    },
+    "606b7609b3b386fdb8524431644c859b4dd2014ec1": {
+      "workers": {
+        "app/signup/citizen/page": {
+          "moduleId": "[project]/.next-internal/server/app/signup/citizen/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/auth/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "signup",
+          "filename": "app/auth/actions.ts"
+        }
+      },
+      "layer": {
+        "app/signup/citizen/page": "action-browser"
+      },
+      "filename": "app/auth/actions.ts",
+      "exportedName": "signup"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "vnOK5Dxxwl+G16liWkScJBssZjQ1pzSCy/mpaxx3nuo="
+}
