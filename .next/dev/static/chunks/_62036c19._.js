@@ -650,15 +650,15 @@ function GovernmentResponsePanel({ complaintId, onSubmit, isLoading = false }) {
                         className: "space-y-2",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                className: "text-xs font-medium text-foreground",
-                                children: "Deadline Date"
+                                className: "text-xs font-medium text-foreground uppercase tracking-widest font-bold",
+                                children: "Set Resolution Deadline"
                             }, void 0, false, {
                                 fileName: "[project]/components/government/response-panel.tsx",
                                 lineNumber: 74,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                type: "date",
+                                type: "datetime-local",
                                 value: deadlineDate,
                                 onChange: (e)=>setDeadlineDate(e.target.value),
                                 className: "w-full px-3 py-2 bg-background border border-border text-foreground rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm",
@@ -750,6 +750,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$refresh$2d$cw$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__RefreshCw$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/refresh-cw.js [app-client] (ecmascript) <export default as RefreshCw>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$message$2d$square$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MessageSquare$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/message-square.js [app-client] (ecmascript) <export default as MessageSquare>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/users.js [app-client] (ecmascript) <export default as Users>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/shield.js [app-client] (ecmascript) <export default as Shield>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Clock$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/clock.js [app-client] (ecmascript) <export default as Clock>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$government$2f$response$2d$panel$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/government/response-panel.tsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
@@ -764,11 +766,59 @@ const SEVERITY_COLORS = {
     high: 'bg-orange-900/20 text-orange-400',
     critical: 'bg-red-900/30 text-red-500 border border-red-500/50'
 };
-function GovProblemCard({ id, title, description, location, timestamp, complaintId, occurrences, lastReportedAt, category, severity = 'medium', imageUrl, audioUrl, userId, votes, type = 'new', onResponseSubmit }) {
+function GovProblemCard({ id, title, description, location, timestamp, complaintId, occurrences, lastReportedAt, category, severity = 'medium', imageUrl, audioUrl, userId, votes, type = 'new', deadlineAt, officerEmail, emailSent, onResponseSubmit }) {
     _s();
     const [showResponse, setShowResponse] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [isSubmitting, setIsSubmitting] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [audioError, setAudioError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    // Stable Officer ID for this session
+    const officerId = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "GovProblemCard.useMemo[officerId]": ()=>{
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            return `OFF-${randomNum}`;
+        }
+    }["GovProblemCard.useMemo[officerId]"], []);
+    // Use Real Deadline from DB if available, otherwise fallback to mock for new complaints
+    const deadlineInfo = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "GovProblemCard.useMemo[deadlineInfo]": ()=>{
+            let targetDate;
+            let isReal = false;
+            if (deadlineAt) {
+                targetDate = new Date(deadlineAt);
+                isReal = true;
+            } else {
+                // Mock fallback for backwards compatibility/demo
+                const createdDate = timestamp ? new Date(timestamp) : lastReportedAt ? new Date(lastReportedAt) : new Date();
+                const daysToResolve = severity === 'critical' || severity === 'high' ? 3 : 7;
+                targetDate = new Date(createdDate.getTime() + daysToResolve * 24 * 60 * 60 * 1000);
+            }
+            const now = new Date();
+            const diffTime = targetDate.getTime() - now.getTime();
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return {
+                date: targetDate,
+                daysRemaining: diffDays,
+                isExceeded: diffTime < 0,
+                isReal
+            };
+        }
+    }["GovProblemCard.useMemo[deadlineInfo]"], [
+        deadlineAt,
+        timestamp,
+        lastReportedAt,
+        severity
+    ]);
+    // Helper to format deadline nicely
+    const formatDeadline = (date)=>{
+        return date.toLocaleString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true
+        });
+    };
     const handleResponseSubmit = async (data)=>{
         setIsSubmitting(true);
         try {
@@ -782,7 +832,7 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-        className: "bg-card border-border overflow-hidden hover:border-accent/50 transition-colors flex flex-col h-full",
+        className: "bg-card border-border overflow-hidden hover:border-accent/50 transition-colors flex flex-col h-full relative",
         children: [
             imageUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "w-full h-40 bg-secondary relative",
@@ -792,12 +842,36 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                     className: "w-full h-full object-cover"
                 }, void 0, false, {
                     fileName: "[project]/components/government/problem-card.tsx",
-                    lineNumber: 80,
+                    lineNumber: 131,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/government/problem-card.tsx",
-                lineNumber: 78,
+                lineNumber: 129,
+                columnNumber: 9
+            }, this),
+            type === 'new' && deadlineInfo.isExceeded && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: `px-4 py-1.5 flex items-center gap-2 text-white animate-pulse ${emailSent ? 'bg-orange-600' : 'bg-red-600'}`,
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
+                        className: "w-4 h-4"
+                    }, void 0, false, {
+                        fileName: "[project]/components/government/problem-card.tsx",
+                        lineNumber: 142,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        className: "text-[10px] font-bold uppercase tracking-wider",
+                        children: emailSent ? `⚠ Deadline reached – officer ${officerId} notified via email.` : `Deadline exceeded. Officer ${officerId} please resolve this issue immediately.`
+                    }, void 0, false, {
+                        fileName: "[project]/components/government/problem-card.tsx",
+                        lineNumber: 143,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/components/government/problem-card.tsx",
+                lineNumber: 141,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -811,20 +885,20 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                                 children: title
                             }, void 0, false, {
                                 fileName: "[project]/components/government/problem-card.tsx",
-                                lineNumber: 90,
+                                lineNumber: 152,
                                 columnNumber: 11
                             }, this),
                             type === 'recurring' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$refresh$2d$cw$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__RefreshCw$3e$__["RefreshCw"], {
                                 className: "w-5 h-5 text-accent flex-shrink-0 mt-1"
                             }, void 0, false, {
                                 fileName: "[project]/components/government/problem-card.tsx",
-                                lineNumber: 92,
+                                lineNumber: 154,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/government/problem-card.tsx",
-                        lineNumber: 89,
+                        lineNumber: 151,
                         columnNumber: 9
                     }, this),
                     description && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -832,7 +906,7 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                         children: description
                     }, void 0, false, {
                         fileName: "[project]/components/government/problem-card.tsx",
-                        lineNumber: 98,
+                        lineNumber: 160,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -842,7 +916,7 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                                 className: "w-4 h-4 flex-shrink-0"
                             }, void 0, false, {
                                 fileName: "[project]/components/government/problem-card.tsx",
-                                lineNumber: 103,
+                                lineNumber: 165,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -850,14 +924,138 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                                 children: location
                             }, void 0, false, {
                                 fileName: "[project]/components/government/problem-card.tsx",
-                                lineNumber: 104,
+                                lineNumber: 166,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/government/problem-card.tsx",
-                        lineNumber: 102,
+                        lineNumber: 164,
                         columnNumber: 9
+                    }, this),
+                    type === 'new' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: `flex flex-col gap-1.5 p-2 rounded border ${deadlineInfo.isExceeded ? emailSent ? 'bg-orange-500/5 border-orange-500/20' : 'bg-red-500/5 border-red-500/20' : 'bg-secondary/10 border-border/50'}`,
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex items-center justify-between text-[10px]",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-center gap-1.5 text-muted-foreground",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__["Shield"], {
+                                                className: "w-3 h-3 text-accent"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/government/problem-card.tsx",
+                                                lineNumber: 174,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "font-medium uppercase tracking-wider",
+                                                children: "Officer Assigned:"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/government/problem-card.tsx",
+                                                lineNumber: 175,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-foreground font-bold",
+                                                children: officerId
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/government/problem-card.tsx",
+                                                lineNumber: 176,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/government/problem-card.tsx",
+                                        lineNumber: 173,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-center gap-1 text-muted-foreground",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Clock$3e$__["Clock"], {
+                                                className: "w-3 h-3"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/government/problem-card.tsx",
+                                                lineNumber: 179,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                children: [
+                                                    "Deadline: ",
+                                                    formatDeadline(deadlineInfo.date)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/components/government/problem-card.tsx",
+                                                lineNumber: 180,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/government/problem-card.tsx",
+                                        lineNumber: 178,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/government/problem-card.tsx",
+                                lineNumber: 172,
+                                columnNumber: 13
+                            }, this),
+                            !deadlineInfo.isExceeded ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "text-[10px] font-bold text-accent uppercase tracking-widest flex items-center gap-1",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "w-1.5 h-1.5 rounded-full bg-accent animate-ping"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/government/problem-card.tsx",
+                                        lineNumber: 185,
+                                        columnNumber: 17
+                                    }, this),
+                                    "⏳ ",
+                                    deadlineInfo.daysRemaining,
+                                    " days remaining to resolve"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/government/problem-card.tsx",
+                                lineNumber: 184,
+                                columnNumber: 15
+                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: `text-[10px] font-bold uppercase tracking-widest flex items-center gap-1 ${emailSent ? 'text-orange-500' : 'text-red-500'}`,
+                                children: emailSent ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "w-1.5 h-1.5 rounded-full bg-orange-500"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/government/problem-card.tsx",
+                                            lineNumber: 192,
+                                            columnNumber: 21
+                                        }, this),
+                                        "⚠ Officer notified – resolution pending"
+                                    ]
+                                }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/government/problem-card.tsx",
+                                            lineNumber: 197,
+                                            columnNumber: 21
+                                        }, this),
+                                        "⚠ Critical: Action Required immediately"
+                                    ]
+                                }, void 0, true)
+                            }, void 0, false, {
+                                fileName: "[project]/components/government/problem-card.tsx",
+                                lineNumber: 189,
+                                columnNumber: 15
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/components/government/problem-card.tsx",
+                        lineNumber: 171,
+                        columnNumber: 11
                     }, this),
                     audioUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "pt-2 border-t border-border/50",
@@ -867,7 +1065,7 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                                 children: "Voice Note Attachment"
                             }, void 0, false, {
                                 fileName: "[project]/components/government/problem-card.tsx",
-                                lineNumber: 110,
+                                lineNumber: 209,
                                 columnNumber: 13
                             }, this),
                             audioError ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -877,20 +1075,20 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                                         className: "w-3.5 h-3.5"
                                     }, void 0, false, {
                                         fileName: "[project]/components/government/problem-card.tsx",
-                                        lineNumber: 113,
+                                        lineNumber: 212,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Voice note unavailable"
                                     }, void 0, false, {
                                         fileName: "[project]/components/government/problem-card.tsx",
-                                        lineNumber: 114,
+                                        lineNumber: 213,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/government/problem-card.tsx",
-                                lineNumber: 112,
+                                lineNumber: 211,
                                 columnNumber: 15
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "bg-secondary/40 p-1.5 rounded-md border border-border/30",
@@ -905,18 +1103,18 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/components/government/problem-card.tsx",
-                                    lineNumber: 118,
+                                    lineNumber: 217,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/government/problem-card.tsx",
-                                lineNumber: 117,
+                                lineNumber: 216,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/government/problem-card.tsx",
-                        lineNumber: 109,
+                        lineNumber: 208,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -929,7 +1127,7 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/government/problem-card.tsx",
-                                lineNumber: 136,
+                                lineNumber: 235,
                                 columnNumber: 13
                             }, this),
                             votes !== undefined && votes > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -939,7 +1137,7 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                                         className: "w-3.5 h-3.5"
                                     }, void 0, false, {
                                         fileName: "[project]/components/government/problem-card.tsx",
-                                        lineNumber: 140,
+                                        lineNumber: 239,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -950,13 +1148,13 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/government/problem-card.tsx",
-                                        lineNumber: 141,
+                                        lineNumber: 240,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/government/problem-card.tsx",
-                                lineNumber: 139,
+                                lineNumber: 238,
                                 columnNumber: 13
                             }, this),
                             occurrences && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -966,7 +1164,7 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                                         className: "w-3 h-3"
                                     }, void 0, false, {
                                         fileName: "[project]/components/government/problem-card.tsx",
-                                        lineNumber: 146,
+                                        lineNumber: 245,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -976,19 +1174,19 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/government/problem-card.tsx",
-                                        lineNumber: 147,
+                                        lineNumber: 246,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/government/problem-card.tsx",
-                                lineNumber: 145,
+                                lineNumber: 244,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/government/problem-card.tsx",
-                        lineNumber: 134,
+                        lineNumber: 233,
                         columnNumber: 9
                     }, this),
                     type === 'new' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1001,14 +1199,14 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                                     className: "w-3 h-3"
                                 }, void 0, false, {
                                     fileName: "[project]/components/government/problem-card.tsx",
-                                    lineNumber: 160,
+                                    lineNumber: 259,
                                     columnNumber: 17
                                 }, this),
                                 "RESPOND TO CITIZEN"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/government/problem-card.tsx",
-                            lineNumber: 156,
+                            lineNumber: 255,
                             columnNumber: 15
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             onClick: ()=>setShowResponse(false),
@@ -1017,28 +1215,73 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                             children: "CANCEL RESPONSE"
                         }, void 0, false, {
                             fileName: "[project]/components/government/problem-card.tsx",
-                            lineNumber: 164,
+                            lineNumber: 263,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/government/problem-card.tsx",
-                        lineNumber: 154,
+                        lineNumber: 253,
                         columnNumber: 11
                     }, this),
                     showResponse && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "mt-2 text-left",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$government$2f$response$2d$panel$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                            complaintId: id,
-                            onSubmit: handleResponseSubmit,
-                            isLoading: isSubmitting
-                        }, void 0, false, {
-                            fileName: "[project]/components/government/problem-card.tsx",
-                            lineNumber: 177,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$government$2f$response$2d$panel$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                complaintId: id,
+                                onSubmit: handleResponseSubmit,
+                                isLoading: isSubmitting
+                            }, void 0, false, {
+                                fileName: "[project]/components/government/problem-card.tsx",
+                                lineNumber: 276,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "mt-2 px-1 flex items-center justify-between text-[10px] text-muted-foreground border-t border-border/30 pt-2",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: [
+                                            "Responding as: ",
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-foreground font-bold",
+                                                children: officerId
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/government/problem-card.tsx",
+                                                lineNumber: 283,
+                                                columnNumber: 36
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/government/problem-card.tsx",
+                                        lineNumber: 283,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: [
+                                            "Deadline: ",
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-foreground font-bold",
+                                                children: deadlineInfo.date.toLocaleDateString()
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/government/problem-card.tsx",
+                                                lineNumber: 284,
+                                                columnNumber: 31
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/government/problem-card.tsx",
+                                        lineNumber: 284,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/government/problem-card.tsx",
+                                lineNumber: 282,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/components/government/problem-card.tsx",
-                        lineNumber: 176,
+                        lineNumber: 275,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1050,7 +1293,7 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                                 children: category
                             }, void 0, false, {
                                 fileName: "[project]/components/government/problem-card.tsx",
-                                lineNumber: 188,
+                                lineNumber: 292,
                                 columnNumber: 13
                             }, this),
                             severity && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1058,7 +1301,7 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                                 children: severity
                             }, void 0, false, {
                                 fileName: "[project]/components/government/problem-card.tsx",
-                                lineNumber: 193,
+                                lineNumber: 297,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1066,29 +1309,29 @@ function GovProblemCard({ id, title, description, location, timestamp, complaint
                                 children: timestamp ? new Date(timestamp).toLocaleDateString() : lastReportedAt ? new Date(lastReportedAt).toLocaleDateString() : 'N/A'
                             }, void 0, false, {
                                 fileName: "[project]/components/government/problem-card.tsx",
-                                lineNumber: 197,
+                                lineNumber: 301,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/government/problem-card.tsx",
-                        lineNumber: 186,
+                        lineNumber: 290,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/government/problem-card.tsx",
-                lineNumber: 87,
+                lineNumber: 149,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/government/problem-card.tsx",
-        lineNumber: 76,
+        lineNumber: 127,
         columnNumber: 5
     }, this);
 }
-_s(GovProblemCard, "4T6sU1ZReyh7j0xqqZUpGsuGU8w=");
+_s(GovProblemCard, "MgIL0lh4Du9tmQAavKF2mkUoHc4=");
 _c = GovProblemCard;
 var _c;
 __turbopack_context__.k.register(_c, "GovProblemCard");
@@ -1337,34 +1580,34 @@ function NewProblemsPage() {
         try {
             const problem = problems.find((p)=>p.id === data.complaintId);
             if (!problem) return;
-            // STEP 5 — Save response
-            const { error: resError } = await supabase.from("responses").insert({
-                complaint_id: data.complaintId,
-                government_response: data.responseText,
-                responded_at: new Date().toISOString()
+            // Use the centralized API instead of direct Supabase writes
+            const response = await fetch('/api/government/respond', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    complaint_id: data.complaintId,
+                    response_message: data.responseText,
+                    officer_id: 'government@nammafix.in',
+                    deadline_at: data.deadlineDate?.toISOString()
+                })
             });
-            if (resError) throw resError;
-            // STEP 6 — Send notification to citizen
-            const { error: notifError } = await supabase.from("notifications").insert({
-                user_id: problem.userId,
-                complaint_id: data.complaintId,
-                message: "Government responded to your complaint: " + problem.title
-            });
-            if (notifError) throw notifError;
-            // STEP 10 — Optional status update
-            const { error: statusError } = await supabase.from("complaints").update({
-                status: "in_progress"
-            }).eq("id", data.complaintId);
-            if (statusError) throw statusError;
-            console.log('Response successfully sent and notification triggered');
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'API call failed');
+            }
+            console.log('Response successfully sent via API');
             // Refresh local data
             setProblems((prev)=>prev.map((p)=>p.id === data.complaintId ? {
                         ...p,
-                        status: 'in_progress'
+                        status: 'in_progress',
+                        deadlineAt: data.deadlineDate,
+                        officerEmail: 'government@nammafix.in'
                     } : p));
         } catch (err) {
             console.error('Failed to submit government response:', err);
-            alert('Failed to send response. Please try again.');
+            alert(`Failed to send response: ${err.message || 'Please try again.'}`);
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1374,7 +1617,7 @@ function NewProblemsPage() {
                 governmentName: "Government Official"
             }, void 0, false, {
                 fileName: "[project]/app/government/new-problems/page.tsx",
-                lineNumber: 120,
+                lineNumber: 121,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -1392,14 +1635,14 @@ function NewProblemsPage() {
                                         className: "w-4 h-4"
                                     }, void 0, false, {
                                         fileName: "[project]/app/government/new-problems/page.tsx",
-                                        lineNumber: 130,
+                                        lineNumber: 131,
                                         columnNumber: 13
                                     }, this),
                                     "Back"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/government/new-problems/page.tsx",
-                                lineNumber: 125,
+                                lineNumber: 126,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -1407,7 +1650,7 @@ function NewProblemsPage() {
                                 children: "New Problems"
                             }, void 0, false, {
                                 fileName: "[project]/app/government/new-problems/page.tsx",
-                                lineNumber: 133,
+                                lineNumber: 134,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1415,13 +1658,13 @@ function NewProblemsPage() {
                                 children: "Recently submitted complaints (Real-time)"
                             }, void 0, false, {
                                 fileName: "[project]/app/government/new-problems/page.tsx",
-                                lineNumber: 134,
+                                lineNumber: 135,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/government/new-problems/page.tsx",
-                        lineNumber: 124,
+                        lineNumber: 125,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1430,12 +1673,12 @@ function NewProblemsPage() {
                             children: "Priority View: Critical & High severity items are prioritized at the top."
                         }, void 0, false, {
                             fileName: "[project]/app/government/new-problems/page.tsx",
-                            lineNumber: 142,
+                            lineNumber: 143,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/government/new-problems/page.tsx",
-                        lineNumber: 141,
+                        lineNumber: 142,
                         columnNumber: 9
                     }, this),
                     error ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Empty"], {
@@ -1446,32 +1689,32 @@ function NewProblemsPage() {
                                     className: "size-6"
                                 }, void 0, false, {
                                     fileName: "[project]/app/government/new-problems/page.tsx",
-                                    lineNumber: 149,
+                                    lineNumber: 150,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/government/new-problems/page.tsx",
-                                lineNumber: 148,
+                                lineNumber: 149,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyTitle"], {
                                 children: "Error loading problems"
                             }, void 0, false, {
                                 fileName: "[project]/app/government/new-problems/page.tsx",
-                                lineNumber: 151,
+                                lineNumber: 152,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyDescription"], {
                                 children: "Failed to load new problems. Please try again."
                             }, void 0, false, {
                                 fileName: "[project]/app/government/new-problems/page.tsx",
-                                lineNumber: 152,
+                                lineNumber: 153,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/government/new-problems/page.tsx",
-                        lineNumber: 147,
+                        lineNumber: 148,
                         columnNumber: 11
                     }, this) : isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
@@ -1481,12 +1724,12 @@ function NewProblemsPage() {
                                 className: "h-56 bg-secondary rounded-lg"
                             }, i, false, {
                                 fileName: "[project]/app/government/new-problems/page.tsx",
-                                lineNumber: 158,
+                                lineNumber: 159,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/app/government/new-problems/page.tsx",
-                        lineNumber: 156,
+                        lineNumber: 157,
                         columnNumber: 11
                     }, this) : problems.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Empty"], {
                         children: [
@@ -1496,32 +1739,32 @@ function NewProblemsPage() {
                                     className: "size-6"
                                 }, void 0, false, {
                                     fileName: "[project]/app/government/new-problems/page.tsx",
-                                    lineNumber: 164,
+                                    lineNumber: 165,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/government/new-problems/page.tsx",
-                                lineNumber: 163,
+                                lineNumber: 164,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyTitle"], {
                                 children: "No new problems"
                             }, void 0, false, {
                                 fileName: "[project]/app/government/new-problems/page.tsx",
-                                lineNumber: 166,
+                                lineNumber: 167,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyDescription"], {
                                 children: "All new problems have been reviewed"
                             }, void 0, false, {
                                 fileName: "[project]/app/government/new-problems/page.tsx",
-                                lineNumber: 167,
+                                lineNumber: 168,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/government/new-problems/page.tsx",
-                        lineNumber: 162,
+                        lineNumber: 163,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
@@ -1540,24 +1783,24 @@ function NewProblemsPage() {
                                 type: "new"
                             }, problem.id, false, {
                                 fileName: "[project]/app/government/new-problems/page.tsx",
-                                lineNumber: 173,
+                                lineNumber: 174,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/app/government/new-problems/page.tsx",
-                        lineNumber: 171,
+                        lineNumber: 172,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/government/new-problems/page.tsx",
-                lineNumber: 122,
+                lineNumber: 123,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/government/new-problems/page.tsx",
-        lineNumber: 119,
+        lineNumber: 120,
         columnNumber: 5
     }, this);
 }

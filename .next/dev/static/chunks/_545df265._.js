@@ -650,15 +650,15 @@ function GovernmentResponsePanel({ complaintId, onSubmit, isLoading = false }) {
                         className: "space-y-2",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                className: "text-xs font-medium text-foreground",
-                                children: "Deadline Date"
+                                className: "text-xs font-medium text-foreground uppercase tracking-widest font-bold",
+                                children: "Set Resolution Deadline"
                             }, void 0, false, {
                                 fileName: "[project]/components/government/response-panel.tsx",
                                 lineNumber: 74,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                type: "date",
+                                type: "datetime-local",
                                 value: deadlineDate,
                                 onChange: (e)=>setDeadlineDate(e.target.value),
                                 className: "w-full px-3 py-2 bg-background border border-border text-foreground rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm",
@@ -748,6 +748,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$triangle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertTriangle$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/triangle-alert.js [app-client] (ecmascript) <export default as AlertTriangle>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__User$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/user.js [app-client] (ecmascript) <export default as User>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/circle-alert.js [app-client] (ecmascript) <export default as AlertCircle>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/shield.js [app-client] (ecmascript) <export default as Shield>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Clock$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/clock.js [app-client] (ecmascript) <export default as Clock>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$government$2f$response$2d$panel$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/government/response-panel.tsx [app-client] (ecmascript)");
 ;
@@ -770,11 +772,61 @@ const STATUS_COLORS = {
     'in-progress': 'bg-cyan-900/20 text-cyan-400',
     resolved: 'bg-green-900/20 text-green-400'
 };
-function EmergencyProblemCard({ problem, onResponseSubmit, isLoading = false }) {
+function EmergencyProblemCard({ problem, deadlineAt, officerEmail, emailSent, onResponseSubmit, isLoading = false }) {
     _s();
     const [showResponse, setShowResponse] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [isSubmitting, setIsSubmitting] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [audioError, setAudioError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    // Stable Officer ID for this session
+    const officerId = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "EmergencyProblemCard.useMemo[officerId]": ()=>{
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            return `OFF-${randomNum}`;
+        }
+    }["EmergencyProblemCard.useMemo[officerId]"], []);
+    // Use Real Deadline from DB if available, otherwise fallback to mock
+    const deadlineInfo = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "EmergencyProblemCard.useMemo[deadlineInfo]": ()=>{
+            let targetDate;
+            let isReal = false;
+            if (deadlineAt || problem.deadline_at) {
+                targetDate = new Date(deadlineAt || problem.deadline_at);
+                isReal = true;
+            } else {
+                const createdDate = new Date(problem.createdAt || problem.created_at || new Date());
+                const severity = problem.severity || problem.priority || 'medium';
+                const daysToResolve = severity === 'critical' || severity === 'high' ? 3 : 7;
+                targetDate = new Date(createdDate.getTime() + daysToResolve * 24 * 60 * 60 * 1000);
+            }
+            const now = new Date();
+            const diffTime = targetDate.getTime() - now.getTime();
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return {
+                date: targetDate,
+                daysRemaining: diffDays,
+                isExceeded: diffTime < 0,
+                isReal
+            };
+        }
+    }["EmergencyProblemCard.useMemo[deadlineInfo]"], [
+        deadlineAt,
+        problem.deadline_at,
+        problem.createdAt,
+        problem.created_at,
+        problem.severity,
+        problem.priority
+    ]);
+    // Helper to format deadline nicely
+    const formatDeadline = (date)=>{
+        return date.toLocaleString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true
+        });
+    };
     const handleResponseSubmit = async (data)=>{
         setIsSubmitting(true);
         try {
@@ -789,8 +841,32 @@ function EmergencyProblemCard({ problem, onResponseSubmit, isLoading = false }) 
     };
     const severity = problem.severity || problem.priority || 'medium';
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-        className: "bg-card border-border overflow-hidden hover:border-accent/50 transition-colors flex flex-col h-full",
+        className: "bg-card border-border overflow-hidden hover:border-accent/50 transition-colors flex flex-col h-full relative",
         children: [
+            deadlineInfo.isExceeded && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: `${emailSent ? 'bg-orange-700' : 'bg-red-700'} px-4 py-1.5 flex items-center gap-2 text-white animate-pulse border-b border-red-500/50`,
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
+                        className: "w-4 h-4"
+                    }, void 0, false, {
+                        fileName: "[project]/components/government/emergency-problem-card.tsx",
+                        lineNumber: 117,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        className: "text-[10px] font-bold uppercase tracking-wider",
+                        children: emailSent ? `⚠ Critical Deadline reached – officer ${officerId} notified!` : `Critical Deadline exceeded. Officer ${officerId} resolve immediately!`
+                    }, void 0, false, {
+                        fileName: "[project]/components/government/emergency-problem-card.tsx",
+                        lineNumber: 118,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/components/government/emergency-problem-card.tsx",
+                lineNumber: 116,
+                columnNumber: 9
+            }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: `px-4 py-2 flex items-center justify-between ${SEVERITY_BANNER_COLORS[severity] || SEVERITY_BANNER_COLORS.medium}`,
                 children: [
@@ -801,7 +877,7 @@ function EmergencyProblemCard({ problem, onResponseSubmit, isLoading = false }) 
                                 className: "w-4 h-4"
                             }, void 0, false, {
                                 fileName: "[project]/components/government/emergency-problem-card.tsx",
-                                lineNumber: 66,
+                                lineNumber: 127,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -812,13 +888,13 @@ function EmergencyProblemCard({ problem, onResponseSubmit, isLoading = false }) 
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/government/emergency-problem-card.tsx",
-                                lineNumber: 67,
+                                lineNumber: 128,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/government/emergency-problem-card.tsx",
-                        lineNumber: 65,
+                        lineNumber: 126,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -827,13 +903,13 @@ function EmergencyProblemCard({ problem, onResponseSubmit, isLoading = false }) 
                         children: problem.category
                     }, void 0, false, {
                         fileName: "[project]/components/government/emergency-problem-card.tsx",
-                        lineNumber: 71,
+                        lineNumber: 132,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/government/emergency-problem-card.tsx",
-                lineNumber: 64,
+                lineNumber: 125,
                 columnNumber: 7
             }, this),
             (problem.imageUrl || problem.image_url) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -844,12 +920,12 @@ function EmergencyProblemCard({ problem, onResponseSubmit, isLoading = false }) 
                     className: "w-full h-full object-contain"
                 }, void 0, false, {
                     fileName: "[project]/components/government/emergency-problem-card.tsx",
-                    lineNumber: 80,
+                    lineNumber: 141,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/government/emergency-problem-card.tsx",
-                lineNumber: 78,
+                lineNumber: 139,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -863,7 +939,7 @@ function EmergencyProblemCard({ problem, onResponseSubmit, isLoading = false }) 
                                 children: problem.title
                             }, void 0, false, {
                                 fileName: "[project]/components/government/emergency-problem-card.tsx",
-                                lineNumber: 91,
+                                lineNumber: 152,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -871,13 +947,13 @@ function EmergencyProblemCard({ problem, onResponseSubmit, isLoading = false }) 
                                 children: problem.description
                             }, void 0, false, {
                                 fileName: "[project]/components/government/emergency-problem-card.tsx",
-                                lineNumber: 92,
+                                lineNumber: 153,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/government/emergency-problem-card.tsx",
-                        lineNumber: 90,
+                        lineNumber: 151,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -887,7 +963,7 @@ function EmergencyProblemCard({ problem, onResponseSubmit, isLoading = false }) 
                                 className: "w-4 h-4 flex-shrink-0 text-accent"
                             }, void 0, false, {
                                 fileName: "[project]/components/government/emergency-problem-card.tsx",
-                                lineNumber: 97,
+                                lineNumber: 158,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -895,13 +971,137 @@ function EmergencyProblemCard({ problem, onResponseSubmit, isLoading = false }) 
                                 children: problem.location
                             }, void 0, false, {
                                 fileName: "[project]/components/government/emergency-problem-card.tsx",
-                                lineNumber: 98,
+                                lineNumber: 159,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/government/emergency-problem-card.tsx",
-                        lineNumber: 96,
+                        lineNumber: 157,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: `flex flex-col gap-1.5 p-3 rounded border ${deadlineInfo.isExceeded ? emailSent ? 'bg-orange-500/10 border-orange-500/30' : 'bg-red-500/10 border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.1)]' : 'bg-secondary/20 border-border/50'}`,
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex items-center justify-between text-[11px]",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-center gap-1.5 text-muted-foreground",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__["Shield"], {
+                                                className: "w-3.5 h-3.5 text-accent"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                                lineNumber: 166,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "font-bold uppercase tracking-wider",
+                                                children: "Officer ID:"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                                lineNumber: 167,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-foreground font-black",
+                                                children: officerId
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                                lineNumber: 168,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                        lineNumber: 165,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-center gap-1 text-muted-foreground",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$clock$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Clock$3e$__["Clock"], {
+                                                className: "w-3.5 h-3.5 font-bold"
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                                lineNumber: 171,
+                                                columnNumber: 15
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                children: [
+                                                    "Due: ",
+                                                    formatDeadline(deadlineInfo.date)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                                lineNumber: 172,
+                                                columnNumber: 15
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                        lineNumber: 170,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                lineNumber: 164,
+                                columnNumber: 11
+                            }, this),
+                            !deadlineInfo.isExceeded ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "text-[11px] font-black text-accent uppercase tracking-widest flex items-center gap-2",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "w-2 h-2 rounded-full bg-accent animate-ping"
+                                    }, void 0, false, {
+                                        fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                        lineNumber: 177,
+                                        columnNumber: 15
+                                    }, this),
+                                    "⏳ ACTION REQUIRED: ",
+                                    deadlineInfo.daysRemaining,
+                                    " days left"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                lineNumber: 176,
+                                columnNumber: 13
+                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: `text-[11px] font-black uppercase tracking-widest flex items-center gap-2 ${emailSent ? 'text-orange-500' : 'text-red-500'}`,
+                                children: emailSent ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "w-2 h-2 rounded-full bg-orange-500"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                            lineNumber: 184,
+                                            columnNumber: 19
+                                        }, this),
+                                        "⚠ OFFICER NOTIFIED VIA EMAIL"
+                                    ]
+                                }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "w-2 h-2 rounded-full bg-red-500 animate-pulse"
+                                        }, void 0, false, {
+                                            fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                            lineNumber: 189,
+                                            columnNumber: 19
+                                        }, this),
+                                        "⚠ URGENT ACTION REQUIRED"
+                                    ]
+                                }, void 0, true)
+                            }, void 0, false, {
+                                fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                lineNumber: 181,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/components/government/emergency-problem-card.tsx",
+                        lineNumber: 163,
                         columnNumber: 9
                     }, this),
                     (problem.audioUrl || problem.audio_url) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -912,7 +1112,7 @@ function EmergencyProblemCard({ problem, onResponseSubmit, isLoading = false }) 
                                 children: "Voice Evidence"
                             }, void 0, false, {
                                 fileName: "[project]/components/government/emergency-problem-card.tsx",
-                                lineNumber: 104,
+                                lineNumber: 200,
                                 columnNumber: 13
                             }, this),
                             audioError ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -922,20 +1122,20 @@ function EmergencyProblemCard({ problem, onResponseSubmit, isLoading = false }) 
                                         className: "w-3.5 h-3.5"
                                     }, void 0, false, {
                                         fileName: "[project]/components/government/emergency-problem-card.tsx",
-                                        lineNumber: 107,
+                                        lineNumber: 203,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Voice note unavailable"
                                     }, void 0, false, {
                                         fileName: "[project]/components/government/emergency-problem-card.tsx",
-                                        lineNumber: 108,
+                                        lineNumber: 204,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/government/emergency-problem-card.tsx",
-                                lineNumber: 106,
+                                lineNumber: 202,
                                 columnNumber: 15
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("audio", {
                                 controls: true,
@@ -948,13 +1148,13 @@ function EmergencyProblemCard({ problem, onResponseSubmit, isLoading = false }) 
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/components/government/emergency-problem-card.tsx",
-                                lineNumber: 111,
+                                lineNumber: 207,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/government/emergency-problem-card.tsx",
-                        lineNumber: 103,
+                        lineNumber: 199,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -965,7 +1165,7 @@ function EmergencyProblemCard({ problem, onResponseSubmit, isLoading = false }) 
                                 children: problem.status
                             }, void 0, false, {
                                 fileName: "[project]/components/government/emergency-problem-card.tsx",
-                                lineNumber: 127,
+                                lineNumber: 223,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -975,20 +1175,20 @@ function EmergencyProblemCard({ problem, onResponseSubmit, isLoading = false }) 
                                         className: "w-3 h-3"
                                     }, void 0, false, {
                                         fileName: "[project]/components/government/emergency-problem-card.tsx",
-                                        lineNumber: 131,
+                                        lineNumber: 227,
                                         columnNumber: 13
                                     }, this),
-                                    new Date(problem.createdAt).toLocaleDateString()
+                                    new Date(problem.createdAt || problem.created_at || new Date()).toLocaleDateString()
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/government/emergency-problem-card.tsx",
-                                lineNumber: 130,
+                                lineNumber: 226,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/government/emergency-problem-card.tsx",
-                        lineNumber: 126,
+                        lineNumber: 222,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1000,7 +1200,7 @@ function EmergencyProblemCard({ problem, onResponseSubmit, isLoading = false }) 
                             children: "Action Required: Respond Now"
                         }, void 0, false, {
                             fileName: "[project]/components/government/emergency-problem-card.tsx",
-                            lineNumber: 139,
+                            lineNumber: 235,
                             columnNumber: 13
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             onClick: ()=>setShowResponse(false),
@@ -1008,44 +1208,91 @@ function EmergencyProblemCard({ problem, onResponseSubmit, isLoading = false }) 
                             children: "Cancel Response"
                         }, void 0, false, {
                             fileName: "[project]/components/government/emergency-problem-card.tsx",
-                            lineNumber: 147,
+                            lineNumber: 243,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/government/emergency-problem-card.tsx",
-                        lineNumber: 137,
+                        lineNumber: 233,
                         columnNumber: 9
                     }, this),
                     showResponse && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "mt-4 animate-in fade-in slide-in-from-top-2 duration-300",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$government$2f$response$2d$panel$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                            complaintId: problem.id || problem.complaintId,
-                            onSubmit: handleResponseSubmit,
-                            isLoading: isSubmitting
-                        }, void 0, false, {
-                            fileName: "[project]/components/government/emergency-problem-card.tsx",
-                            lineNumber: 158,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$government$2f$response$2d$panel$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                complaintId: problem.id || problem.complaintId,
+                                onSubmit: handleResponseSubmit,
+                                isLoading: isSubmitting
+                            }, void 0, false, {
+                                fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                lineNumber: 254,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "mt-3 px-1 flex items-center justify-between text-[10px] text-muted-foreground bg-secondary/10 p-2 rounded border border-border/30",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "flex items-center gap-1",
+                                        children: [
+                                            "Identity: ",
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-foreground font-extrabold",
+                                                children: officerId
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                                lineNumber: 260,
+                                                columnNumber: 67
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                        lineNumber: 260,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "flex items-center gap-1",
+                                        children: [
+                                            "Target Resolution: ",
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-foreground font-extrabold",
+                                                children: deadlineInfo.date.toLocaleDateString()
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                                lineNumber: 261,
+                                                columnNumber: 76
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                        lineNumber: 261,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/components/government/emergency-problem-card.tsx",
+                                lineNumber: 259,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/components/government/emergency-problem-card.tsx",
-                        lineNumber: 157,
+                        lineNumber: 253,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/government/emergency-problem-card.tsx",
-                lineNumber: 88,
+                lineNumber: 149,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/government/emergency-problem-card.tsx",
-        lineNumber: 62,
+        lineNumber: 113,
         columnNumber: 5
     }, this);
 }
-_s(EmergencyProblemCard, "4T6sU1ZReyh7j0xqqZUpGsuGU8w=");
+_s(EmergencyProblemCard, "MgIL0lh4Du9tmQAavKF2mkUoHc4=");
 _c = EmergencyProblemCard;
 var _c;
 __turbopack_context__.k.register(_c, "EmergencyProblemCard");
@@ -1293,30 +1540,34 @@ function EmergencyPage() {
         try {
             const problem = problems.find((p)=>p.id === data.complaintId);
             if (!problem) return;
-            // STEP 5 — Save response
-            const { error: resError } = await supabase.from("responses").insert({
-                complaint_id: data.complaintId,
-                government_response: data.responseText,
-                responded_at: new Date().toISOString()
+            // Use the centralized API instead of direct Supabase writes
+            const response = await fetch('/api/government/respond', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    complaint_id: data.complaintId,
+                    response_message: data.responseText,
+                    officer_id: 'government@nammafix.in',
+                    deadline_at: data.deadlineDate?.toISOString()
+                })
             });
-            if (resError) throw resError;
-            // STEP 6 — Send notification to citizen
-            const { error: notifError } = await supabase.from("notifications").insert({
-                user_id: problem.userId,
-                complaint_id: data.complaintId,
-                message: "Government responded to your urgent complaint: " + problem.title
-            });
-            if (notifError) throw notifError;
-            // STEP 10 — Optional status update
-            const { error: statusError } = await supabase.from("complaints").update({
-                status: "in_progress"
-            }).eq("id", data.complaintId);
-            if (statusError) throw statusError;
-            console.log('Urgent response successfully sent!');
-            fetchProblems(true);
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'API call failed');
+            }
+            console.log('Emergency response successfully sent via API');
+            // Refresh local data
+            setProblems((prev)=>prev.map((p)=>p.id === data.complaintId ? {
+                        ...p,
+                        status: 'in_progress',
+                        deadline_at: data.deadlineDate?.toISOString(),
+                        officer_email: 'government@nammafix.in'
+                    } : p));
         } catch (err) {
             console.error('Failed to submit urgent response:', err);
-            alert('Failed to send response. Please try again.');
+            alert(`Failed to send response: ${err.message || 'Please try again.'}`);
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1326,7 +1577,7 @@ function EmergencyPage() {
                 governmentName: "Government Official"
             }, void 0, false, {
                 fileName: "[project]/app/government/emergency/page.tsx",
-                lineNumber: 116,
+                lineNumber: 121,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -1344,14 +1595,14 @@ function EmergencyPage() {
                                         className: "w-4 h-4"
                                     }, void 0, false, {
                                         fileName: "[project]/app/government/emergency/page.tsx",
-                                        lineNumber: 126,
+                                        lineNumber: 131,
                                         columnNumber: 13
                                     }, this),
                                     "Back"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/government/emergency/page.tsx",
-                                lineNumber: 121,
+                                lineNumber: 126,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -1359,7 +1610,7 @@ function EmergencyPage() {
                                 children: "Emergency Problems"
                             }, void 0, false, {
                                 fileName: "[project]/app/government/emergency/page.tsx",
-                                lineNumber: 129,
+                                lineNumber: 134,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1367,13 +1618,13 @@ function EmergencyPage() {
                                 children: "Critical and High issues requiring immediate government action (Real-time)"
                             }, void 0, false, {
                                 fileName: "[project]/app/government/emergency/page.tsx",
-                                lineNumber: 130,
+                                lineNumber: 135,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/government/emergency/page.tsx",
-                        lineNumber: 120,
+                        lineNumber: 125,
                         columnNumber: 9
                     }, this),
                     error ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Empty"], {
@@ -1384,32 +1635,32 @@ function EmergencyPage() {
                                     className: "size-6 text-red-500"
                                 }, void 0, false, {
                                     fileName: "[project]/app/government/emergency/page.tsx",
-                                    lineNumber: 139,
+                                    lineNumber: 144,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/government/emergency/page.tsx",
-                                lineNumber: 138,
+                                lineNumber: 143,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyTitle"], {
                                 children: "Error loading problems"
                             }, void 0, false, {
                                 fileName: "[project]/app/government/emergency/page.tsx",
-                                lineNumber: 141,
+                                lineNumber: 146,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyDescription"], {
                                 children: error
                             }, void 0, false, {
                                 fileName: "[project]/app/government/emergency/page.tsx",
-                                lineNumber: 142,
+                                lineNumber: 147,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/government/emergency/page.tsx",
-                        lineNumber: 137,
+                        lineNumber: 142,
                         columnNumber: 11
                     }, this) : isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "grid grid-cols-1 md:grid-cols-2 gap-4",
@@ -1419,12 +1670,12 @@ function EmergencyPage() {
                                 className: "h-96 bg-secondary rounded-lg"
                             }, i, false, {
                                 fileName: "[project]/app/government/emergency/page.tsx",
-                                lineNumber: 147,
+                                lineNumber: 152,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/app/government/emergency/page.tsx",
-                        lineNumber: 145,
+                        lineNumber: 150,
                         columnNumber: 11
                     }, this) : problems.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Empty"], {
                         children: [
@@ -1434,32 +1685,32 @@ function EmergencyPage() {
                                     className: "size-6 text-green-500"
                                 }, void 0, false, {
                                     fileName: "[project]/app/government/emergency/page.tsx",
-                                    lineNumber: 153,
+                                    lineNumber: 158,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/government/emergency/page.tsx",
-                                lineNumber: 152,
+                                lineNumber: 157,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyTitle"], {
                                 children: "All clear!"
                             }, void 0, false, {
                                 fileName: "[project]/app/government/emergency/page.tsx",
-                                lineNumber: 155,
+                                lineNumber: 160,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$empty$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmptyDescription"], {
                                 children: "No critical or high-severity issues reported currently."
                             }, void 0, false, {
                                 fileName: "[project]/app/government/emergency/page.tsx",
-                                lineNumber: 156,
+                                lineNumber: 161,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/government/emergency/page.tsx",
-                        lineNumber: 151,
+                        lineNumber: 156,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "grid grid-cols-1 md:grid-cols-2 gap-4",
@@ -1468,24 +1719,24 @@ function EmergencyPage() {
                                 onResponseSubmit: handleResponseSubmit
                             }, problem.id, false, {
                                 fileName: "[project]/app/government/emergency/page.tsx",
-                                lineNumber: 161,
+                                lineNumber: 166,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/app/government/emergency/page.tsx",
-                        lineNumber: 159,
+                        lineNumber: 164,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/government/emergency/page.tsx",
-                lineNumber: 118,
+                lineNumber: 123,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/government/emergency/page.tsx",
-        lineNumber: 115,
+        lineNumber: 120,
         columnNumber: 5
     }, this);
 }

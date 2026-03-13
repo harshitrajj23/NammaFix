@@ -47,7 +47,9 @@ export default function EmergencyPage() {
         imageUrl: c.image_url,
         audioUrl: c.audio_url,
         status: c.status,
-        createdAt: c.created_at
+        createdAt: c.created_at,
+        deadlineAt: c.deadline_at,
+        emailSent: c.email_sent
       })) || []
 
       setProblems(formatted)
@@ -79,34 +81,39 @@ export default function EmergencyPage() {
       const problem = problems.find(p => p.id === data.complaintId)
       if (!problem) return
 
-      // STEP 5 — Save response
-      const { error: resError } = await supabase.from("responses").insert({
-        complaint_id: data.complaintId,
-        government_response: data.responseText,
-        responded_at: new Date().toISOString()
+      // Use the centralized API instead of direct Supabase writes
+      const response = await fetch('/api/government/respond', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          complaint_id: data.complaintId,
+          response_message: data.responseText,
+          officer_id: 'government@nammafix.in', // In production, get this from auth
+          deadline_at: data.deadlineDate?.toISOString()
+        })
       })
-      if (resError) throw resError
 
-      // STEP 6 — Send notification to citizen
-      const { error: notifError } = await supabase.from("notifications").insert({
-        user_id: problem.userId,
-        complaint_id: data.complaintId,
-        message: "Government responded to your urgent complaint: " + problem.title
-      })
-      if (notifError) throw notifError
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'API call failed')
+      }
 
-      // STEP 10 — Optional status update
-      const { error: statusError } = await supabase
-        .from("complaints")
-        .update({ status: "in_progress" })
-        .eq("id", data.complaintId)
-      if (statusError) throw statusError
+      console.log('Emergency response successfully sent via API')
 
-      console.log('Urgent response successfully sent!')
-      fetchProblems(true)
-    } catch (err) {
+      // Refresh local data
+      setProblems(prev => prev.map(p =>
+        p.id === data.complaintId ? {
+          ...p,
+          status: 'in_progress',
+          deadline_at: data.deadlineDate?.toISOString(),
+          officer_email: 'government@nammafix.in'
+        } : p
+      ))
+    } catch (err: any) {
       console.error('Failed to submit urgent response:', err)
-      alert('Failed to send response. Please try again.')
+      alert(`Failed to send response: ${err.message || 'Please try again.'}`)
     }
   }
 

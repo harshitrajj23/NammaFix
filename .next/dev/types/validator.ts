@@ -281,6 +281,33 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../app/api/government/check-deadlines/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/government/check-deadlines">> = Specific
+  const handler = {} as typeof import("../../../app/api/government/check-deadlines/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/api/government/respond/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/government/respond">> = Specific
+  const handler = {} as typeof import("../../../app/api/government/respond/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/api/government/send-deadline-email/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/government/send-deadline-email">> = Specific
+  const handler = {} as typeof import("../../../app/api/government/send-deadline-email/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../app/api/issues/[id]/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/issues/[id]">> = Specific

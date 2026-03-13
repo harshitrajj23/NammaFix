@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AlertTriangle, MessageSquare, Plus, TrendingUp, Shield, TrafficCone, Siren, Car, Trash2, Droplets, Wind, Waves } from 'lucide-react'
 import GovNavbar from '@/components/government/navbar'
 import { Button } from '@/components/ui/button'
@@ -14,6 +14,46 @@ import { useComplaints } from '@/hooks/use-complaints'
 import { Complaint } from '@/lib/types'
 
 export default function GovDashboard() {
+  const [filters, setFilters] = useState<any>({ category: null, severity: null, status: null })
+  const { complaints, isLoading } = useComplaints(undefined, true)
+
+  // Background deadline check for Hackathon Demo
+  useEffect(() => {
+    const checkDeadlines = async () => {
+      try {
+        await fetch('/api/government/check-deadlines', { method: 'GET' })
+        console.log('Automated deadline check completed.')
+      } catch (err) {
+        console.error('Failed to run automated deadline check:', err)
+      }
+    }
+
+    // Run immediately on load
+    checkDeadlines()
+
+    // Run every minute
+    const interval = setInterval(checkDeadlines, 60000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const filteredComplaints = complaints.filter((c: Complaint) => {
+    if (filters.category && c.category !== filters.category) return false
+    if (filters.severity && c.severity !== filters.severity) return false
+    if (filters.status && c.status !== filters.status) return false
+    return true
+  })
+
+  // Calculate statistics from complaints
+  const stats = {
+    total: complaints.length,
+    active: complaints.filter((c: Complaint) => c.status !== 'resolved' && c.status !== 'completed' && c.status !== 'rejected').length,
+    resolved: complaints.filter((c: Complaint) => c.status === 'resolved' || c.status === 'completed').length,
+    highPriority: complaints.filter((c: Complaint) => c.severity === 'critical' || (c as any).votes >= 10).length,
+    emergency: complaints.filter((c: Complaint) => c.severity === 'critical' || c.severity === 'high').length,
+    new: complaints.filter((c: Complaint) => c.status === 'submitted').length,
+    recurring: complaints.filter((c: Complaint) => (c as any).occurrences > 1).length
+  }
+
   const departments = [
     {
       name: 'BBMP (Municipal Corporation)',
@@ -132,23 +172,6 @@ export default function GovDashboard() {
       ]
     }
   ]
-
-  const [filters, setFilters] = useState<any>({ category: null, severity: null, status: null })
-  const { complaints, isLoading } = useComplaints(undefined, true)
-
-  const filteredComplaints = complaints.filter((c: Complaint) => {
-    if (filters.category && c.category !== filters.category) return false
-    if (filters.severity && c.severity !== filters.severity) return false
-    if (filters.status && c.status !== filters.status) return false
-    return true
-  })
-
-  const stats = {
-    total: complaints.length,
-    active: complaints.filter((c: Complaint) => c.status !== 'resolved' && c.status !== 'completed' && c.status !== 'rejected').length,
-    resolved: complaints.filter((c: Complaint) => c.status === 'resolved' || c.status === 'completed').length,
-    highPriority: complaints.filter((c: Complaint) => c.severity === 'critical' || (c as any).votes >= 10).length,
-  }
 
   return (
     <div className="min-h-screen bg-background">

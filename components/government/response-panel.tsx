@@ -71,9 +71,9 @@ export default function GovernmentResponsePanel({
         </div>
 
         <div className="space-y-2">
-          <label className="text-xs font-medium text-foreground">Deadline Date</label>
+          <label className="text-xs font-medium text-foreground uppercase tracking-widest font-bold">Set Resolution Deadline</label>
           <input
-            type="date"
+            type="datetime-local"
             value={deadlineDate}
             onChange={(e) => setDeadlineDate(e.target.value)}
             className="w-full px-3 py-2 bg-background border border-border text-foreground rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-sm"

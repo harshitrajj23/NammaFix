@@ -2,13 +2,17 @@
 
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { MapPin, AlertTriangle, User, AlertCircle } from 'lucide-react'
+import { MapPin, AlertTriangle, User, AlertCircle, Shield, Clock } from 'lucide-react'
 import { EmergencyProblem } from '@/lib/types'
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import ResponsePanel from './response-panel'
+import DeadlineCountdown from './deadline-countdown'
 
 interface EmergencyProblemCardProps {
   problem: any // Using any to flexibly handle the Complaint type or previous EmergencyProblem
+  deadlineAt?: string | Date
+  officerEmail?: string
+  emailSent?: boolean
   onResponseSubmit?: (data: {
     complaintId: string
     responseText: string
@@ -33,12 +37,39 @@ const STATUS_COLORS = {
 
 export default function EmergencyProblemCard({
   problem,
+  deadlineAt,
+  officerEmail,
+  emailSent,
   onResponseSubmit,
   isLoading = false,
 }: EmergencyProblemCardProps) {
   const [showResponse, setShowResponse] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [audioError, setAudioError] = useState(false)
+
+  // Stable Officer ID for this session
+  const [isExceeded, setIsExceeded] = useState(false)
+
+  // Stable Officer ID for this session
+  const officerId = useMemo(() => {
+    const randomNum = Math.floor(1000 + Math.random() * 9000);
+    return `OFF-${randomNum}`;
+  }, []);
+
+  const deadline_at = deadlineAt || problem.deadline_at
+
+
+  // Helper to format deadline nicely
+  const formatDeadline = (date: Date) => {
+    return date.toLocaleString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    });
+  };
 
   const handleResponseSubmit = async (data: {
     responseText: string
@@ -59,7 +90,17 @@ export default function EmergencyProblemCard({
   const severity = problem.severity || problem.priority || 'medium'
 
   return (
-    <Card className="bg-card border-border overflow-hidden hover:border-accent/50 transition-colors flex flex-col h-full">
+    <Card className="bg-card border-border overflow-hidden hover:border-accent/50 transition-colors flex flex-col h-full relative">
+      {/* Deadline Alert Banner */}
+      {deadline_at && isExceeded && (
+        <div className={`bg-red-700 px-4 py-1.5 flex items-center gap-2 text-white animate-pulse border-b border-red-500/50`}>
+          <AlertCircle className="w-4 h-4" />
+          <span className="text-[10px] font-bold uppercase tracking-wider">
+            🚨 Critical Deadline exceeded. Officer {officerId} resolve immediately!
+          </span>
+        </div>
+      )}
+
       {/* Priority banner */}
       <div className={`px-4 py-2 flex items-center justify-between ${SEVERITY_BANNER_COLORS[severity as keyof typeof SEVERITY_BANNER_COLORS] || SEVERITY_BANNER_COLORS.medium}`}>
         <div className="flex items-center gap-2">
@@ -98,6 +139,30 @@ export default function EmergencyProblemCard({
           <span className="truncate">{problem.location}</span>
         </div>
 
+        {/* Deadline & Officer ID Indicator */}
+        {deadline_at && (
+          <div className={`flex flex-col gap-1.5 p-3 rounded border ${isExceeded ? 'bg-red-500/10 border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.1)]' : 'bg-secondary/20 border-border/50'}`}>
+            <div className="flex items-center justify-between text-[11px]">
+              <div className="flex items-center gap-1.5 text-muted-foreground">
+                <Shield className="w-3.5 h-3.5 text-accent" />
+                <span className="font-bold uppercase tracking-wider">Officer ID:</span>
+                <span className="text-foreground font-black">{officerId}</span>
+              </div>
+              <div className="flex items-center gap-1 text-muted-foreground">
+                <Clock className="w-3.5 h-3.5 font-bold" />
+                <span>Due: {formatDeadline(new Date(deadline_at))}</span>
+              </div>
+            </div>
+            <DeadlineCountdown 
+              deadlineAt={deadline_at} 
+              complaintId={problem.id || problem.complaintId} 
+              officerEmail={officerEmail || problem.officer_email}
+              emailSent={emailSent}
+              onExceeded={() => setIsExceeded(true)}
+            />
+          </div>
+        )}
+
         {/* Audio Attachment */}
         {(problem.audioUrl || problem.audio_url) && (
           <div className="bg-secondary/20 p-2 rounded border border-border/50">
@@ -129,7 +194,7 @@ export default function EmergencyProblemCard({
           </Badge>
           <span className="text-[10px] text-muted-foreground flex items-center gap-1">
             <User className="w-3 h-3" />
-            {new Date(problem.createdAt).toLocaleDateString()}
+            {new Date(problem.createdAt || problem.created_at || new Date()).toLocaleDateString()}
           </span>
         </div>
 
@@ -160,6 +225,10 @@ export default function EmergencyProblemCard({
               onSubmit={handleResponseSubmit}
               isLoading={isSubmitting}
             />
+            <div className="mt-3 px-1 flex items-center justify-between text-[10px] text-muted-foreground bg-secondary/10 p-2 rounded border border-border/30">
+              <span className="flex items-center gap-1">Identity: <span className="text-foreground font-extrabold">{officerId}</span></span>
+              <span className="flex items-center gap-1">Complaint ID: <span className="text-foreground font-extrabold">{problem.id || problem.complaintId}</span></span>
+            </div>
           </div>
         )}
       </div>

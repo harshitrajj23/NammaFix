@@ -1,10 +1,21 @@
-[00:00:00.547] Server  WARN    ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:00.614] Server  LOG     ✓ Ready in 386ms
-[00:00:04.178] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:04.179] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:04.179] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773437707661} /_vercel/insights/view
-[00:00:10.552] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/government/login color: rgb(120, 120, 120) color: inherit {"dp":"/government/login","o":"http://localhost:3000/government/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773437714034} /_vercel/insights/view
-[00:00:15.028] Browser LOG     Login attempt with: {"govId":"vansh56@gmail.com","password":"asdfghjkl"}
-[00:00:15.876] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/gov-dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/gov-dashboard","o":"http://localhost:3000/gov-dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773437719359} /_vercel/insights/view
-[00:00:17.752] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/government/emergency color: rgb(120, 120, 120) color: inherit {"dp":"/government/emergency","o":"http://localhost:3000/government/emergency","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773437721235} /_vercel/insights/view
-[00:00:22.884] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/gov-dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/gov-dashboard","o":"http://localhost:3000/gov-dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773437726367} /_vercel/insights/view
+[00:00:00.581] Server  WARN    ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:00.649] Server  LOG     ✓ Ready in 420ms
+[00:00:04.472] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:04.472] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:04.473] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773446176092} /_vercel/insights/view
+[00:00:05.849] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/media/login color: rgb(120, 120, 120) color: inherit {"dp":"/media/login","o":"http://localhost:3000/media/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773446177468} /_vercel/insights/view
+[00:00:08.018] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/media color: rgb(120, 120, 120) color: inherit {"dp":"/media","o":"http://localhost:3000/media","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773446179638} /_vercel/insights/view
+[00:00:10.226] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773446181845} /_vercel/insights/view
+[00:00:18.523] Browser LOG     [HeatMap] Mode: citizen, Total complaints: 0, Geotagged: 0
+[00:00:18.523] Browser LOG     [HeatMap] Mode: citizen, Total complaints: 0, Geotagged: 0
+[00:00:18.523] Browser LOG     [HeatMap] Mode: citizen, Total complaints: 0, Geotagged: 0
+[00:00:18.523] Browser LOG     [HeatMap] Mode: citizen, Total complaints: 0, Geotagged: 0
+[00:00:18.523] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/citizen color: rgb(120, 120, 120) color: inherit {"dp":"/citizen","o":"http://localhost:3000/citizen","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773446190084} /_vercel/insights/view
+[00:00:18.523] Browser LOG     [HeatMap] Mode: citizen, Total complaints: 0, Geotagged: 0
+[00:00:18.523] Browser LOG     [HeatMap] Mode: citizen, Total complaints: 0, Geotagged: 0
+[00:00:19.061] Browser LOG     [HeatMap] Mode: citizen, Total complaints: 8, Geotagged: 1
+[00:00:19.061] Browser LOG     [HeatMap] Mode: citizen, Total complaints: 8, Geotagged: 1
+[00:00:19.061] Browser LOG     [HeatMap] Mode: citizen, Total complaints: 8, Geotagged: 1
+[00:00:19.062] Browser LOG     [HeatMap] Mode: citizen, Total complaints: 8, Geotagged: 1
+[00:00:20.247] Server  LOG     News API response: {}
+[00:00:21.739] Server  LOG     Mistral Analysis Result (Combined): {}

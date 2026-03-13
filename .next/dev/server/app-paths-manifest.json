@@ -1,6 +1,10 @@
 {
-  "/gov-dashboard/page": "app/gov-dashboard/page.js",
-  "/government/emergency/page": "app/government/emergency/page.js",
-  "/government/login/page": "app/government/login/page.js",
+  "/api/ai/trending/route": "app/api/ai/trending/route.js",
+  "/api/issues/route": "app/api/issues/route.js",
+  "/api/notifications/route": "app/api/notifications/route.js",
+  "/citizen/page": "app/citizen/page.js",
+  "/login/page": "app/login/page.js",
+  "/media/login/page": "app/media/login/page.js",
+  "/media/page": "app/media/page.js",
   "/page": "app/page.js"
 }

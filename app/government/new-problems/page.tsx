@@ -41,7 +41,7 @@ export default function NewProblemsPage() {
         // Map to frontend structure
         const formatted = complaints?.map(c => ({
           id: c.id,
-          userId: c.user_id, // Important for notifications
+          userId: c.user_id,
           title: c.title,
           category: c.category,
           description: c.description,
@@ -49,7 +49,10 @@ export default function NewProblemsPage() {
           severity: c.severity,
           createdAt: c.created_at,
           imageUrl: c.image_url,
-          audioUrl: c.audio_url
+          audioUrl: c.audio_url,
+          deadlineAt: c.deadline_at,
+          officerEmail: c.officer_email,
+          emailSent: c.email_sent
         })) || []
 
         setProblems(formatted)
@@ -78,38 +81,39 @@ export default function NewProblemsPage() {
       const problem = problems.find(p => p.id === data.complaintId)
       if (!problem) return
 
-      // STEP 5 — Save response
-      const { error: resError } = await supabase.from("responses").insert({
-        complaint_id: data.complaintId,
-        government_response: data.responseText,
-        responded_at: new Date().toISOString()
+      // Use the centralized API instead of direct Supabase writes
+      const response = await fetch('/api/government/respond', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          complaint_id: data.complaintId,
+          response_message: data.responseText,
+          officer_id: 'government@nammafix.in', // In production, get this from auth
+          deadline_at: data.deadlineDate?.toISOString()
+        })
       })
-      if (resError) throw resError
 
-      // STEP 6 — Send notification to citizen
-      const { error: notifError } = await supabase.from("notifications").insert({
-        user_id: problem.userId,
-        complaint_id: data.complaintId,
-        message: "Government responded to your complaint: " + problem.title
-      })
-      if (notifError) throw notifError
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'API call failed')
+      }
 
-      // STEP 10 — Optional status update
-      const { error: statusError } = await supabase
-        .from("complaints")
-        .update({ status: "in_progress" })
-        .eq("id", data.complaintId)
-      if (statusError) throw statusError
-
-      console.log('Response successfully sent and notification triggered')
+      console.log('Response successfully sent via API')
       
       // Refresh local data
       setProblems(prev => prev.map(p => 
-        p.id === data.complaintId ? { ...p, status: 'in_progress' } : p
+        p.id === data.complaintId ? { 
+          ...p, 
+          status: 'in_progress',
+          deadlineAt: data.deadlineDate,
+          officerEmail: 'government@nammafix.in'
+        } : p
       ))
-    } catch (err) {
+    } catch (err: any) {
       console.error('Failed to submit government response:', err)
-      alert('Failed to send response. Please try again.')
+      alert(`Failed to send response: ${err.message || 'Please try again.'}`)
     }
   }
 

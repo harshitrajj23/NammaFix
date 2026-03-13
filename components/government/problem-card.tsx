@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { MapPin, AlertCircle, RefreshCw, MessageSquare, Users } from 'lucide-react'
+import { MapPin, AlertCircle, RefreshCw, MessageSquare, Users, Shield, Clock } from 'lucide-react'
 import GovernmentResponsePanel from './response-panel'
+import DeadlineCountdown from './deadline-countdown'
 
 interface GovProblemCardProps {
   id: string
@@ -20,6 +21,9 @@ interface GovProblemCardProps {
   userId?: string
   votes?: number
   type?: 'new' | 'recurring'
+  deadlineAt?: string | Date
+  officerEmail?: string
+  emailSent?: boolean
   onResponseSubmit?: (data: {
     complaintId: string
     responseText: string
@@ -50,11 +54,33 @@ export default function GovProblemCard({
   userId,
   votes,
   type = 'new',
+  deadlineAt,
+  officerEmail,
+  emailSent,
   onResponseSubmit,
 }: GovProblemCardProps) {
   const [showResponse, setShowResponse] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [audioError, setAudioError] = useState(false)
+  const [isExceeded, setIsExceeded] = useState(false)
+
+  // Stable Officer ID for this session
+  const officerId = useMemo(() => {
+    const randomNum = Math.floor(1000 + Math.random() * 9000);
+    return `OFF-${randomNum}`;
+  }, []);
+
+  // Helper to format deadline nicely
+  const formatDeadline = (date: Date) => {
+    return date.toLocaleString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    });
+  };
 
   const handleResponseSubmit = async (data: {
     responseText: string
@@ -73,7 +99,7 @@ export default function GovProblemCard({
   }
 
   return (
-    <Card className="bg-card border-border overflow-hidden hover:border-accent/50 transition-colors flex flex-col h-full">
+    <Card className="bg-card border-border overflow-hidden hover:border-accent/50 transition-colors flex flex-col h-full relative">
       {imageUrl && (
         <div className="w-full h-40 bg-secondary relative">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -84,6 +110,17 @@ export default function GovProblemCard({
           />
         </div>
       )}
+
+      {/* Deadline Alert Banner */}
+      {type === 'new' && deadlineAt && isExceeded && (
+        <div className={`px-4 py-1.5 flex items-center gap-2 text-white animate-pulse bg-red-600`}>
+          <AlertCircle className="w-4 h-4" />
+          <span className="text-[10px] font-bold uppercase tracking-wider">
+            🚨 DEADLINE EXCEEDED. Officer ${officerId} please resolve immediately.
+          </span>
+        </div>
+      )}
+
       <div className="p-4 space-y-3 flex-1 flex flex-col">
         {/* Header with type indicator */}
         <div className="flex items-start justify-between gap-2">
@@ -103,6 +140,30 @@ export default function GovProblemCard({
           <MapPin className="w-4 h-4 flex-shrink-0" />
           <span className="truncate">{location}</span>
         </div>
+
+        {/* Deadline & Officer ID Indicator */}
+        {type === 'new' && deadlineAt && (
+          <div className={`flex flex-col gap-1.5 p-2 rounded border ${isExceeded ? 'bg-red-500/5 border-red-500/20' : 'bg-secondary/10 border-border/50'}`}>
+            <div className="flex items-center justify-between text-[10px]">
+              <div className="flex items-center gap-1.5 text-muted-foreground">
+                <Shield className="w-3 h-3 text-accent" />
+                <span className="font-medium uppercase tracking-wider">Officer Assigned:</span>
+                <span className="text-foreground font-bold">{officerId}</span>
+              </div>
+              <div className="flex items-center gap-1 text-muted-foreground">
+                <Clock className="w-3 h-3" />
+                <span>Due: {formatDeadline(new Date(deadlineAt))}</span>
+              </div>
+            </div>
+            <DeadlineCountdown 
+              deadlineAt={deadlineAt} 
+              complaintId={id} 
+              officerEmail={officerEmail}
+              emailSent={emailSent}
+              onExceeded={() => setIsExceeded(true)}
+            />
+          </div>
+        )}
 
         {/* Audio Attachment */}
         {audioUrl && (
@@ -179,6 +240,11 @@ export default function GovProblemCard({
               onSubmit={handleResponseSubmit}
               isLoading={isSubmitting}
             />
+            {/* Contextual ID for response form */}
+            <div className="mt-2 px-1 flex items-center justify-between text-[10px] text-muted-foreground border-t border-border/30 pt-2">
+              <span>Responding as: <span className="text-foreground font-bold">{officerId}</span></span>
+              <span>ID: <span className="text-foreground font-bold">{id}</span></span>
+            </div>
           </div>
         )}
 
