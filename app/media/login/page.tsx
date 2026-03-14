@@ -42,11 +42,9 @@ export default function MediaLoginPage() {
           {/* Header */}
           <div className="space-y-2 text-center">
             <div className="flex justify-center mb-4">
-              <div className="h-12 w-12 rounded bg-accent flex items-center justify-center">
-                <span className="text-accent-foreground font-bold text-lg">NF</span>
-              </div>
+              <img src="/nammafix-logo.png" alt="NammaFix" className="h-16 w-16 object-contain" />
             </div>
-            <h1 className="text-2xl font-bold text-foreground">NammaFix Media Portal</h1>
+            <h1 className="text-2xl font-bold text-foreground">Namma<span className="text-orange-500">Fix</span> Media Portal</h1>
             <p className="text-sm text-muted-foreground">
               Access civic transparency data
             </p>

@@ -63,11 +63,9 @@ export default function MediaDashboard() {
       <nav className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded bg-[#FFD700] flex items-center justify-center">
-              <span className="text-black font-extrabold text-sm tracking-tighter">NF</span>
-            </div>
-            <span className="text-xl font-black tracking-tight">NammaFix</span>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#FFD700] ml-3 border border-[#FFD700]/30 px-2 py-0.5 rounded">Media Portal</span>
+            <img src="/nammafix-logo.png" alt="NammaFix" className="h-8 w-8 object-contain" />
+            <span className="text-xl font-black tracking-tight text-foreground">Namma<span className="text-orange-500">Fix</span></span>
+            <span className="text-[10px] font-bold uppercase tracking-widest text-orange-500 ml-3 border border-orange-500/30 px-2 py-0.5 rounded">Media Portal</span>
           </div>
           
           <div className="flex items-center gap-6">

@@ -45,10 +45,10 @@ export default function GovLoginPage() {
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
       <Card className="w-full max-w-md bg-card border-border p-8">
         <div className="mb-8 text-center">
-          <div className="h-12 w-12 rounded bg-accent flex items-center justify-center mx-auto mb-4">
-            <span className="text-accent-foreground font-bold">NF</span>
+          <div className="flex justify-center mb-4">
+            <img src="/nammafix-logo.png" alt="NammaFix" className="h-16 w-16 object-contain" />
           </div>
-          <h1 className="text-3xl font-bold text-foreground mb-2">NammaFix</h1>
+          <h1 className="text-3xl font-bold text-foreground mb-2">Namma<span className="text-orange-500">Fix</span></h1>
           <p className="text-sm text-muted-foreground">Government Portal</p>
         </div>
 

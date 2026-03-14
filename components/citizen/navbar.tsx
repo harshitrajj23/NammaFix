@@ -25,10 +25,8 @@ export default function Navbar({ onNotificationClick }: NavbarProps) {
       <nav className="sticky top-0 z-40 border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded bg-accent flex items-center justify-center">
-              <span className="text-accent-foreground font-bold text-sm">NF</span>
-            </div>
-            <span className="text-xl font-bold text-foreground">NammaFix</span>
+            <img src="/nammafix-logo.png" alt="NammaFix" className="h-8 w-8 object-contain" />
+            <span className="text-xl font-bold text-foreground">Namma<span className="text-orange-500">Fix</span></span>
           </div>
           
           <div className="flex items-center gap-4">
