@@ -23,7 +23,15 @@ export default function NewProblemsPage() {
   const [problems, setProblems] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [officerEmail, setOfficerEmail] = useState('government@nammafix.in')
   const supabase = createClient()
+
+  // Fetch logged-in officer email
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (user?.email) setOfficerEmail(user.email)
+    })
+  }, [supabase])
 
   useEffect(() => {
     const fetchProblems = async () => {
@@ -52,7 +60,8 @@ export default function NewProblemsPage() {
           audioUrl: c.audio_url,
           deadlineAt: c.deadline_at,
           officerEmail: c.officer_email,
-          emailSent: c.email_sent
+          emailSent: c.email_sent,
+          status: c.status || 'pending'
         })) || []
 
         setProblems(formatted)
@@ -90,7 +99,7 @@ export default function NewProblemsPage() {
         body: JSON.stringify({
           complaint_id: data.complaintId,
           response_message: data.responseText,
-          officer_id: 'government@nammafix.in', // In production, get this from auth
+          officer_id: officerEmail,
           deadline_at: data.deadlineDate?.toISOString()
         })
       })
@@ -108,7 +117,7 @@ export default function NewProblemsPage() {
           ...p, 
           status: 'in_progress',
           deadlineAt: data.deadlineDate,
-          officerEmail: 'government@nammafix.in'
+          officerEmail: officerEmail
         } : p
       ))
     } catch (err: any) {
@@ -188,6 +197,7 @@ export default function NewProblemsPage() {
                 userId={problem.userId}
                 onResponseSubmit={handleResponseSubmit}
                 type="new"
+                status={problem.status}
               />
             ))}
           </div>

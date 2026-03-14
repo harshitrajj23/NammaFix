@@ -22,7 +22,15 @@ export default function EmergencyPage() {
   const [problems, setProblems] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [officerEmail, setOfficerEmail] = useState('government@nammafix.in')
   const supabase = createClient()
+
+  // Fetch logged-in officer email
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (user?.email) setOfficerEmail(user.email)
+    })
+  }, [supabase])
 
   const fetchProblems = async (silent = false) => {
     try {
@@ -90,7 +98,7 @@ export default function EmergencyPage() {
         body: JSON.stringify({
           complaint_id: data.complaintId,
           response_message: data.responseText,
-          officer_id: 'government@nammafix.in', // In production, get this from auth
+          officer_id: officerEmail,
           deadline_at: data.deadlineDate?.toISOString()
         })
       })
@@ -108,7 +116,7 @@ export default function EmergencyPage() {
           ...p,
           status: 'in_progress',
           deadline_at: data.deadlineDate?.toISOString(),
-          officer_email: 'government@nammafix.in'
+          officer_email: officerEmail
         } : p
       ))
     } catch (err: any) {

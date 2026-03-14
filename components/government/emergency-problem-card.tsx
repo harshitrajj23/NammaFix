@@ -129,7 +129,14 @@ export default function EmergencyProblemCard({
       <div className="p-5 space-y-4 flex-1 flex flex-col">
         {/* Title & Description */}
         <div className="space-y-2">
-          <h3 className="font-bold text-lg text-foreground line-clamp-1">{problem.title}</h3>
+          <div className="flex items-start justify-between gap-2">
+            <h3 className="font-bold text-lg text-foreground line-clamp-1 flex-1">{problem.title}</h3>
+            {problem.status === 'in_progress' && (
+              <Badge className="text-[10px] uppercase font-bold px-1.5 py-0 bg-blue-900/20 text-blue-400 border border-blue-500/30 flex-shrink-0">
+                IN PROGRESS
+              </Badge>
+            )}
+          </div>
           <p className="text-sm text-muted-foreground line-clamp-2">{problem.description}</p>
         </div>
 

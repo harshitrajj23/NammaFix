@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
+import { sendResponseConfirmation } from '@/lib/email/resend'
 
 // IMPORTANT: Use service role key to bypass RLS for this admin function
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
@@ -49,8 +50,28 @@ export async function POST(request: Request) {
       .eq('id', complaint_id)
 
     if (complaintUpdateError) throw complaintUpdateError
+    
+    // 4. Send confirmation email to government officer (async, non-blocking)
+    if (officer_id) {
+      console.log(`[EMAIL] Attempting to send confirmation email to: ${officer_id}`)
+      sendResponseConfirmation({
+        officerEmail: officer_id,
+        complaintId: complaint_id,
+        complaintTitle: complaintData.title,
+        responseMessage: response_message,
+        deadline: deadline_at || null
+      }).then(result => {
+        if (result.success) {
+          console.log(`[EMAIL] ✅ Confirmation email sent successfully to ${officer_id}`)
+        } else {
+          console.error(`[EMAIL] ❌ Failed to send confirmation email:`, result.error)
+        }
+      }).catch(err => console.error('[EMAIL] ❌ Email sending crashed:', err))
+    } else {
+      console.warn('[EMAIL] No officer_id provided, skipping confirmation email.')
+    }
 
-    // 4. Send notification to citizen
+    // 5. Send notification to citizen
     await supabase.from('notifications').insert({
       user_id: complaintData.user_id,
       complaint_id: complaint_id,

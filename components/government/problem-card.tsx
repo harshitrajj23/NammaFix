@@ -21,6 +21,7 @@ interface GovProblemCardProps {
   userId?: string
   votes?: number
   type?: 'new' | 'recurring'
+  status?: string
   deadlineAt?: string | Date
   officerEmail?: string
   emailSent?: boolean
@@ -54,6 +55,7 @@ export default function GovProblemCard({
   userId,
   votes,
   type = 'new',
+  status,
   deadlineAt,
   officerEmail,
   emailSent,
@@ -125,6 +127,11 @@ export default function GovProblemCard({
         {/* Header with type indicator */}
         <div className="flex items-start justify-between gap-2">
           <h3 className="font-semibold text-foreground line-clamp-2 flex-1">{title}</h3>
+          {status === 'in_progress' && (
+            <Badge className="text-[10px] uppercase font-bold px-1.5 py-0 bg-blue-900/20 text-blue-400 border border-blue-500/30 flex-shrink-0">
+              IN PROGRESS
+            </Badge>
+          )}
           {type === 'recurring' && (
             <RefreshCw className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
           )}
