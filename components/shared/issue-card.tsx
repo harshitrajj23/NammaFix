@@ -21,7 +21,7 @@ export default function IssueCard({
   isLoading = false,
 }: IssueCardProps) {
   return (
-    <Card className="bg-card border-border overflow-hidden hover:border-accent/50 transition-colors">
+    <Card className="bg-card border-border overflow-hidden hover:border-[#FFD700]/30 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(255,215,0,0.1)] transition-all duration-300">
       {/* Image placeholder area */}
       <div className="w-full h-40 bg-gradient-to-br from-secondary to-secondary/50 flex items-center justify-center">
         {issue.imageUrl ? (
@@ -57,7 +57,7 @@ export default function IssueCard({
             <Button
               onClick={() => onConfirm?.(issue.id)}
               disabled={isLoading}
-              className="flex-1 bg-accent hover:bg-accent/90 text-accent-foreground"
+              className="flex-1 bg-accent hover:bg-accent/90 text-accent-foreground active:scale-95 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,215,0,0.3)] hover:-translate-y-0.5"
               size="sm"
             >
               Confirm
@@ -66,7 +66,7 @@ export default function IssueCard({
               onClick={() => onDeny?.(issue.id)}
               disabled={isLoading}
               variant="outline"
-              className="flex-1 border-border hover:bg-secondary"
+              className="flex-1 border-border hover:bg-secondary active:scale-95 transition-all duration-300 hover:text-white"
               size="sm"
             >
               Dispute

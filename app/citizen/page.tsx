@@ -11,6 +11,7 @@ import { Complaint } from '@/lib/types'
 import { useRouter } from 'next/navigation'
 import { useToast } from '@/hooks/use-toast'
 import HeatMap from '@/components/citizen/heat-map'
+import SnowParticles from '@/components/ui/snow-particles'
 
 type Tab = 'home' | 'complaints' | 'trending' | 'report'
 
@@ -63,22 +64,32 @@ export default function Home() {
       case 'home':
         return (
           <div className="space-y-10">
-            <section className="space-y-4">
-              <h2 className="text-2xl font-bold text-foreground">Problem Heat Map</h2>
-              <p className="text-sm text-muted-foreground">Monitor real-time civic issue hotspots across Bangalore.</p>
-              <HeatMap complaints={complaints} />
+            <section className="animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both delay-100 content-wrapper mt-5">
+              <div className="space-y-1 mb-4">
+                <h2 className="text-2xl font-bold text-foreground">Problem Heat Map</h2>
+                <p className="text-sm text-muted-foreground">Monitor real-time civic issue hotspots across Bangalore.</p>
+              </div>
+              <div className="map-card relative w-full h-[420px] mt-4 overflow-hidden rounded-xl border border-[#FFD700]/30 shadow-[0_10px_40px_rgba(255,215,0,0.1)] hover:shadow-[0_10px_50px_rgba(255,215,0,0.15)] transition-shadow duration-500">
+                <HeatMap complaints={complaints} />
+              </div>
             </section>
 
-            <ProblemsSection 
-              onIssueConfirm={async (issueId) => {
-                console.log('Issue confirmed:', issueId)
-              }}
-              onIssueDeny={async (issueId) => {
-                console.log('Issue disputed:', issueId)
-              }}
-            />
-            <ComplaintsSection complaints={complaints} isLoading={complaintsLoading} />
-            <TrendingSection />
+            <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both delay-300">
+              <ProblemsSection 
+                onIssueConfirm={async (issueId) => {
+                  console.log('Issue confirmed:', issueId)
+                }}
+                onIssueDeny={async (issueId) => {
+                  console.log('Issue disputed:', issueId)
+                }}
+              />
+            </div>
+            <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both delay-500">
+              <ComplaintsSection complaints={complaints} isLoading={complaintsLoading} />
+            </div>
+            <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both delay-700">
+              <TrendingSection />
+            </div>
           </div>
         )
       case 'complaints':
@@ -111,24 +122,33 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Navbar />
+    <div className="min-h-screen bg-background flex flex-col relative z-0">
+      <SnowParticles />
+      <div className="relative z-10 w-full">
+        <Navbar />
+      </div>
 
       {/* Desktop Navigation Tabs */}
-      <div className="hidden md:block border-b border-border sticky top-16 z-30 bg-background/95 backdrop-blur">
+      <div className="hidden md:block border-b border-border sticky top-16 z-[9999] bg-background/95 backdrop-blur">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex gap-8">
             {(Object.entries(TAB_CONFIG) as [Tab, typeof TAB_CONFIG[Tab]][]).map(([tab, { label }]) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
+                className={`group relative py-4 px-1 font-medium text-sm transition-colors duration-300 ${
                   activeTab === tab
-                    ? 'border-accent text-accent'
-                    : 'border-transparent text-muted-foreground hover:text-foreground'
+                    ? 'text-[#FFD700]'
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 {label}
+                {/* Animated active underline */}
+                <div 
+                  className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#FFD700] transition-transform duration-300 ease-out origin-left ${
+                    activeTab === tab ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100 opacity-50'
+                  }`}
+                />
               </button>
             ))}
           </div>
@@ -136,7 +156,7 @@ export default function Home() {
       </div>
 
       {/* Main Content */}
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 py-8">
+      <main className="relative z-10 flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 pt-16 pb-8">
         {renderTabContent()}
       </main>
 

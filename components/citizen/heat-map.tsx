@@ -64,8 +64,8 @@ export default function HeatMap({ complaints, mode = 'citizen' }: HeatMapProps) 
   }
 
   return (
-    <Card className="w-full h-[500px] bg-card border-border overflow-hidden relative group shadow-2xl">
-      <div className="absolute top-4 left-4 z-[1000] pointer-events-none flex flex-col gap-2">
+    <div className="w-full h-full relative group">
+      <div className="absolute top-4 left-4 z-[500] pointer-events-none flex flex-col gap-2">
         <Badge className={`${mode === 'government' ? 'bg-amber-500 text-black' : 'bg-accent/90 text-accent-foreground'} backdrop-blur-sm border-0 text-[10px] font-bold uppercase tracking-wider py-1 px-3 shadow-lg w-fit`}>
           {mode === 'government' ? '🏢 City Surveillance Map' : 'Live Problem Hotspots'}
         </Badge>
@@ -77,7 +77,7 @@ export default function HeatMap({ complaints, mode = 'citizen' }: HeatMapProps) 
       </div>
 
       {realGeotagged.length === 0 && (
-        <div className="absolute top-4 right-4 z-[1000] pointer-events-none max-w-[250px]">
+        <div className="absolute top-4 right-4 z-[500] pointer-events-none max-w-[250px]">
           <div className="bg-background/80 backdrop-blur-md border border-border p-2 rounded-md shadow-xl">
              <p className="text-[10px] text-muted-foreground font-bold leading-tight">
                No geotagged civic issues yet.
@@ -86,7 +86,7 @@ export default function HeatMap({ complaints, mode = 'citizen' }: HeatMapProps) 
         </div>
       )}
 
-      <div className="absolute bottom-4 left-14 z-[1000] pointer-events-none flex flex-col gap-1">
+      <div className="absolute bottom-4 left-14 z-[500] pointer-events-none flex flex-col gap-1">
          <div className="flex items-center gap-2 bg-background/80 backdrop-blur-md p-1.5 px-3 rounded-full border border-border/50 shadow-lg">
             <div className="size-2 rounded-full bg-red-500 animate-pulse" />
             <span className="text-[9px] font-bold text-foreground">CRITICAL</span>
@@ -107,8 +107,8 @@ export default function HeatMap({ complaints, mode = 'citizen' }: HeatMapProps) 
         minZoom={10}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         
         {displayComplaints.map((complaint) => (
@@ -119,9 +119,9 @@ export default function HeatMap({ complaints, mode = 'citizen' }: HeatMapProps) 
               fillColor: complaint.severity === 'critical' ? '#ff0000' : 
                          complaint.severity === 'high' ? '#ff6600' : 
                          complaint.severity === 'medium' ? '#ffcc00' : '#00ff00',
-              fillOpacity: mode === 'government' ? 0.8 : 0.7,
-              color: mode === 'government' ? 'white' : 'white',
-              weight: mode === 'government' ? 1.5 : 0.5,
+              fillOpacity: mode === 'government' ? 0.9 : 0.85,
+              color: 'rgba(0,0,0,0.5)',
+              weight: mode === 'government' ? 2 : 1.5,
               className: 'glow-marker'
             }}
             radius={mode === 'government' ? 8 : 7}
@@ -184,7 +184,11 @@ export default function HeatMap({ complaints, mode = 'citizen' }: HeatMapProps) 
 
       <style jsx global>{`
         .leaflet-container {
-          background: #09090b !important;
+          background: #f8fafc !important;
+          position: relative !important;
+          z-index: 1 !important;
+          height: 100% !important;
+          width: 100% !important;
         }
         .leaflet-popup-content-wrapper {
           background: #18181b !important;
@@ -209,6 +213,6 @@ export default function HeatMap({ complaints, mode = 'citizen' }: HeatMapProps) 
           100% { stroke-width: 0.5; stroke-opacity: 1; }
         }
       `}</style>
-    </Card>
+    </div>
   )
 }

@@ -38,7 +38,7 @@ export default function ProfileCard() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="flex items-center gap-3 p-1.5 pr-3 rounded-full bg-secondary/50 hover:bg-secondary border border-border/50 transition-all group outline-none">
+        <button className="flex items-center gap-3 p-1.5 pr-3 rounded-full bg-secondary/50 hover:bg-secondary border border-border/50 hover:shadow-[0_0_15px_rgba(255,215,0,0.15)] hover:border-[#FFD700]/30 transition-all duration-300 group outline-none">
           <Avatar className="h-8 w-8 border border-accent/20">
             <AvatarImage src={MOCK_USER.avatarUrl} alt={MOCK_USER.name} />
             <AvatarFallback className="bg-accent text-accent-foreground">
