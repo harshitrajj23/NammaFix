@@ -110,7 +110,8 @@ export default function RootPage() {
       title: 'Citizen Portal',
       description: 'Report and track civic issues in your community. Submit complaints with photos, voice notes, and geotagging.',
       icon: Users,
-      href: '/citizen',
+      signinHref: '/login',
+      signupHref: '/signup/citizen',
       gradient: 'from-blue-500/20 to-cyan-500/10',
       borderGlow: 'hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]',
       iconColor: 'text-blue-400',
@@ -120,7 +121,8 @@ export default function RootPage() {
       title: 'Government Portal',
       description: 'Manage complaints, assign deadlines, and respond to citizens with full accountability tracking.',
       icon: Building2,
-      href: '/government/login',
+      signinHref: '/government/login',
+      signupHref: '/signup/government',
       gradient: 'from-emerald-500/20 to-green-500/10',
       borderGlow: 'hover:shadow-[0_0_30px_rgba(16,185,129,0.15)]',
       iconColor: 'text-emerald-400',
@@ -130,7 +132,8 @@ export default function RootPage() {
       title: 'Media Portal',
       description: 'Access civic transparency dashboards, investigate recurring issues, and monitor government accountability.',
       icon: Newspaper,
-      href: '/media/login',
+      signinHref: '/media/login',
+      signupHref: '/signup/media',
       gradient: 'from-amber-500/20 to-yellow-500/10',
       borderGlow: 'hover:shadow-[0_0_30px_rgba(245,158,11,0.15)]',
       iconColor: 'text-amber-400',
@@ -237,7 +240,7 @@ export default function RootPage() {
           {portals.map((portal, i) => {
             const Icon = portal.icon
             return (
-              <Link key={portal.href} href={portal.href} className="block group">
+              <div key={portal.title} className="block group">
                 <div
                   className={`
                     relative h-full p-8 rounded-2xl
@@ -247,8 +250,7 @@ export default function RootPage() {
                     ${portal.borderGlow}
                     transition-all duration-500 ease-out
                     hover:-translate-y-2
-                    cursor-pointer
-                    overflow-hidden
+                    overflow-hidden flex flex-col
                     ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
                   `}
                   style={{ transitionDelay: `${800 + i * 150}ms` }}
@@ -256,14 +258,14 @@ export default function RootPage() {
                   {/* Internal gradient overlay */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${portal.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`} />
 
-                  <div className="relative z-10 space-y-6">
+                  <div className="relative z-10 space-y-6 flex-grow flex flex-col">
                     {/* Icon */}
                     <div className={`w-14 h-14 rounded-xl ${portal.accentBg} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                       <Icon className={`w-7 h-7 ${portal.iconColor}`} />
                     </div>
 
                     {/* Text */}
-                    <div>
+                    <div className="flex-grow">
                       <h2 className="text-xl font-bold text-white mb-2 group-hover:text-[#FFD700] transition-colors duration-300">
                         {portal.title}
                       </h2>
@@ -272,25 +274,39 @@ export default function RootPage() {
                       </p>
                     </div>
 
-                    {/* CTA Button */}
-                    <div className="pt-2">
-                      <div className="
-                        w-full py-3 rounded-xl text-sm font-bold text-center
-                        bg-gradient-to-r from-[#FFD700] to-amber-500
-                        text-black
-                        group-hover:shadow-[0_4px_20px_rgba(255,215,0,0.3)]
-                        group-hover:scale-[1.02]
-                        active:scale-[0.98]
-                        transition-all duration-300
-                        flex items-center justify-center gap-2
-                      ">
-                        Access Portal
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                      </div>
+                    {/* CTA Buttons */}
+                    <div className="pt-4 flex flex-col sm:flex-row gap-3">
+                      <Link 
+                        href={portal.signinHref} 
+                        className="
+                          flex-1 py-3 mb-1 sm:mb-0 rounded-xl text-sm font-bold text-center
+                          bg-gradient-to-r from-[#FFD700] to-amber-500
+                          text-black
+                          hover:shadow-[0_4px_20px_rgba(255,215,0,0.3)]
+                          hover:scale-[1.02] active:scale-[0.98]
+                          transition-all duration-300
+                          flex items-center justify-center gap-2
+                        "
+                      >
+                        Sign In
+                      </Link>
+                      <Link 
+                        href={portal.signupHref} 
+                        className="
+                          flex-1 py-3 rounded-xl text-sm font-bold text-center
+                          bg-white/5 border border-white/10
+                          text-white hover:bg-white/10 hover:border-white/20
+                          hover:scale-[1.02] active:scale-[0.98]
+                          transition-all duration-300
+                          flex items-center justify-center gap-2
+                        "
+                      >
+                        Sign Up
+                      </Link>
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             )
           })}
         </div>

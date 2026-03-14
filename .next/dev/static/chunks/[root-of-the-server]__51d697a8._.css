@@ -1631,7 +1631,7 @@
     flex-shrink: 0;
   }
 
-  .grow {
+  .flex-grow, .grow {
     flex-grow: 1;
   }
 
@@ -4368,24 +4368,11 @@
   }
 
   @media (hover: hover) {
-    .group-hover\:translate-x-1:is(:where(.group):hover *) {
-      --tw-translate-x: calc(var(--spacing) * 1);
-      translate: var(--tw-translate-x) var(--tw-translate-y);
-    }
-  }
-
-  @media (hover: hover) {
     .group-hover\:scale-110:is(:where(.group):hover *) {
       --tw-scale-x: 110%;
       --tw-scale-y: 110%;
       --tw-scale-z: 110%;
       scale: var(--tw-scale-x) var(--tw-scale-y);
-    }
-  }
-
-  @media (hover: hover) {
-    .group-hover\:scale-\[1\.02\]:is(:where(.group):hover *) {
-      scale: 1.02;
     }
   }
 
@@ -4434,13 +4421,6 @@
   @media (hover: hover) {
     .group-hover\:opacity-100:is(:where(.group):hover *) {
       opacity: 1;
-    }
-  }
-
-  @media (hover: hover) {
-    .group-hover\:shadow-\[0_4px_20px_rgba\(255\,215\,0\,0\.3\)\]:is(:where(.group):hover *) {
-      --tw-shadow: 0 4px 20px var(--tw-shadow-color, #ffd7004d);
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
 
@@ -4910,6 +4890,18 @@
   }
 
   @media (hover: hover) {
+    .hover\:border-white\/20:hover {
+      border-color: #fff3;
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:border-white\/20:hover {
+        border-color: color-mix(in oklab, var(--color-white) 20%, transparent);
+      }
+    }
+  }
+
+  @media (hover: hover) {
     .hover\:bg-accent:hover {
       background-color: var(--accent);
     }
@@ -5246,6 +5238,13 @@
   @media (hover: hover) {
     .hover\:shadow-\[0_0_60px_rgba\(255\,165\,0\,0\.2\)\]:hover {
       --tw-shadow: 0 0 60px var(--tw-shadow-color, #ffa50033);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:shadow-\[0_4px_20px_rgba\(255\,215\,0\,0\.3\)\]:hover {
+      --tw-shadow: 0 4px 20px var(--tw-shadow-color, #ffd7004d);
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
@@ -6477,6 +6476,12 @@
   @media (min-width: 40rem) {
     .sm\:bottom-0 {
       bottom: calc(var(--spacing) * 0);
+    }
+  }
+
+  @media (min-width: 40rem) {
+    .sm\:mb-0 {
+      margin-bottom: calc(var(--spacing) * 0);
     }
   }
 
