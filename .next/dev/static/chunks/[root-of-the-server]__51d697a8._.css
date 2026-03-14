@@ -815,10 +815,6 @@
     z-index: 20;
   }
 
-  .z-30 {
-    z-index: 30;
-  }
-
   .z-40 {
     z-index: 40;
   }
@@ -837,10 +833,6 @@
 
   .z-\[500\] {
     z-index: 500;
-  }
-
-  .z-\[1000\] {
-    z-index: 1000;
   }
 
   .z-\[9999\] {
@@ -1313,10 +1305,6 @@
 
   .h-\[420px\] {
     height: 420px;
-  }
-
-  .h-\[500px\] {
-    height: 500px;
   }
 
   .h-\[600px\] {
@@ -4096,11 +4084,6 @@
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
 
-  .shadow-\[0_0_20px_rgba\(255\,215\,0\,0\.05\)\] {
-    --tw-shadow: 0 0 20px var(--tw-shadow-color, #ffd7000d);
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-
   .shadow-\[0_0_40px_rgba\(255\,165\,0\,0\.1\)\] {
     --tw-shadow: 0 0 40px var(--tw-shadow-color, #ffa5001a);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -4178,16 +4161,6 @@
 
   .ring-sidebar-ring {
     --tw-ring-color: var(--sidebar-ring);
-  }
-
-  .ring-white\/5 {
-    --tw-ring-color: #ffffff0d;
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .ring-white\/5 {
-      --tw-ring-color: color-mix(in oklab, var(--color-white) 5%, transparent);
-    }
   }
 
   .ring-offset-background {
@@ -5355,13 +5328,6 @@
   @media (hover: hover) {
     .hover\:shadow-\[0_0_30px_rgba\(245\,158\,11\,0\.15\)\]:hover {
       --tw-shadow: 0 0 30px var(--tw-shadow-color, #f59e0b26);
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-    }
-  }
-
-  @media (hover: hover) {
-    .hover\:shadow-\[0_0_30px_rgba\(255\,215\,0\,0\.15\)\]:hover {
-      --tw-shadow: 0 0 30px var(--tw-shadow-color, #ffd70026);
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }

@@ -1,9 +1,17 @@
 {
   "/api/ai/trending/route": "app/api/ai/trending/route.js",
+  "/api/complaints/route": "app/api/complaints/route.js",
   "/api/issues/route": "app/api/issues/route.js",
   "/api/notifications/route": "app/api/notifications/route.js",
   "/citizen/complaints/page": "app/citizen/complaints/page.js",
   "/citizen/page": "app/citizen/page.js",
+  "/gov-dashboard/page": "app/gov-dashboard/page.js",
+  "/government/feedback/page": "app/government/feedback/page.js",
+  "/government/new-problems/page": "app/government/new-problems/page.js",
+  "/government/recurring/page": "app/government/recurring/page.js",
   "/login/page": "app/login/page.js",
-  "/page": "app/page.js"
+  "/media/page": "app/media/page.js",
+  "/page": "app/page.js",
+  "/signup/government/page": "app/signup/government/page.js",
+  "/signup/media/page": "app/signup/media/page.js"
 }

@@ -1,225 +1,214 @@
-# NammaFix – AI Powered Civic Issue Resolution Platform
+# 🚀 NammaFix — AI Civic Intelligence Platform
 
-NammaFix is a civic technology platform designed to connect citizens, government authorities, and media organizations to improve urban issue reporting and resolution. The system enables citizens to report city problems, allows government departments to manage and resolve them efficiently, and provides media organizations with transparency dashboards for civic accountability.
+Platform
+Status
+Deployment
+Tech
 
-The platform integrates AI analysis, geotagging, analytics dashboards, and automated deadline alerts to create a more responsive and transparent civic governance system.
+## 🌐 Live Demo
+https://namma-fix.vercel.app/
 
-------------------------------------------------------------
+NammaFix is an AI-powered civic transparency platform that connects citizens, government authorities, and media to resolve urban issues faster and more transparently.
 
-Project Overview
+The platform transforms traditional complaint systems into a real-time civic intelligence network powered by geospatial data and AI.
 
-NammaFix helps streamline the lifecycle of civic complaints from reporting to resolution.
+---
 
-Citizens can submit complaints such as potholes, garbage overflow, and traffic issues. These complaints are automatically analyzed, categorized, and geotagged. Government authorities can then respond, assign resolution deadlines, and track performance. Media organizations can monitor civic performance through analytics dashboards and identify recurring issues.
+# 🧠 The Problem
 
-------------------------------------------------------------
+Modern cities generate thousands of civic complaints every day.
 
-Key Features
+Yet most problems remain unresolved because of:
 
-Citizen Portal
-- Report civic issues with images and location
-- AI-based complaint classification
-- Duplicate complaint detection
-- Voting system for recurring problems
-- Complaint status tracking
-- Citizen credit system for reporting issues
+• Lack of transparency  
+• Poor communication between citizens and government  
+• No centralized complaint tracking  
+• No public accountability  
 
-Government Dashboard
-- Real-time complaint management
-- Department based routing of complaints
-- Response submission system
-- Resolution deadline assignment
-- Automatic email alerts when deadlines are missed
-- SLA monitoring for accountability
+Citizens report issues but rarely know what happens next.
 
-Media Analytics Dashboard
-- City-wide complaint analytics
-- Civic issue heatmap visualization
-- Government performance tracking
-- Monthly complaint and resolution analysis
-- Recurring civic problem identification
-- Constituency performance ratings
+---
 
-------------------------------------------------------------
+# 💡 Our Solution
 
-AI Modules
+NammaFix creates a transparent civic reporting ecosystem where:
 
-AI Image Analysis
-Uploaded images are analyzed to detect the type of civic issue such as potholes, garbage overflow, or infrastructure damage.
+👨‍👩‍👧 Citizens report issues  
+🏛 Government responds with deadlines  
+📰 Media monitors civic accountability  
 
-Duplicate Complaint Detection
-When a user submits a complaint, the system checks if a similar complaint exists nearby. If found, the user is prompted to confirm whether they are experiencing the same issue.
+Every complaint becomes data, and every action becomes traceable.
 
-Civic Heatmap Analytics
-A visual heatmap displays complaint density across different regions of the city, helping identify problem hotspots.
+---
 
-------------------------------------------------------------
+# ✨ Key Features
 
-Government Performance Tracking
+### 📍 Real-Time Civic Heatmap
+Visualizes civic issue hotspots across the city using geospatial mapping.
 
-The system tracks important governance metrics including:
+### 📝 Smart Complaint Reporting
+Citizens can report issues with:
 
-Response Time
-Average time taken by government officers to respond to complaints.
+• description  
+• image uploads  
+• voice notes  
+• geolocation  
 
-Resolution Rate
-Percentage of complaints resolved successfully.
+### ⏳ Government Response System
+Authorities can:
 
-Citizen Satisfaction
-Feedback score provided by citizens.
+• review complaints  
+• respond to citizens  
+• assign resolution deadlines  
 
-SLA Compliance
-Monitoring whether complaint deadlines were met or violated.
+### 🔎 Transparency Layer
+Citizens and media can monitor issue resolution progress.
 
-------------------------------------------------------------
+### 📊 Civic Trend Monitoring
+Recurring infrastructure problems can be tracked and analyzed.
 
-System Workflow
+---
 
-Citizen reports an issue
-↓
-AI analyzes the uploaded image
-↓
-Duplicate complaint detection
-↓
-Complaint stored in database
-↓
-Government officer receives the complaint
-↓
-Officer assigns deadline and submits response
-↓
-Email alerts triggered if SLA deadlines are missed
-↓
-Media dashboard visualizes analytics and trends
+# 🏙 Platform Architecture
 
-------------------------------------------------------------
+## Frontend
+Next.js  
+React  
+Tailwind CSS  
+Framer Motion animations  
+Leaflet interactive maps  
 
-Technology Stack
+## Backend
+Supabase database  
+Supabase authentication  
+Serverless APIs  
 
-Frontend
-Next.js
-React
-TypeScript
-Tailwind CSS
+## AI Layer
+Mistral AI for intelligent analysis
 
-Backend
-Next.js API Routes
+## Deployment
+Vercel cloud platform
 
-Database
-Supabase (PostgreSQL)
+---
 
-AI Integration
-Mistral AI
+# 🔄 How It Works
 
-Email Notification System
-Resend Email API
+### 1️⃣ Citizen Reports Issue
+Users submit civic complaints with media and location data.
 
-Data Visualization
-Charts and heatmaps
+### 2️⃣ Issue Appears on City Map
+The system visualizes issues using a real-time heatmap.
 
-------------------------------------------------------------
+### 3️⃣ Government Responds
+Authorities assign deadlines and update complaint status.
 
-Project Structure
+### 4️⃣ Citizens Track Progress
+Users see responses and resolution timelines.
 
-app
-│
-├── citizen
-│   ├── complaints
-│   └── dashboard
-│
-├── government
-│   ├── new-problems
-│   ├── recurring
-│   └── response
-│
-├── media
-│   └── dashboard
-│
-├── api
-│   ├── government
-│   └── ai
-│
-components
-hooks
-lib
-scripts
+---
 
-------------------------------------------------------------
+# 🧑‍💻 Platform Portals
 
-Installation and Setup
+## 👥 Citizen Portal
+Allows residents to report and track civic problems.
 
-Step 1: Clone the repository
+Features:
+• heatmap visualization  
+• nearby issue tracking  
+• complaint submission  
+• complaint history  
 
-git clone https://github.com/harshitraj23/NammaFix.git
-cd NammaFix
+---
 
-Step 2: Install dependencies
+## 🏛 Government Portal
+Municipal authorities manage incoming complaints.
+
+Capabilities:
+• review complaints  
+• respond to citizens  
+• set deadlines  
+• track resolution progress  
+
+---
+
+## 📰 Media Portal
+Journalists and civic organizations can monitor governance transparency.
+
+Capabilities:
+• view recurring issues  
+• track unresolved complaints  
+• identify civic infrastructure patterns  
+
+---
+
+# 🖥 Installation
+
+Clone the repository
+
+git clone https://github.com/your-username/nammafix.git
+
+Navigate to the project
+
+cd nammafix
+
+Install dependencies
 
 npm install
 
-Step 3: Configure environment variables
-
-Create a .env.local file and add:
-
-SUPABASE_URL=your_supabase_url
-SUPABASE_ANON_KEY=your_supabase_key
-
-MISTRAL_API_KEY=your_mistral_api_key
-RESEND_API_KEY=your_resend_api_key
-
-Step 4: Run the development server
+Run development server
 
 npm run dev
 
-Open the application in your browser at
+Open browser
 
 http://localhost:3000
 
-------------------------------------------------------------
+---
 
-Application Routes
+# 🚀 Deployment
 
-Citizen Portal
-/citizen
+The project is deployed using Vercel.
 
-Government Dashboard
-/government
+Live platform:
 
-Media Analytics Dashboard
-/media
+https://namma-fix.vercel.app/
 
-------------------------------------------------------------
+---
 
-Deadline Alert System
+# 🔮 Future Improvements
 
-Government officers assign resolution deadlines for each complaint. If the complaint is not resolved before the deadline, the system automatically sends email alerts and records an SLA violation.
+AI complaint classification  
+Automatic department assignment  
+Predictive infrastructure failure detection  
+City governance analytics dashboard  
+Mobile application  
 
-------------------------------------------------------------
+---
 
-Future Enhancements
+# 🌍 Impact
 
-Mobile application for citizens
-AI chatbot for complaint submission
-Predictive maintenance using complaint trends
-Integration with smart city infrastructure
-Public civic data APIs
+NammaFix transforms civic reporting into a data-driven governance ecosystem.
 
-------------------------------------------------------------
+✔ Citizens are empowered  
+✔ Government becomes accountable  
+✔ Media ensures transparency  
 
-Hackathon Information
+---
 
-Project developed during a 48-hour hackathon focused on building AI-powered solutions for civic governance and transparency.
+# 👨‍💻 Developer
 
-------------------------------------------------------------
+Team Vegasync
 
-Author
+Building AI solutions for real-world civic problems.
 
-Vega Sync
+---
 
-GitHub
-https://github.com/harshitraj23
+# ⭐ Support
 
-------------------------------------------------------------
+If you like this project:
 
-License
+⭐ Star the repository  
+🍴 Fork it  
+🚀 Share it
 
-This project is open source and available under the MIT License.
+Together we can build
